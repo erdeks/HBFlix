@@ -20,9 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('date');
-            $table->integer('idMensaje');
-            $table->boolean('admin');
-            $table->integer('idFavorito');
+            $table->integer('idMensaje')->nullable();
+            $table->integer('idFavorito')->nullable();
             $table->rememberToken();
             $table->timestamps();
             //$table->foreign('idMensaje')->references('id')->on('mensaje')->onDelete('cascade');
