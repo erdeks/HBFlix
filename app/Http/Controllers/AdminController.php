@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        return view('admin.login');
     }
 
     /**
@@ -22,9 +22,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function verPeliculas()
     {
-        //
+        return view('admin.verPeliculas');
     }
 
     /**

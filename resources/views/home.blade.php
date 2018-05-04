@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <a href="{{ url('admin') }}">Admin</a>
                 </div>
             </div>
         </div>
