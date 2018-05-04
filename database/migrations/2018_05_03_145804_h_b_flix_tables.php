@@ -19,6 +19,7 @@ class HBFlixTables extends Migration
         $table->date('fechaLanzamiento');
         $table->string('titulo');
         $table->text('resumen');
+        $table->binary('imagen');
       });
       Schema::create('serie', function (Blueprint $table) {
         $table->increments('id');
@@ -26,6 +27,7 @@ class HBFlixTables extends Migration
         $table->date('fechaLanzamiento');
         $table->string('titulo');
         $table->text('resumen');
+        $table->binary('imagen');
       });
       Schema::create('actor', function (Blueprint $table) {
         $table->increments('id');

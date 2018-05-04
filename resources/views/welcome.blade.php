@@ -14,17 +14,31 @@
             background-size: cover;
             background-color: black;
           }
-          .navbar-default {
-            background-color: transparent;
-            border-color: transparent;
+          .btPos{
+            margin-top: 3%;
+            margin-left: 80%;
           }
-          .navbar-default .navbar-nav > li > a {
-            font-size: 17px;
-            color: magenta;
+          .button{
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 8px;
           }
-          .navbar-default .navbar-nav > li > a:hover {
-            font-size: 17px;
-            color: pink;
+          .button1{
+            background-color: #EC67A2;
+            color: white;
+          }
+          .button1:hover{
+            background-color: #E3027A;
+            color: #FC91CA;
+          }
+          .button2{
+            background-color: #EC67A2;
+            color: white;
+          }
+          .button2:hover{
+            background-color: #E3027A;
+            color: #FC91CA;
           }
           .bienvenida{
             margin-top: 20%;
@@ -44,23 +58,17 @@
       @if (Route::has('login'))
         @auth
         @else
-          <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-              <ul class="nav navbar-nav">
-                <li><a href="{{ url('/home') }}">Home</a></li>
-              </ul>
+          <div class="logPos">
+            <li><a href="{{ url('/home') }}">Home</a></li>
+          </div>
+          <div class="btPos">
+              <li><a href="{{ route('login') }}" class="button button1">Iniciar Sesion</a></li>
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('login') }}">Login</a></li>
-              </ul>
-            </div>
-          </nav>
           <div class="bienvenida">
             <h3>¡Bienvenido!</h3>
             <h1>SÉ ORIGINAL.</h1>
             <h3>DISFRUTA DONDE QUIERAS.</h3>
-            <a href="{{ route('register') }}">Register</a>
+            <a href="{{ route('register') }}" class="button button2">Register</a>
           </div>
         @endauth
 

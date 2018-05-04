@@ -82,4 +82,21 @@ class AdminController extends Controller
     {
         //
     }
+    public function login(Request $request, $email, $pass){
+      /*$userdata = array(
+            'email' => Input::get('email'),
+            'pass'=> Input::get('password')
+      );
+      if(Auth::attempt($userdata)){
+        return view('admin.adminInicio');
+      }  */
+      $admin=Admin::where('email', $email);
+      
+      if($admin->password==$pass){
+        return view('admin.adminInicio');
+      }
+    }
+    public function inicio(){
+      return view('admin.adminInicio');
+    }
 }
