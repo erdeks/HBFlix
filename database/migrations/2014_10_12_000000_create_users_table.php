@@ -20,12 +20,23 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('date');
-            $table->integer('idMensaje')->nullable();
-            $table->integer('idFavorito')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            //$table->foreign('idMensaje')->references('id')->on('mensaje')->onDelete('cascade');
-            //$table->foreign('idFavorito')->references('id')->on('favorito')->onDelete('cascade');
+        });
+        Schema::create('admin', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+        Schema::create('mensaje', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('mensaje');
+          $table->integer('idAdmin')->unsigned();
+          $table->foreign('idAdmin')->references('id')->on('admin')->onDelete('cascade');
+          $table->integer('idUser')->unsigned();
+          $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -37,5 +48,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('admin');
+        Schema::dropIfExists('mensaje');
     }
 }
