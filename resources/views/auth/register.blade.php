@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                         </div>
-                        <!--NOMBRE-->
+                        <!--Fecha Nacimiento-->
                         <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                             <label for="date" class="col-md-4 control-label">Fecha de nacimiento</label>
 
@@ -48,6 +48,20 @@
                                 @if ($errors->has('date'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('date') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <!--Telefono-->
+                        <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
+                            <label for="telefono" class="col-md-4 control-label">Telefono</label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" required autofocus>
+
+                                @if ($errors->has('telefono'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('telefono') }}</strong>
                                     </span>
                                 @endif
                             </div>

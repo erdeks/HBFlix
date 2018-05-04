@@ -55,6 +55,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                  <li><a href="{{ url('inicio/perfil') }}" role="button"><span class="glyphicon glyphicon-user"></span> Ver tu Perfil </a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

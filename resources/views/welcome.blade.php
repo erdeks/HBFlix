@@ -43,29 +43,53 @@
           .bienvenida{
             margin-top: 20%;
             margin-left: 5%;
+            font-family: 'Comic Sans';
           }
           h3{
             color:  white;
             font-size: 50px;
+            font-family: STARWARS;
+          }
+          @font-face{
+            font-family: STARWARS;
+            src: url('fonts/STARWARS.woff');
           }
           h1{
             color:  #FF00FF;
             font-size: 70px;
+            font-family: STARWARS;
           }
         </style>
     </head>
     <body>
       @if (Route::has('login'))
         @auth
+        <div class="logPos">
+          <li><a href="{{ url('/inicio') }}">Home</a></li>
+        </div>
+        <div class="btPos">
+            <li><a href="{{ route('logout') }}" class="button button1" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout <span class="glyphicon glyphicon-log-out"></span></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+                </form>
+            </li>
+          </div>
+        <div class="bienvenida">
+          <h3>¡BIENVENIDO!</h3>
+          <h1>SÉ ORIGINAL.</h1>
+          <h3>DISFRUTA DONDE QUIERAS.</h3>
+          <a href="{{ route('register') }}" class="button button2">Register</a>
+        </div>
         @else
           <div class="logPos">
-            <li><a href="{{ url('/home') }}">Home</a></li>
+            <li><a href="{{ url('/inicio') }}">Home</a></li>
           </div>
           <div class="btPos">
               <li><a href="{{ route('login') }}" class="button button1">Iniciar Sesion</a></li>
             </div>
           <div class="bienvenida">
-            <h3>¡Bienvenido!</h3>
+            <h3>¡BIENVENIDO!</h3>
             <h1>SÉ ORIGINAL.</h1>
             <h3>DISFRUTA DONDE QUIERAS.</h3>
             <a href="{{ route('register') }}" class="button button2">Register</a>

@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/inicio', 'HomeController@index');
 
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@login');
@@ -40,3 +40,5 @@ Route::get('/admin/crearGenero','AdminController@crearGenero');
 //Menú año de lanzamiento
 Route::get('/admin/verAnLan','AdminController@verAnLan');
 Route::get('/admin/crearAnLan','AdminController@crearAnLan');
+//Perfil
+Route::get('/inicio/perfil','PerfilController@perfil');
