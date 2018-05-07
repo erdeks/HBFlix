@@ -41,7 +41,7 @@
             color: #FC91CA;
           }
           .bienvenida{
-            margin-top: 20%;
+            margin-top: 25%;
             margin-left: 5%;
             font-family: 'Comic Sans';
           }
@@ -59,13 +59,22 @@
             font-size: 70px;
             font-family: STARWARS;
           }
+          img{
+            width: 200px;
+            height: 200px;
+          }
+
+          .logPos{
+            float: left;
+            margin-left: 5%;
+          }
         </style>
     </head>
     <body>
       @if (Route::has('login'))
         @auth
         <div class="logPos">
-          <li><a href="{{ url('/inicio') }}">Home</a></li>
+          <li><a href="{{ url('/inicio') }}"><img src="images/logo.png"></a></li>
         </div>
         <div class="btPos">
             <li><a href="{{ route('logout') }}" class="button button1" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -83,7 +92,7 @@
         </div>
         @else
           <div class="logPos">
-            <li><a href="{{ url('/inicio') }}">Home</a></li>
+            <li><a href="{{ url('/inicio') }}"><img src="images/logo.png"></a></li>
           </div>
           <div class="btPos">
               <li><a href="{{ route('login') }}" class="button button1">Iniciar Sesion</a></li>
