@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
@@ -112,7 +112,7 @@
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse">
                     <ul class="list-group">
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="#" style="color: #EC67A2">&nbsp;Ver usuarios</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{ url('/admin/verUsuarios') }}" style="color: #EC67A2">&nbsp;Ver usuarios</a></li>
 
                       <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="#" style="color: #EC67A2">&nbsp;Ver usuarios baneados</a></li>
 
@@ -134,7 +134,7 @@
                     <ul class="list-group" >
                       <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{ url('admin/verPeliculas') }}" style="color: #EC67A2">&nbsp;Ver Películas</a></li>
 
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="#" style="color: #EC67A2">&nbsp;Crear película</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{ url('admin/crearPeliculas') }}" style="color: #EC67A2">&nbsp;Crear película</a></li>
                     </ul>
                   </div>
                 </div>

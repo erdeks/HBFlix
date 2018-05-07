@@ -30,13 +30,14 @@ Route::get('/admin/usuariosBaneados','AdminController@usuariosBaneados');
 Route::get('/admin/mensajesUsuarios','AdminController@mensajesUsuarios');
 //Menú películas
 Route::get('/admin/verPeliculas','AdminController@verPeliculas');
-Route::get('/admin/crearPelicula','AdminController@crearPelicula');
+Route::get('/admin/crearPeliculas','AdminController@crearPeliculas');
+Route::post('/admin/crearPeliculas','AdminController@guardarPeliculas');
 //Menú series
 Route::get('/admin/verSeries','AdminController@verSeries');
-Route::get('/admin/crearSerie','AdminController@crearSerie');
+Route::get('/admin/crearSeries','AdminController@crearSeries');
 //Menú género
-Route::get('/admin/verGenero','AdminController@verGenero');
-Route::get('/admin/crearGenero','AdminController@crearGenero');
+Route::get('/admin/verGeneros','AdminController@verGeneros');
+Route::get('/admin/crearGeneros','AdminController@crearGeneros');
 //Menú año de lanzamiento
 Route::get('/admin/verAnLan','AdminController@verAnLan');
 Route::get('/admin/crearAnLan','AdminController@crearAnLan');

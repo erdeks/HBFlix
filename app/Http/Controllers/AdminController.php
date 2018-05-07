@@ -27,15 +27,25 @@ class AdminController extends Controller
         return view('admin.verPeliculas');
     }
 
+    public function crearPeliculas()
+    {
+        return view('admin.crearPeliculas');
+    }
+
+    public function guardarPeliculas()
+    {
+        //TO-DO guardar los datos-> https://styde.net/sistema-de-archivos-y-almacenamiento-en-laravel-5/
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function verUsuarios()
     {
-        //
+        return view('admin.verUsuarios');
     }
 
     /**
