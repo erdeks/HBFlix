@@ -63,6 +63,10 @@ class HBFlixTables extends Migration
         $table->increments('id');
         $table->string('nombre');
       });
+      Schema::create('aLanzamiento', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('aLanzamiento');
+      });
       Schema::create('favorito', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('idUser')->unsigned();
