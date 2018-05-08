@@ -47,8 +47,13 @@
             <div class="panel-body" style="background-color: #282F30;">
             <p style="color:  #EC67A2;">Menú peliculas En proceso...</p>
           <div class="row" style="margin-top:20px">
-
-    <div class="col-md-offset-3 col-md-6">
+          @if(Session::has('flash_message'))
+             <div class="alert alert-success alert-dismissable col-md-offset-3 col-md-6">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+               <strong> ¡Bien!</strong> {{Session::get('flash_message')}}
+            </div>
+          @endif
+    <div class="col-md-offset-3 col-md-6" style="float: left;">
 
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -60,7 +65,7 @@
 
             <div class="panel-body">
             
-                <form action="{{ url('admin/crearPeliculas') }}" method="POST">
+                <form action="{{ url('admin/crearPeliculas') }}" method="POST" enctype="multipart/form-data">
                 
                     {{ csrf_field() }}
     
@@ -73,29 +78,35 @@
                         <!-- -->
                         <input type="file" name="imgPeli" id="imgPeli" class="form-control">
 
+                        <label for="titulo">Película: </label>
+                        <!-- -->
+                        <input type="file" name="peli" id="peli" class="form-control">
+
                         <label for="texto">Resúmen de la película: </label>
                         <!-- -->
                         <textarea id="resumen" name="resumen" cols="44" class="form-control" required></textarea></br>
 
                         <label for="texto">Género: </label>
                         <select id="genero" name="genero" >
-                          <option value="1">Terror</option>
+                            @foreach( $arrayGenero as $key => $genero )
+                                <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                            @endforeach
                         </select></br></br>
 
                         <label for="texto">Año de lanzamiento: </label>
                         <select id="anyo" name="anyo" >
-                          <option value="1">2018</option>
+                          @foreach( $arrayAn as $key => $anyo )
+                                <option value="{{$anyo->aLanzamiento}}">{{$anyo->aLanzamiento}}</option>
+                            @endforeach
                         </select>
 
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
+                        <button type="submit" class="btn btn-primary">
                             Añadir Película
                         </button>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>

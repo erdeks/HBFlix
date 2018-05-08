@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
           $table->increments('id');
           $table->string('mensaje');
           $table->integer('idAdmin')->unsigned();
+          $table->timestamps();
           $table->foreign('idAdmin')->references('id')->on('admin')->onDelete('cascade');
           $table->integer('idUser')->unsigned();
           $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');

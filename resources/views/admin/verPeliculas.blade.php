@@ -53,89 +53,21 @@
             </nav>
             <div class="container padre" style="background-color: #2E3637; border-radius: 8px;">
               
+              <!--Aqui empieza-->
+              @foreach( $arrayPelicula as $key => $pelicula )
                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
                   <div class="portada-p">
                     <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
+                      <img src="{{url('peliculas/imgPeliculas/'.$pelicula->id)}}" alt="{{$pelicula->titulo}}" style="height: 200px; border-radius: 8px;">
                     </a>
                     <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
+                      <p style="color:  #EC67A2;">{{$pelicula->titulo}}</p>
                     </a>
-                    <span style="color:  #EC67A2;">2017</span>
-                  </div>
-                </div>
-
-                <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <div class="portada-p">
-                    <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
-                    </a>
-                    <span style="color:  #EC67A2;">2017</span>
-                  </div>
-                </div>
-
-                <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <div class="portada-p">
-                    <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
-                    </a>
-                    <span style="color:  #EC67A2;">2017</span>
-                  </div>
-                </div>
-                <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <div class="portada-p">
-                    <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
-                    </a>
-                    <span style="color:  #EC67A2;">2017</span>
-                  </div>
-                </div>
-
-                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <div class="portada-p">
-                    <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
-                    </a>
-                    <span style="color:  #EC67A2;">2017</span>
-                  </div>
-                </div>
-
-                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <div class="portada-p">
-                    <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
-                    </a>
-                    <span style="color:  #EC67A2;">2017</span>
-                  </div>
-                </div>
-
-                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <div class="portada-p">
-                    <a href="#">
-                      <img src="http://cdn2.cliver.tv/img/peliculas/1284_min.jpg" alt="Juego Macabro 8 " style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
-                      <p style="color:  #EC67A2;">Juego Macabro 8</p>
-                    </a>
-                    <span style="color:  #EC67A2;">2017</span>
+                    <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
                   </div>
                 </div>
                 <!--final divs-->
+              @endforeach
             </div>
         </div>
       </div>
