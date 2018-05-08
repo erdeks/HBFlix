@@ -134,8 +134,11 @@
             </a>
          </ul>
          <p>Géneros</p>
+         <div class=>
          <ul class="m1">
-           
+           @foreach($arrayGenero as $key => $genero)
+            <li><a>{{$genero->nombre}}</a></li>
+           @endforeach
          </ul>
         </div>
 

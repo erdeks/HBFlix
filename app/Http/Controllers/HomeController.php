@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Genero;
 class HomeController extends Controller
 {
     /**
@@ -24,5 +24,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function menu(){
+      $genero=Genero::all();
+      return view('home', array('arrayGenero'=>$genero));
     }
 }

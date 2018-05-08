@@ -1,43 +1,32 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-        <title>HBFlix</title>
-        <style>
-          body{
-            background-color: #151515;
-          }
-          .infoPos{
-            width: 400px;
-          	height: 500px;
-            margin-left: 40%;
-            margin-top: 5%;
-            background-color: #181E1F;
-            border-radius: 8px;
-          }
-          td{
-            color: #EC67A2;
-            text-align: center;
-          }
-          th{
-            color: #EC67A2;
-            text-align: center;
-            font-size: 24px;
-          }
-        </style>
-    </head>
-    <body>
-      <div class="logPos">
-        <li><a href="{{ url('/inicio') }}">Home</a></li>
-      </div>
-      <div class="infoPos">
-        <div>
+@extends('layouts.app')
+<style>
+  body{
+    background-color: #151515;
+  }
+  .infoPos{
+    width: 400px;
+    height: 500px;
+    margin-left: 40%;
+    margin-top: -30%;
+    background-color: #181E1F;
+    border-radius: 8px;
+  }
+  td{
+    color: #EC67A2;
+    text-align: center;
+  }
+  th{
+    color: #EC67A2;
+    text-align: center !important;
+    font-size: 24px;
+  }
+  table{
+    bor
+  }
+</style>
+@section('content')
 
-        </div>
-        <div>
+      <div class="infoPos">
           <table class="table table-user-information">
             <tr>
               <th colspan="2">Perfil</th>
@@ -68,6 +57,4 @@
             	</tr>
         	</table>
         </div>
-      </div>
-    </body>
-</html>
+@endsection
