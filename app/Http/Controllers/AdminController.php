@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Pelicula;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -32,9 +34,17 @@ class AdminController extends Controller
         return view('admin.crearPeliculas');
     }
 
-    public function guardarPeliculas()
+    public function guardarPeliculas(Request $request)
     {
         //TO-DO guardar los datos-> https://styde.net/sistema-de-archivos-y-almacenamiento-en-laravel-5/
+        	$peli= new Pelicula();
+        //Si el campo esta vacio no crea post
+
+            $peli->titulo = $request->input('titulo');
+            $peli->idGenero = $request->input('genero');
+            $peli->fechaLanzamiento = $request->input('anyo');
+            $peli->resumen = $request->input('resumen');
+        	$coment->save();
     }
 
     /**
