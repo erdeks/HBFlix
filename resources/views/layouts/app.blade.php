@@ -25,8 +25,8 @@
       }
       .logPos{
         float: left;
-        margin-top: -5%;
-        margin-left: 1%;
+        margin-top: -4%;
+        margin-left: 0.5%;
         width: 300px;
         height: 150px
       }
@@ -47,19 +47,15 @@
       body{
         background-color: #151515;;
       }
-      .logPos2{
-        float: left;
-        margin-top: -13%;
-        margin-left: 1%;
-        width: 300px;
-        height: 150px
-      }
+
       .menu{
         width: 300px;
         height: 400px;
         margin-top: 10%;
       }
       .menu p{
+        margin-top: 0px;
+        padding-top: 0px;
         color: #fff;
         background: #1e262d;
         font-weight: 400;
@@ -79,6 +75,12 @@
       }
       li{
         list-style: none;
+        padding: 0px;
+        margin-bottom: 0px;
+      }
+      ul{
+        padding: 0px;
+        margin-bottom: 0px;
       }
       .menu ul.m1 li.selected a{
         color: #f8eeee;
@@ -118,17 +120,22 @@
             <a href="{{ route('register') }}" class="button button1">Register</a>
           </div>
       @else
-        <div class="logPos2">
+        <div class="logPos">
           <a href="{{ url('/inicio') }}"><img src="images/logo.png"></a>
         </div>
         <div class="menu">
           <p>Información de Usuario</p>
           <ul class="m1">
             <li><a>{{ Auth::user()->name }}</a></li>
+            <li><a href="{{ url('/inicio') }}">Home</a></li>
             <li><a href="{{ url('inicio/perfil') }}" role="button"><span class="glyphicon glyphicon-user"></span>Ver tu Perfil</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               Logout
             </a>
+         </ul>
+         <p>Géneros</p>
+         <ul class="m1">
+           
          </ul>
         </div>
 
