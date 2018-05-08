@@ -46,73 +46,60 @@
             </div>
             <div class="panel-body" style="background-color: #282F30;">
             <p style="color:  #EC67A2;">Menú peliculas En proceso...</p>
-            <!--INICIO FORM-->
-            <div class="container" style=" width: 60%;margin-left: 1%; float: left;">
-              <div class="col-md-12">  
-                <form role="form" class="col-md-12" style="float:left;" accept-charset="UTF-8" enctype="multipart/form-data">7
+          <div class="row" style="margin-top:20px">
 
-                 {{ csrf_field() }}
+    <div class="col-md-offset-3 col-md-6">
 
-                  <br style="clear:both">
-                  <h3 style="margin-bottom: 25px; text-align: center; color: #EC67A2">Introducir nueva película</h3>
-                  <!--Nombre-->
-                  <label for="sel1" style="color: #EC67A2">Nombre:</label>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
-                  </div>
-                  <!--FinGénero-->
-                  <!--Resumen-->
-                  <label for="sel1" style="color: #EC67A2">Resumen:</label>
-                  <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="resumen" name="resumen" placeholder="Resumen" maxlength="140" rows="7"></textarea>
-                  </div>
-                  <!--FinResumen-->
-                  <!--Géneros-->
-                  <div class="form-group">
-                  <label for="genero" style="color: #EC67A2">Género:</label>
-                    <select class="form-control" id="genero">
-                      <option value="1">Terror</option>
-                      <option value="2">Comedia</option>
-                      <option value="3">Amor</option>
-                      <option value="4">NoPorn</option>
-                    </select>
-                  <br style="clear:both">
-                  <!--FInGéneros-->
-                  <!--Géneros-->
-                  <div class="form-group">
-                  <label for="anyo" style="color: #EC67A2">Año de lanzamiento:</label>
-                    <select class="form-control" id="anyo">
-                      <option value="1">2018</option>
-                      <option value="2">2017</option>
-                      <option value="3">2016</option>
-                      <option value="4">2015</option>
-                    </select>
-                  <br style="clear:both">
-                  <!--FInGéneros-->
-              </div>
-              <button type="button" id="submit" name="submit" class="btn btn-primary pull-left" style="float: left;">Submit Form</button>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">
+                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                    Añadir Pelicula
+                </h3>
             </div>
-          </div>
+
+            <div class="panel-body">
+            
+                <form action="{{ url('admin/crearPeliculas') }}" method="POST">
+                
+                    {{ csrf_field() }}
+    
+                    <div class="form-group">
+                        <!--Nombre usuario-->
+                        <label>Titulo de la Película:</label>
+                        <input type="text" name="titulo" value="" id="titulo" class="form-control">
+                        
+                        <label for="titulo">Imágen de la Película: </label>
+                        <!-- -->
+                        <input type="file" name="imgPeli" id="imgPeli" class="form-control">
+
+                        <label for="texto">Resúmen de la película: </label>
+                        <!-- -->
+                        <textarea id="resumen" name="resumen" cols="44" class="form-control" required></textarea></br>
+
+                        <label for="texto">Género: </label>
+                        <select id="genero" name="genero" >
+                          <option value="1">Terror</option>
+                        </select></br></br>
+
+                        <label for="texto">Año de lanzamiento: </label>
+                        <select id="anyo" name="anyo" >
+                          <option value="1">2018</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
+                            Añadir Película
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
         </div>
-        <!--INICIO FORM-->
-            <div class="container" style="width: 35%;margin-top: 11% ;float: left;">
-              <div class="col-md-12">  
-                <form role="form" class="col-md-12">
-                  <!--Imágen-->
-                  <label for="sel1" style="color: #EC67A2">Imágen de la pélicula:</label>
-                  <div class="form-group">
-                    <input type="file" class="form-control" id="imgPeli" name="imgPeli" placeholder="Nombre" required>
-                  </div>
-                  <!--Imágen-->
-                  <!--Película-->
-                  <label for="sel1" style="color: #EC67A2">Subir película:</label>
-                  <div class="form-group">
-                    <input type="file" class="form-control" id="vidPeli" name="vidPeli" placeholder="Nombre" required>
-                  </div>
-                  <!--Película-->
-              </form>
-            </div>
-          </div>
+    </div>
+</div>
         <!--Final-->
       </div>
     </div>

@@ -15,8 +15,8 @@ class HBFlixTables extends Migration
     {
       Schema::create('pelicula', function (Blueprint $table) {
         $table->increments('id');
-        $table->integer('idGenero');
-        $table->date('fechaLanzamiento');
+        $table->string('idGenero');
+        $table->string('fechaLanzamiento');
         $table->string('titulo');
         $table->text('resumen');
         $table->binary('imagen');
