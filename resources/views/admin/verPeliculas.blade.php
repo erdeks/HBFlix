@@ -51,16 +51,25 @@
                     <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-search"></span> </button>
                 </form>
             </nav>
-            <div class="container padre" style="background-color: #2E3637; border-radius: 8px;">
+            <div class="container " style="background-color: #2E3637; border-radius: 8px;">
               
               <!--Aqui empieza-->
               @foreach( $arrayPelicula as $key => $pelicula )
                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
+                  <a class="btn btn-sm btn-success" href="#" style="margin: 5px;">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                  <a class="btn btn-sm btn-info" href="{{ url('/admin/verPeli/' . $pelicula->id ) }}" style="margin: 5px;">
+                      <i class="glyphicon glyphicon-zoom-in"></i>
+                  </a>
+                  <a class="btn btn-sm btn-danger" href="#" style="margin: 5px;">
+                    <i class="glyphicon glyphicon-trash "></i>
+                      </a>
                   <div class="portada-p">
-                    <a href="#">
-                      <img src="{{url('peliculas/imgPeliculas/'.$pelicula->id)}}" alt="{{$pelicula->titulo}}" style="height: 200px; border-radius: 8px;">
-                    </a>
-                    <a href="#">
+                    <a href="{{ url('/admin/verPeli/' . $pelicula->id ) }}">
+                      <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 200px; border-radius: 8px;">
+                    </a></br></br>
+                    <a href="{{ url('/admin/verPeli/' . $pelicula->id ) }}">
                       <p style="color:  #EC67A2;">{{$pelicula->titulo}}</p>
                     </a>
                     <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>

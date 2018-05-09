@@ -34,7 +34,8 @@
     <title>Panel Admin</title>
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation" style="background-color: #181E1F;">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #181E1F; border-radius: 60px;">
+    <div class="container">
       <!-- El logotipo y el icono que despliega el menú se agrupan
            para mostrarlos mejor en los dispositivos móviles -->
       <div class="navbar-header">
@@ -45,7 +46,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#" style="color:  #EC67A2">Logotipo</a>
+        <a class="navbar-brand" href="#" style="color:  #EC67A2;">Inicio</a>
       </div>
      
       <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -97,8 +98,10 @@
           </li>
         </ul>
       </div>
+    </div>
     </nav>
-    <div class="container">
+    <div class="container " >
+    <img src="{{url('images/logo.png')}}" alt="logo" style="height: 70px;">
           <div class="row">
             <div class="col-sm-3 col-md-3">
               <div class="panel-group" id="accordion">
@@ -189,6 +192,7 @@
                     </ul>
                   </div>
                 </div>
+
                 <!--FINAL MENÚ AÑO DE LANZAMIENTO-->
          @yield('content')
  </div>

@@ -34,6 +34,12 @@ class AdminController extends Controller
         return view('admin.verPeliculas',array('arrayPelicula'=>$peliculas));
         // <img src="{{url('/imgPeliculas/pruebaBBDD.png')}}" alt="Image"/>
     }
+    public function verPeli($id){
+
+    	$peli= Pelicula::find($id);
+        return view('admin.verPeli', array('peli'=>$peli));
+
+    }
 
     public function crearPeliculas()
     {
@@ -46,7 +52,6 @@ class AdminController extends Controller
     {
         //TO-DO guardar los datos-> https://styde.net/sistema-de-archivos-y-almacenamiento-en-laravel-5/
         	if($idImg = Pelicula::select()->orderBy('id', 'desc')->first()){
-	        	$idImg = $idImg->id + 1;
 	        	$peli= new Pelicula();
 	        //Si el campo esta vacio no crea post
 
@@ -54,23 +59,23 @@ class AdminController extends Controller
 	            $peli->genero = $request->input('genero');
 	            $peli->aLanzamiento = $request->input('anyo');
 	            $peli->resumen = $request->input('resumen');
-	            $peli->rutaImg = '/peliculas/imgPeliculas/'.$idImg;
+	            $peli->rutaImg = '/peliculas/imgPeliculas/'.$request->input('titulo');
 	        	$peli->save();
 
                 $video = Input::file("peli");
                 $vPath = public_path().'/peliculas/VideoPeliculas/';
-                $video->move($vPath);
+                $video->move($vPath, $request->input('titulo'));
 
 	        	$image = \Image::make(\Input::file('imgPeli'));
 	        	$path = public_path().'/peliculas/imgPeliculas/';
                 $image->resize(250,356);
-                $image->save($path.$idImg);
+                $image->save($path.$request->input('titulo'));
                 //$image->save($path.$file->getClientOriginalName());
 	        	
 
 
 
-	        	\Session::flash('flash_message', 'Película guardada correctamente');
+	        	\Session::flash('flash_message', 'Película guardada correctamente ');
 	        	return redirect('admin/crearPeliculas');
 	        }else{
 	        	$peli= new Pelicula();
@@ -86,8 +91,8 @@ class AdminController extends Controller
 	        	$file = Input::file('imgPeli');
 	        	$image = \Image::make(\Input::file('imgPeli'));
 	        	$path = public_path().'/peliculas/imgPeliculas/';
-	        	$image->resize(200,200);
-	        	$image->save($path."1");
+	        	$image->resize(250,356);
+	        	$image->save($path.$request->input('titulo'));
 	        	
 	        	\Session::flash('flash_message', 'Película guardada correctamente');
 	        	return redirect('admin/crearPeliculas');
