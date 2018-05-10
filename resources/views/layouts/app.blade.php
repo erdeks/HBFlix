@@ -16,8 +16,8 @@
     <!-- Styles -->
     <style>
       img{
-        width: 250px;
-        height: 200px;
+        width: 100%;
+        height: 100%;
       }
       .btPos{
         margin-top: 2.5%;
@@ -25,11 +25,11 @@
       }
       .logPos{
         float: left;
-        margin-top: -18%;
+        margin-top: -5%;
         margin-left: 0.5%;
         margin-bottom: 2%;
-        width: 300px;
-        height: 150px
+        width: 100%;
+        height: 10%;
       }
       .button{
         padding: 16px 32px;
@@ -48,9 +48,9 @@
       body{
         background-color: #151515;;
       }
-      /*div{
+      div{
         border: 1px solid white;
-      }*/
+      }
       .menu{
         background-color: #282934;
       }
@@ -68,13 +68,19 @@
       .menu a{
         color: #ff32e6;
       }
+      .container{
+        margin-left: 0%;
+      }
+      .col-md-4{
+        margin-left: 0px;
+      }
     </style>
 </head>
 <body>
     <div id="app">
       @guest
         <div class="logPos">
-          <a href="{{ url('/inicio') }}"><img src="{{ asset('images/logo.png')}}"></a>
+          <a href="{{ url('/inicio') }}"><img src="images/logo.png"></a>
         </div>
         <div class="btPos">
           <a href="{{ route('register') }}" class="button button1">Register</a>
@@ -105,7 +111,7 @@
                 <div class="sub">
                   <ul class="nav nav-pills nav-stacked">
                     @foreach($arrayGenero as $key => $genero)
-                     <li><a>{{$genero->nombre}}</a></li>
+                     <li><a href="{{ url('inicio/'.$genero->nombre) }}">{{$genero->nombre}}</a></li>
                     @endforeach
                   </ul>
                 </div>
