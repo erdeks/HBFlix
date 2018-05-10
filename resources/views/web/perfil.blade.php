@@ -6,8 +6,8 @@
   .infoPos{
     width: 400px;
     height: 500px;
-    margin-left: 40%;
-    margin-top: -30%;
+    margin-top: 15%;
+    margin-left: 15%;
     background-color: #181E1F;
     border-radius: 8px;
   }
@@ -25,7 +25,7 @@
   }
 </style>
 @section('content')
-
+  <div class="col-md-8">
       <div class="infoPos">
           <table class="table table-user-information">
             <tr>
@@ -36,7 +36,7 @@
               	<td>{{Auth::user()->name}}</td>
               </tr>
               <tr>
-              	<td>Dirección:</td>
+              	<td>Apellido:</td>
               	<td>{{Auth::user()->apellido}}</td>
               </tr>
               <tr>
@@ -57,4 +57,7 @@
             	</tr>
         	</table>
         </div>
+      </div>
+  </div>
+</div>
 @endsection

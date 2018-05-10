@@ -25,8 +25,9 @@
       }
       .logPos{
         float: left;
-        margin-top: -4%;
+        margin-top: -18%;
         margin-left: 0.5%;
+        margin-bottom: 2%;
         width: 300px;
         height: 150px
       }
@@ -47,108 +48,125 @@
       body{
         background-color: #151515;;
       }
-
+      /*div{
+        border: 1px solid white;
+      }*/
       .menu{
-        width: 300px;
-        height: 400px;
-        margin-top: 10%;
+        background-color: #282934;
       }
-      .menu p{
-        margin-top: 0px;
-        padding-top: 0px;
-        color: #fff;
-        background: #1e262d;
-        font-weight: 400;
-        font-size: 20px;
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(255,255,255,.1);
+      .sub{
+        height: 300px;
+        overflow-y: scroll;
+      }
+      h5{
+        color: #fa04dc;
         text-align: center;
       }
-      div, span, p{
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: 0 0;
+      .h5{
+        color: #fa04dc;
       }
-      li{
-        list-style: none;
-        padding: 0px;
-        margin-bottom: 0px;
-      }
-      ul{
-        padding: 0px;
-        margin-bottom: 0px;
-      }
-      .menu ul.m1 li.selected a{
-        color: #f8eeee;
-        background: rgba(0,0,0,.5);
-      }
-      .menu ul.m1 li a:hover{
-        color: #fff;
-        background: rgba(0,0,0,.5);
-      }
-      .menu ul.m1 li a{
-        color: rgba(255,255,255,.5);
-        font-weight: 400;
-        display: block;
-        padding: 10px;
-        padding-left: 5%;
-        background: #1e262d;
-        border-bottom: 1px solid rgba(255,255,255,.1);
-      }
-      .menu ul.m1 li:hover a{
-        color: #fff;
-      }
-      a{
-        text-decoration: none;
-      }
-      div{
-        border: 1px solid white;
+      .menu a{
+        color: #ff32e6;
       }
     </style>
 </head>
 <body>
     <div id="app">
       @guest
+        <div class="logPos">
+          <a href="{{ url('/inicio') }}"><img src="{{ asset('images/logo.png')}}"></a>
+        </div>
+        <div class="btPos">
+          <a href="{{ route('register') }}" class="button button1">Register</a>
+        </div>
+      @else
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="logPos">
+                <a href="{{ url('/inicio') }}"><img src="{{ asset('images/logo.png')}}"></a>
+              </div>
+              <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+              <div id="sidebar" class="well sidebar-nav menu">
+                <h5><i class="glyphicon glyphicon-user"></i>
+                    <small><b class="h5">Información de Usuario</b></small>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a>{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ url('/inicio') }}">Home</a></li>
+                    <li><a href="{{ url('inicio/perfil') }}" role="button">Ver tu Perfil</a></li>
+                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      Logout
+                    </a>
+                </ul>
+                <h5>
+                  <b class="h5">Géneros</b>
+                </h5>
+                <div class="sub">
+                  <ul class="nav nav-pills nav-stacked">
+                    @foreach($arrayGenero as $key => $genero)
+                     <li><a>{{$genero->nombre}}</a></li>
+                    @endforeach
+                  </ul>
+                </div>
+                <h5>
+                  <b class="h5">Año Lanzamiento</b>
+                </h5>
+                <div class="sub">
+                  <ul class="nav nav-pills nav-stacked">
+                    @foreach($arrayLanz as $key => $aLanz)
+                     <li><a>{{$aLanz->aLanzamiento}}</a></li>
+                    @endforeach
+                  </ul>
+                </div>
+              </div>
+          </div>
+
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+  </form>
+      <!--  <div class="container">
           <div class="logPos">
             <a href="{{ url('/inicio') }}"><img src="images/logo.png"></a>
           </div>
-          <div class="btPos">
-            <a href="{{ route('register') }}" class="button button1">Register</a>
+          <div class="row">
+            <div class="col-sm-3 col-md-3">
+              <div class="menu">
+                <p>Información de Usuario</p>
+                <ul>
+                  <li><a>{{ Auth::user()->name }}</a></li>
+                  <li><a href="{{ url('/inicio') }}">Home</a></li>
+                  <li><a href="{{ url('inicio/perfil') }}" role="button"><span class="glyphicon glyphicon-user"></span>Ver tu Perfil</a></li>
+                  <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                  </a>
+               </ul>
+               <p>Géneros</p>
+               <div class="scl">
+               <ul>
+                 @foreach($arrayGenero as $key => $genero)
+                  <li><a>{{$genero->nombre}}</a></li>
+                 @endforeach
+               </ul>
+              </div>
+              <p>Año Lanzamiento</p>
+              <div class="scl">
+                <ul>
+                  @foreach($arrayLanz as $key => $aLanz)
+                   <li><a>{{$aLanz->aLanzamiento}}</a></li>
+                  @endforeach
+                </ul>
+              </div>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+            </div>
           </div>
-      @else
-        <div class="logPos">
-          <a href="{{ url('/inicio') }}"><img src="images/logo.png"></a>
         </div>
-        <div class="menu">
-          <p>Información de Usuario</p>
-          <ul class="m1">
-            <li><a>{{ Auth::user()->name }}</a></li>
-            <li><a href="{{ url('/inicio') }}">Home</a></li>
-            <li><a href="{{ url('inicio/perfil') }}" role="button"><span class="glyphicon glyphicon-user"></span>Ver tu Perfil</a></li>
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Logout
-            </a>
-         </ul>
-         <p>Géneros</p>
-         <div class=>
-         <ul class="m1">
-           @foreach($arrayGenero as $key => $genero)
-            <li><a>{{$genero->nombre}}</a></li>
-           @endforeach
-         </ul>
-        </div>
+      </div>-->
 
-
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          {{ csrf_field() }}
-        </form>
       @endguest
-  </div>
 @yield('content')
 
 

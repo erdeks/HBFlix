@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Genero;
+use App\ALanzamiento;
 class HomeController extends Controller
 {
     /**
@@ -27,6 +28,7 @@ class HomeController extends Controller
     }
     public function menu(){
       $genero=Genero::all();
-      return view('home', array('arrayGenero'=>$genero));
+      $aLanzamiento = ALanzamiento::all();
+      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
     }
 }
