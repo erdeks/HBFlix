@@ -45,3 +45,5 @@ Route::get('/admin/verAnLan','AdminController@verAnLan');
 Route::get('/admin/crearAnLan','AdminController@crearAnLan');
 //Perfil
 Route::get('/inicio/perfil','PerfilController@perfil');
+//Mostrar Generos
+Route::get('/inicio/{nombre}', 'GeneroController@main');
