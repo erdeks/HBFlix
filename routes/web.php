@@ -33,7 +33,7 @@ Route::get('/admin/verPeliculas','AdminController@verPeliculas');
 Route::get('/admin/crearPeliculas','AdminController@crearPeliculas');
 Route::post('/admin/crearPeliculas','AdminController@guardarPeliculas');
 Route::get('/admin/verPeli/{id}','AdminController@verPeli');
-Route::get('/admin/editarPeli/{id}','AdminController@editarPeli');
+Route::post('/admin/editarPeli','AdminController@editarPeli');
 //Menú series
 Route::get('/admin/verSeries','AdminController@verSeries');
 Route::get('/admin/crearSeries','AdminController@crearSeries');

@@ -56,7 +56,7 @@
               <!--Aqui empieza-->
               @foreach( $arrayPelicula as $key => $pelicula )
                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <a class="btn btn-sm btn-success" href="#" style="margin: 5px;">
+                  <a class="btn btn-sm btn-success" href="{{ url('/admin/editarPeli/' . $pelicula->id ) }}" style="margin: 5px;">
                       <i class="glyphicon glyphicon-pencil"></i>
                   </a>
                   <a class="btn btn-sm btn-info" href="{{ url('/admin/verPeli/' . $pelicula->id ) }}" style="margin: 5px;">

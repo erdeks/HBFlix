@@ -37,7 +37,10 @@ class AdminController extends Controller
     public function verPeli($id){
 
     	$peli= Pelicula::find($id);
-        return view('admin.verPeli', array('peli'=>$peli));
+    	$peliculas = Pelicula::all();
+    	$contGenero = Genero::all();
+    	$contAn = ALanzamiento::all();
+        return view('admin.verPeli', array('peli'=>$peli,'arrayPelicula'=>$peliculas,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
 
     }
 
@@ -91,12 +94,38 @@ class AdminController extends Controller
 	        	$file = Input::file('imgPeli');
 	        	$image = \Image::make(\Input::file('imgPeli'));
 	        	$path = public_path().'/peliculas/imgPeliculas/';
-	        	$image->resize(250,356);
+	        	$image->resize(250,375);
 	        	$image->save($path.$request->input('titulo'));
 	        	
 	        	\Session::flash('flash_message', 'Película guardada correctamente');
 	        	return redirect('admin/crearPeliculas');
 	        }
+    }
+
+    public function editarPeli(Request $request)
+    {
+    	$id = $request->input('idPeli');
+    	$peli = Pelicula::find($id);
+    	$peli->titulo = $request->input('titulo');
+	    $peli->genero = $request->input('genero');
+	    $peli->rutaImg = $peli->rutaImg;
+	    $peli->aLanzamiento = $request->input('anyo');
+	    $peli->resumen = $request->input('resumen');
+
+	    $eliminar = '/peliculas/imgPeliculas/'.$peli->titulo.'.jpg';
+	    Storage::delete($eliminar);
+
+	    $file = Input::file('imgPeli');
+		$image = \Image::make(\Input::file('imgPeli'));
+		$path = public_path().'/peliculas/imgPeliculas/';
+		$image->resize(250,375);
+		$image->save($path.$request->input('titulo'));
+
+	    $peli->save();
+
+    	$peliculas = Pelicula::all();
+    	return redirect('/admin/verPeli/'. $id);
+
     }
 
     /**
