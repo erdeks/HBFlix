@@ -56,13 +56,13 @@
               <!--Aqui empieza-->
               @foreach( $arrayPelicula as $key => $pelicula )
                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">
-                  <a class="btn btn-sm btn-success" href="{{ url('/admin/editarPeli/' . $pelicula->id ) }}" style="margin: 5px;">
+                  <a class="btn btn-sm btn-success" href="{{ url('/admin/verPeli/' . $pelicula->id ) }}" style="margin: 5px;">
                       <i class="glyphicon glyphicon-pencil"></i>
                   </a>
                   <a class="btn btn-sm btn-info" href="{{ url('/admin/verPeli/' . $pelicula->id ) }}" style="margin: 5px;">
                       <i class="glyphicon glyphicon-zoom-in"></i>
                   </a>
-                  <a class="btn btn-sm btn-danger" href="#" style="margin: 5px;">
+                  <a class="btn btn-sm btn-danger" href="{{url('/admin/eliminarPeli/'.$pelicula->id ) }}" style="margin: 5px;">
                     <i class="glyphicon glyphicon-trash "></i>
                       </a>
                   <div class="portada-p">
@@ -70,12 +70,11 @@
                       <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 200px; border-radius: 8px;">
                     </a></br></br>
                     <a href="{{ url('/admin/verPeli/' . $pelicula->id ) }}">
-                      <p style="color:  #EC67A2;">{{$pelicula->titulo}}</p>
+                      <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
                     </a>
                     <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
                   </div>
                 </div>
-                <!--final divs-->
               @endforeach
             </div>
         </div>

@@ -50,10 +50,11 @@
                   </tr>
                 </thead>
                 <tbody>
+                @foreach( $arrayUsuarios as $key => $user )
                   <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->apellido}}</td>
+                    <td>{{$user->email}}</td>
                     <td>
                       <button class="btn btn-sm btn-success">
                         <i class="glyphicon glyphicon-pencil"></i>
@@ -69,44 +70,7 @@
                       </button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                    <td>
-                      <button class="btn btn-sm btn-success">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                      </button>
-                      <button class="btn btn-sm btn-info">
-                        <i class="glyphicon glyphicon-zoom-in"></i>
-                      </button>
-                      <button class="btn btn-sm btn-danger">
-                        <i class="glyphicon glyphicon-trash "></i>
-                      </button>
-                      <button class="btn btn-sm btn-warning">
-                        <i class="glyphicon glyphicon-refresh"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>
-                      <button class="btn btn-sm btn-success">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                      </button>
-                      <button class="btn btn-sm btn-info">
-                        <i class="glyphicon glyphicon-zoom-in"></i>
-                      </button>
-                      <button class="btn btn-sm btn-danger">
-                        <i class="glyphicon glyphicon-trash "></i>
-                      </button>
-                      <button class="btn btn-sm btn-warning">
-                        <i class="glyphicon glyphicon-refresh"></i>
-                      </button>
-                    </td>
-                  </tr>
+                @endforeach
                 </tbody>
               </table>
             </div>

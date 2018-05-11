@@ -35,6 +35,8 @@ Route::get('/admin/crearPeliculas','AdminController@crearPeliculas');
 Route::post('/admin/crearPeliculas','AdminController@guardarPeliculas');
 Route::get('/admin/verPeli/{id}','AdminController@verPeli');
 Route::post('/admin/editarPeli','AdminController@editarPeli');
+Route::delete('/admin/eliminarPeli/{id}','AdminController@eliminarPeli');
+Route::get('/admin/eliminarPeli/{id}','AdminController@eliminarPeli');
 //Menú series
 Route::get('/admin/verSeries','AdminController@verSeries');
 Route::get('/admin/crearSeries','AdminController@crearSeries');
