@@ -120,7 +120,6 @@
                       <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="#" style="color: #EC67A2">&nbsp;Ver usuarios baneados</a></li>
 
                       <li class="list-group-item" style="background-color: #282F30;"> <span class="glyphicon glyphicon-comment text-success"></span><a href="#" style="color: #EC67A2">&nbsp;Ver mensajes de usuarios</a><span class="badge">42</span></li>
-
                     </ul>
                   </div>
                 </div>
