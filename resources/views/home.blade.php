@@ -215,7 +215,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">
+            <a class="navbar-brand" href="{{url('/inicio')}}">
                 <img src="{{url('images/logo.png')}}" alt="logo" style="height: 70px;margin-top: -8%">
             </a>
         </div>
@@ -227,8 +227,9 @@
                 <label class="custom-control custom-checkbox">
                     <strong style="color: #EC67A2">Películas</strong> <input type="checkbox" class="custom-control-input" style="display: none;">
                     <span class="custom-control-indicator"></span>
+                    <strong style="color: #EC67A2">Series</strong>
                 </label>
-                 <strong style="color: #EC67A2">Series</strong>
+                 
             </div>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -236,9 +237,11 @@
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-1" style="color: #EC67A2"><i class="fa fa-fw fa-search"></i> MENU 1 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse">
+                      <li>hola</li>
                     
                     </ul>
                 </li>
+
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-2" style="color: #EC67A2"><i class="fa fa-fw fa-star"></i>  MENU 2 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-2" class="collapse">
@@ -294,6 +297,6 @@
     <!-- /#page-wrapper -->
     <!--De aqui hacia abajo va en la view-->
 </div><!-- /#wrapper -->
- 
+   <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

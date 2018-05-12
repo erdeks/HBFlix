@@ -70,12 +70,12 @@ class HBFlixTables extends Migration
         $table->string('nombre');
         $table->timestamps();
       });
-      Schema::create('aLanzamientos', function (Blueprint $table) {
+      Schema::create('a_lanzamientos', function (Blueprint $table) {
         $table->increments('id');
         $table->string('aLanzamiento');
         $table->timestamps();
       });
-      Schema::create('favorito', function (Blueprint $table) {
+      Schema::create('favoritos', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('idUser')->unsigned();
         $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
