@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
-use App\Pelicula;
+use App\Multimedia;
 use App\Genero;
 use Input;
 use App\User;
@@ -32,14 +32,14 @@ class AdminController extends Controller
      */
     public function verPeliculas()
     {
-        $peliculas = Pelicula::all();
+        $peliculas = Multimedia::where('tipo', '0')->get();
         return view('admin.verPeliculas',array('arrayPelicula'=>$peliculas));
         // <img src="{{url('/imgPeliculas/pruebaBBDD.png')}}" alt="Image"/>
     }
     public function verPeli($id){
 
-    	$peli= Pelicula::find($id);
-    	$peliculas = Pelicula::all();
+    	$peli= Multimedia::find($id);
+    	$peliculas = Multimedia::where('tipo', '0')->get();
     	$contGenero = Genero::all();
     	$contAn = ALanzamiento::all();
         return view('admin.verPeli', array('peli'=>$peli,'arrayPelicula'=>$peliculas,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
@@ -56,8 +56,7 @@ class AdminController extends Controller
     public function guardarPeliculas(Request $request)
 	{
 	//TO-DO guardar los datos-> https://styde.net/sistema-de-archivos-y-almacenamiento-en-laravel-5/
-		if($idImg = Pelicula::select()->orderBy('id', 'desc')->first()){
-	    	$peli= new Pelicula();
+	    	$peli= new Multimedia();
 	    //Si el campo esta vacio no crea post
 
 	        $peli->titulo = $request->input('titulo');
@@ -65,7 +64,9 @@ class AdminController extends Controller
 	        $peli->aLanzamiento = $request->input('anyo');
 	        $peli->resumen = $request->input('resumen');
 	        $peli->rutaImg = '/peliculas/imgPeliculas/'.$request->input('titulo');
-	    	$peli->save();
+          $peli->rutaVid = '/peliculas/VideoPeliculas/'.$request->input('titulo');
+          $peli->tipo=$request->input('tipo');
+	    	  $peli->save();
 
 	        $video = Input::file("peli");
 	        $vPath = public_path().'/peliculas/VideoPeliculas/';
@@ -76,38 +77,19 @@ class AdminController extends Controller
 	        $image->resize(250,356);
 	        $image->save($path.$request->input('titulo'));
 	        //$image->save($path.$file->getClientOriginalName());
-	    	
+
 
 
 
 	    	\Session::flash('flash_message', 'Película guardada correctamente ');
 	    	return redirect('admin/crearPeliculas');
-	    }else{
-	    	$peli= new Pelicula();
-	    //Si el campo esta vacio no crea post
 
-	        $peli->titulo = $request->input('titulo');
-	        $peli->genero = $request->input('genero');
-	        $peli->aLanzamiento = $request->input('anyo');
-	        $peli->resumen = $request->input('resumen');
-	        $peli->rutaImg = '/peliculas/imgPeliculas/'.$request->input('titulo');
-	    	$peli->save();
-
-	    	$file = Input::file('imgPeli');
-	    	$image = \Image::make(\Input::file('imgPeli'));
-	    	$path = public_path().'/peliculas/imgPeliculas/';
-	    	$image->resize(250,375);
-	    	$image->save($path.$request->input('titulo'));
-	    	
-	    	\Session::flash('flash_message', 'Película guardada correctamente');
-	    	return redirect('admin/crearPeliculas');
-	    }
     }
 
     public function editarPeli(Request $request)
     {
     	$id = $request->input('idPeli');
-    	$peli = Pelicula::find($id);
+    	$peli = Multimedia::find($id);
 
     	$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
 	    unlink($eliminar);
@@ -130,13 +112,13 @@ class AdminController extends Controller
 
 	    $peli->save();
 
-    	$peliculas = Pelicula::all();
+    	$peliculas = Multimedia::where('tipo', '0');
     	return redirect('/admin/verPeli/'. $id);
 
     }
 
     public function eliminarPeli($id){
-    	$peli = Pelicula::find($id);
+    	$peli = Multimedia::find($id);
 
     	$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
 	    unlink($eliminar);
@@ -166,43 +148,14 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
-    {
-        //
+    public function verGeneros(){
+      $arrayGeneros = Genero::all();
+      $countGeneros = Multimedia::select('genero')->count();
+      return view('admin.verGeneros',array('arrayGeneros'=>$arrayGeneros, 'countGeneros', $countGeneros));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
+    public function crearGeneros(){
+      $arrayGeneros = Genero::all();
+      return view('admin.crearGeneros',array('arrayGeneros'=>$arrayGeneros);
     }
     public function login(Request $request, $email, $pass){
       /*$userdata = array(
@@ -213,7 +166,7 @@ class AdminController extends Controller
         return view('admin.adminInicio');
       }  */
       $admin=Admin::where('email', $email);
-      
+
       if($admin->password==$pass){
         return view('admin.adminInicio');
       }
