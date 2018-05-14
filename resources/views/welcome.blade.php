@@ -24,7 +24,7 @@
             src: url('fonts/BLADRMF_.TTF');
           }
           .mySlides {display:none;}
-          
+
         </style>
     </head>
     <body>
@@ -47,13 +47,13 @@
             </button>
             <a class="navbar-brand" id="logotipo" href="#">hbflix</a>
           </div>
-         
+
           <!-- Agrupar los enlaces de navegación, los formularios y cualquier
                otro elemento que se pueda ocultar al minimizar la barra -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right" style="margin-right: 1%;margin-top: 1%;">
               <li><a href="{{ route('login') }}" style="color: #EC67A2;font-size: 30px;"><span class="glyphicon glyphicon-user"></span> Identificarse</a></li>
-              <li class="dropdown"> 
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #EC67A2;font-size: 30px;">
                   <span class="glyphicon glyphicon-globe" ></span> ES<b class="caret"></b>
                 </a>
@@ -78,14 +78,13 @@
                   <p>¿No eres miembro de HBFLIX? Empieza tu periodo de subscripción en HBFLIX</p>
                 </div>
               </div>
-                
                   <div class="col-sm-9 col-md-6" style="margin-top: 5%">
                     <img src="{{url('images/3.jpg')}}" style="width:550px; border-radius: 5px;">
                     <!--<img class="mySlides" src="{{url('images/2.jpg')}}" style="width:500px; border-radius: 5px;">
                     <img class="mySlides" src="{{url('images/1.jpg')}}" style="width:500px; border-radius: 5px;">-->
                   </div>
-          
-            
+
+
            </div>
           </div>
 
@@ -97,11 +96,11 @@
               var i;
               var x = document.getElementsByClassName("mySlides");
               for (i = 0; i < x.length; i++) {
-                 x[i].style.display = "none";  
+                 x[i].style.display = "none";
               }
               myIndex++;
-              if (myIndex > x.length) {myIndex = 1}    
-              x[myIndex-1].style.display = "block";  
+              if (myIndex > x.length) {myIndex = 1}
+              x[myIndex-1].style.display = "block";
               setTimeout(carousel, 4000); // Change image every 2 seconds
           }
           </script>

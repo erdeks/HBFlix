@@ -64,16 +64,16 @@
             </div>
 
             <div class="panel-body">
-            
+
                 <form action="{{ url('admin/crearPeliculas') }}" method="POST" enctype="multipart/form-data">
-                
+
                     {{ csrf_field() }}
-    
+
                     <div class="form-group">
                         <!--Nombre usuario-->
                         <label>Titulo de la Película:</label>
                         <input type="text" name="titulo" value="" id="titulo" class="form-control">
-                        
+
                         <label for="titulo">Imágen de la Película: </label>
                         <!-- -->
                         <input type="file" name="imgPeli" id="imgPeli" class="form-control">
@@ -99,6 +99,7 @@
                                 <option value="{{$anyo->aLanzamiento}}">{{$anyo->aLanzamiento}}</option>
                             @endforeach
                         </select>
+                        <input type="hidden" name="tipo" id="tipo" class="form-control" value="0">
 
                     </div>
                     <div class="form-group text-center">

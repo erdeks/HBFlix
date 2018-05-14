@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="{{ url('/inicio') }}" style="color:  #EC67A2;">Inicio</a>
       </div>
-     
+
       <!-- Agrupar los enlaces de navegación, los formularios y cualquier
            otro elemento que se pueda ocultar al minimizar la barra -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -69,14 +69,14 @@
             </ul>
           </li>
         </ul>
-     
+
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Buscar">
           </div>
           <button type="submit" class="btn btn-default">Enviar</button>
         </form>
-     
+
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:  #EC67A2">
@@ -168,9 +168,9 @@
                   </div>
                   <div id="collapseFour" class="panel-collapse collapse">
                     <ul class="list-group">
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="#" style="color: #EC67A2">&nbsp;Ver Géneros</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{ url('admin/verGeneros') }}" style="color: #EC67A2">&nbsp;Ver Géneros</a></li>
 
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="#" style="color: #EC67A2">&nbsp;Crear Género</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{url('admin/crearGeneros')}}" style="color: #EC67A2">&nbsp;Crear Género</a></li>
                     </ul>
                   </div>
                 </div>
@@ -199,4 +199,3 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
-

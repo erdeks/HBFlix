@@ -13,23 +13,30 @@ class HBFlixTables extends Migration
      */
     public function up()
     {
-      Schema::create('peliculas', function (Blueprint $table) {
+      Schema::create('multimedia', function (Blueprint $table) {
         $table->increments('id');
         $table->string('genero');
         $table->string('aLanzamiento');
         $table->string('titulo');
         $table->text('resumen');
         $table->string('rutaImg');
+        $table->string('rutaVid');
+        $table->string('tipo');
         $table->timestamps();
       });
-      Schema::create('series', function (Blueprint $table) {
+      Schema::create('temporadas', function (Blueprint $table) {
         $table->increments('id');
-        $table->string('genero');
-        $table->string('aLanzamiento');
-        $table->string('titulo');
-        $table->text('resumen');
-        $table->binary('imagen');
+        $table->integer('idMultimedia')->unsigned();
+        $table->string('temporada');
         $table->timestamps();
+        $table->foreign('idMultimedia')->references('id')->on('multimedia')->onDelete('cascade');
+      });
+      Schema::create('episodios', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('idTemporada')->unsigned();
+        $table->string('numeroEpisodio');
+        $table->timestamps();
+        $table->foreign('idTemporada')->references('id')->on('temporadas')->onDelete('cascade');
       });
       Schema::create('actor', function (Blueprint $table) {
         $table->increments('id');
@@ -38,31 +45,12 @@ class HBFlixTables extends Migration
         $table->string('nacionalidad');
         $table->timestamps();
       });
-      Schema::create('director', function (Blueprint $table) {
-        $table->increments('id');
-        $table->string('nombre');
-        $table->string('apellido');
-        $table->string('nacionalidad');
-        $table->timestamps();
-      });
-      Schema::create('actorSeriesPeliculas', function (Blueprint $table) {
+      Schema::create('actorMultimedia', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('idActor')->unsigned();
         $table->foreign('idActor')->references('id')->on('actor')->onDelete('cascade');
-        $table->integer('idSerie')->unsigned();
-        $table->foreign('idSerie')->references('id')->on('series')->onDelete('cascade');
-        $table->integer('idPelicula')->unsigned();
-        $table->foreign('idPelicula')->references('id')->on('peliculas')->onDelete('cascade');
-        $table->timestamps();
-      });
-      Schema::create('directorSeriesPeliculas', function (Blueprint $table) {
-        $table->increments('id');
-        $table->integer('idDirector')->unsigned();
-        $table->foreign('idDirector')->references('id')->on('director')->onDelete('cascade');
-        $table->integer('idSerie')->unsigned();
-        $table->foreign('idSerie')->references('id')->on('series')->onDelete('cascade');
-        $table->integer('idPelicula')->unsigned();
-        $table->foreign('idPelicula')->references('id')->on('peliculas')->onDelete('cascade');
+        $table->integer('idMultimedia')->unsigned();
+        $table->foreign('idMultimedia')->references('id')->on('multimedia')->onDelete('cascade');
         $table->timestamps();
       });
       Schema::create('generos', function (Blueprint $table) {
@@ -79,10 +67,8 @@ class HBFlixTables extends Migration
         $table->increments('id');
         $table->integer('idUser')->unsigned();
         $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-        $table->integer('idPelicula')->unsigned();
-        $table->foreign('idPelicula')->references('id')->on('peliculas')->onDelete('cascade');
-        $table->integer('idSerie')->unsigned();
-        $table->foreign('idSerie')->references('id')->on('series')->onDelete('cascade');
+        $table->integer('idMultimedia')->unsigned();
+        $table->foreign('idMultimedia')->references('id')->on('multimedia')->onDelete('cascade');
         $table->timestamps();
       });
     }
