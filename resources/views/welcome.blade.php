@@ -15,11 +15,16 @@
              }
            #logotipo{
             font-family: STARWARS;
+            color: #EC67A2 !important;
+            font-size: 70px;
+            margin-top: 6.5%;
           }
           @font-face{
             font-family: STARWARS;
             src: url('fonts/BLADRMF_.TTF');
           }
+          .mySlides {display:none;}
+          
         </style>
     </head>
     <body>
@@ -40,7 +45,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="logotipo" href="#" style="color: #EC67A2;font-size: 70px;margin-top: 6.5%;">hbflix</a>
+            <a class="navbar-brand" id="logotipo" href="#">hbflix</a>
           </div>
          
           <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -61,9 +66,6 @@
             </ul>
           </div>
         </nav>
-          <style>
-          .mySlides {display:none;}
-          </style>
           <div class="container" style="margin-top: 7%">
             <div class="row">
               <div class="col-sm-9 col-md-6" style="float: left;">
@@ -86,6 +88,7 @@
             
            </div>
           </div>
+
           <script>
           var myIndex = 0;
           carousel();
