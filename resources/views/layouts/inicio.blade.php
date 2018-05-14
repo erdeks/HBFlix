@@ -34,7 +34,7 @@
              }
              .menu{
                background-color: #282934;
-               height: 800px;
+               height: 600px;
              }
              .menu a{
                color: #ff32e6;
@@ -58,7 +58,7 @@
           <div class="col-sm-3 col-md-3 mPos">
             <!--MENU USUARIOS-->
               <img src="{{url('images/logo.png')}}" alt="logo" style="height: 100px; width: 200px;">
-              <div id="sidebar" class="well sidebar-nav menu">
+              <div id="sidebar" class="well sidebar-nav menu" >
                   <h4 class="titulo">Informacion Usuarios</h4>
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="#" class="link">&nbsp;{{ Auth::user()->name }}</a></li>

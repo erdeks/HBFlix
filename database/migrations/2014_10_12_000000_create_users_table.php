@@ -21,13 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('telefono')->default('10110010101');
             $table->string('password');
             $table->string('date');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-        Schema::create('admin', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('admin')->default('0');//Si eres admin este campo cambiarlo a "1".
             $table->rememberToken();
             $table->timestamps();
         });
@@ -36,7 +30,6 @@ class CreateUsersTable extends Migration
           $table->string('mensaje');
           $table->integer('idAdmin')->unsigned();
           $table->timestamps();
-          $table->foreign('idAdmin')->references('id')->on('admin')->onDelete('cascade');
           $table->integer('idUser')->unsigned();
           $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
         });

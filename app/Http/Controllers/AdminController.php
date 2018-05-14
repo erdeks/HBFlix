@@ -90,7 +90,7 @@ class AdminController extends Controller
 	        $peli->genero = $request->input('genero');
 	        $peli->aLanzamiento = $request->input('anyo');
 	        $peli->resumen = $request->input('resumen');
-	        $peli->rutaImg = '/peliculas/imgPeliculas/1';
+	        $peli->rutaImg = '/peliculas/imgPeliculas/'.$request->input('titulo');
 	    	$peli->save();
 
 	    	$file = Input::file('imgPeli');

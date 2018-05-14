@@ -15,9 +15,8 @@
             background-color: black;
           }
           .btPos{
-            position: fixed;
-            right: 1%;
-            top: 2%;
+            margin-top: 3%;
+            margin-left: 80%;
           }
           .button{
             padding: 16px 32px;
@@ -42,7 +41,6 @@
             color: #FC91CA;
           }
           .bienvenida{
-            position: fixed;
             margin-top: 25%;
             margin-left: 5%;
             font-family: 'Comic Sans';
@@ -63,19 +61,12 @@
           }
           img{
             width: 200px;
-            height: 100px;
+            height: 200px;
           }
 
           .logPos{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 200px;
-            width: 100%;
-          }
-          div{
-
-            border: 1px solid magenta;
+            float: left;
+            margin-left: 5%;
           }
         </style>
     </head>
@@ -83,13 +74,16 @@
       @if (Route::has('login'))
         @auth
         <div class="logPos">
-          <a href="{{ url('/inicio') }}" ><img src="images/logo.png"></a>
-            <a href="{{ route('logout') }}" class="button button1 btPos" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <li><a href="{{ url('/inicio') }}"><img src="images/logo.png"></a></li>
+        </div>
+        <div class="btPos">
+            <li><a href="{{ route('logout') }}" class="button button1" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout <span class="glyphicon glyphicon-log-out"></span></a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
                 </form>
-        </div>
+            </li>
+          </div>
         <div class="bienvenida">
           <h3>¡BIENVENIDO!</h3>
           <h1>SÉ ORIGINAL.</h1>
@@ -97,10 +91,12 @@
           <a href="{{ route('register') }}" class="button button2">Register</a>
         </div>
         @else
-        <div class="logPos">
-          <a href="{{ url('/inicio') }}" ><img src="images/logo.png"></a>
-              <a href="{{ route('login') }}" class="button button1 btPos">Iniciar Sesion</a>
+          <div class="logPos">
+            <li><a href="{{ url('/inicio') }}"><img src="images/logo.png"></a></li>
           </div>
+          <div class="btPos">
+              <li><a href="{{ route('login') }}" class="button button1">Iniciar Sesion</a></li>
+            </div>
           <div class="bienvenida">
             <h3>¡BIENVENIDO!</h3>
             <h1>SÉ ORIGINAL.</h1>

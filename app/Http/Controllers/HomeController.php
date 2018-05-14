@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Genero;
 use App\ALanzamiento;
+use App\Pelicula;
 class HomeController extends Controller
 {
     /**
@@ -29,6 +30,7 @@ class HomeController extends Controller
     public function menu(){
       $genero=Genero::all();
       $aLanzamiento = ALanzamiento::all();
-      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
+      $arrayPelicula = Pelicula::all();
+      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula));
     }
 }
