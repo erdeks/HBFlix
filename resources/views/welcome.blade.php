@@ -14,13 +14,13 @@
                 border-color: #181E1F;
              }
            #logotipo{
-            font-family: STARWARS;
+            font-family: LOGO;
             color: #EC67A2 !important;
             font-size: 70px;
             margin-top: 6.5%;
           }
           @font-face{
-            font-family: STARWARS;
+            font-family: LOGO;
             src: url('fonts/BLADRMF_.TTF');
           }
           .mySlides {display:none;}
@@ -73,13 +73,13 @@
                   <h1 class="dv-copy-title" style="font-size: 60px;">Ve películas y series</h1>
                   <div class="dv-copy-body">Con la suscripción de HBFLIX, podrás ver películas y series, además de series Prime Originals como The Grand Tour, Sneaky Pete y The Man in the High Castle. Además, disfruta por la subscripción de 1 més y gana 5 días más de subscripción.</div>
                   </br>
-                  <a class="btn btn-lg" href="{{ route('register') }}" style="background-color: #EC67A2;"><strong>Registrate y empieza tu periodo de subscripción HBFLIX</strong></a></br></br>
+                  <a class="btn btn-lg" href="{{ route('register') }}" style="background-color: #EC67A2;"><strong>Registrate y empieza tu periodo HBFLIX</strong></a></br></br>
                   <p>¿Ya eres miembro de HBFLIX? Identifícate para disfrutar de contenido ilimitado y único.</p>
                   <p>¿No eres miembro de HBFLIX? Empieza tu periodo de subscripción en HBFLIX</p>
                 </div>
               </div>
                 
-                  <div class="col-sm-9 col-md-6" style="margin-top: 5%"">
+                  <div class="col-sm-9 col-md-6" style="margin-top: 5%">
                     <img src="{{url('images/3.jpg')}}" style="width:550px; border-radius: 5px;">
                     <!--<img class="mySlides" src="{{url('images/2.jpg')}}" style="width:500px; border-radius: 5px;">
                     <img class="mySlides" src="{{url('images/1.jpg')}}" style="width:500px; border-radius: 5px;">-->

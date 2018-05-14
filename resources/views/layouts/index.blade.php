@@ -46,7 +46,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#" style="color:  #EC67A2;">Inicio</a>
+        <a class="navbar-brand" href="{{ url('/inicio') }}" style="color:  #EC67A2;">Inicio</a>
       </div>
      
       <!-- Agrupar los enlaces de navegación, los formularios y cualquier
