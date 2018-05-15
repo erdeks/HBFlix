@@ -150,12 +150,67 @@ class AdminController extends Controller
      */
     public function verGeneros(){
       $arrayGeneros = Genero::all();
-      $countGeneros = Multimedia::select('genero')->count();
-      return view('admin.verGeneros',array('arrayGeneros'=>$arrayGeneros, 'countGeneros', $countGeneros));
+      $countGeneros = Multimedia::select('genero')->get();
+      return view('admin.verGeneros',array('arrayGeneros'=>$arrayGeneros, 'countGeneros'=>$countGeneros));
     }
     public function crearGeneros(){
       $arrayGeneros = Genero::all();
-      return view('admin.crearGeneros',array('arrayGeneros'=>$arrayGeneros);
+      return view('admin.crearGeneros',array('arrayGeneros'=>$arrayGeneros));
+    }
+    public function guardarGeneros(Request $request){
+      $genero = new Genero();
+      $genero->nombre = $request->input('genero');
+      $genero->save();
+      return redirect('admin/crearGeneros');
+    }
+    public function mostrarGenero($id){
+      $genero= Genero::find($id);
+      return view('admin.editarGenero',array('genero'=>$genero));
+    }
+    public function editarGenero(Request $request){
+      $id = $request->input('idGenero');
+    	$genero = Genero::find($id);
+      $genero->nombre = $request->input('genero');
+      $genero->save();
+    	return redirect('/admin/verGeneros/');
+    }
+    public function eliminarGenero($id){
+      $genero = Genero::find($id);
+      $genero->delete();
+
+	    return redirect('admin/verGeneros');
+    }
+    public function verAnLan(){
+      $arrayAnyos = ALanzamiento::all();
+      $countAnyos = Multimedia::select('aLanzamiento')->get();
+      return view('admin.verAnLan',array('arrayAnyos'=>$arrayAnyos, 'countAnyos'=>$countAnyos));
+    }
+    public function crearAnLan(){
+      $arrayAnyos = ALanzamiento::all();
+      return view('admin.crearAnLan',array('arrayAnyos'=>$arrayAnyos));
+    }
+    public function guardarAnLan(Request $request){
+      $anyo = new ALanzamiento();
+      $anyo->aLanzamiento = $request->input('aLan');
+      $anyo->save();
+      return redirect('admin/crearAnLan');
+    }
+    public function mostrarAnLan($id){
+      $anyo= ALanzamiento::find($id);
+      return view('admin.editarAnLan',array('anyo'=>$anyo));
+    }
+    public function editarAnLan(Request $request){
+      $id = $request->input('idAnLan');
+    	$anyo = ALanzamiento::find($id);
+      $anyo->aLanzamiento = $request->input('anLan');
+      $anyo->save();
+    	return redirect('/admin/verAnLan/');
+    }
+    public function eliminarAnLan($id){
+      $anyo = ALanzamiento::find($id);
+      $anyo->delete();
+
+	    return redirect('admin/verAnLan');
     }
     public function login(Request $request, $email, $pass){
       /*$userdata = array(

@@ -43,9 +43,19 @@ Route::get('/admin/crearSeries','AdminController@crearSeries');
 //Menú género
 Route::get('/admin/verGeneros','AdminController@verGeneros');
 Route::get('/admin/crearGeneros','AdminController@crearGeneros');
+Route::post('/admin/crearGeneros','AdminController@guardarGeneros');
+Route::get('/admin/editarGenero/{id}', 'AdminController@mostrarGenero');
+Route::post('/admin/editarGenero','AdminController@editarGenero');
+Route::delete('/admin/eliminarGenero/{id}','AdminController@eliminarGenero');
+Route::get('/admin/eliminarGenero/{id}','AdminController@eliminarGenero');
 //Menú año de lanzamiento
 Route::get('/admin/verAnLan','AdminController@verAnLan');
 Route::get('/admin/crearAnLan','AdminController@crearAnLan');
+Route::post('/admin/crearAnLan','AdminController@guardarAnLan');
+Route::get('/admin/editarAnLan/{id}', 'AdminController@mostrarAnLan');
+Route::post('/admin/editarAnLan','AdminController@editarAnLan');
+Route::delete('/admin/eliminarAnLan/{id}','AdminController@eliminarAnLan');
+Route::get('/admin/eliminarAnLan/{id}','AdminController@eliminarAnLan');
 //Perfil
 Route::get('/inicio/perfil','PerfilController@perfil');
 //Mostrar Generos

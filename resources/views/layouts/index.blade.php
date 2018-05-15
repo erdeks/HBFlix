@@ -185,9 +185,9 @@
                   </div>
                   <div id="collapseFive" class="panel-collapse collapse">
                     <ul class="list-group">
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="#" style="color: #EC67A2">&nbsp;Ver Años de lanzamiento</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{ url('admin/verAnLan') }}" style="color: #EC67A2">&nbsp;Ver Años de lanzamiento</a></li>
 
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="#" style="color: #EC67A2">&nbsp;Crear Año de lanzamiento</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{ url('admin/crearAnLan') }}" style="color: #EC67A2">&nbsp;Crear Año de lanzamiento</a></li>
                     </ul>
                   </div>
                 </div>

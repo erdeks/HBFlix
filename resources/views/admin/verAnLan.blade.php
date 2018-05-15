@@ -34,36 +34,35 @@
     <div class="col-sm-9 col-md-9">
       <div class="panel">
         <div class="panel-heading" style="background-color: #181E1F;">
-          <h3 class="panel-title" style="color: #EC67A2">Generos</h3>
+          <h3 class="panel-title" style="color: #EC67A2">Año Lanzamiento</h3>
             </div>
             <div class="panel-body" style="background-color: #282F30;">
-            <p style="color:  #EC67A2;">Menú peliculas En proceso...</p>
             <div class="container" style="background-color: white; border-radius: 8px;">
-              <h2>Generos</h2>
+              <h2>Año Lanzamiento</h2>
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Nombre</th>
+                    <th>Año</th>
                     <th>Numero</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                @foreach( $arrayGeneros as $key => $genero )
+                @foreach( $arrayAnyos as $key => $anyos )
                   <tr>
-                    <td>{{$genero->nombre}}</td>
-                      <?php $countGen = 0; ?>
-                      @foreach( $countGeneros as $key => $gen )
-                        @if($genero->nombre === $gen->genero)
-                          <?php $countGen++; ?>
+                    <td>{{$anyos->aLanzamiento}}</td>
+                      <?php $countAny = 0; ?>
+                      @foreach( $countAnyos as $key => $any )
+                        @if($anyos->aLanzamiento === $any->aLanzamiento)
+                          <?php $countAny++; ?>
                         @endif
                       @endforeach
-                      <td>{{$countGen}}</td>
+                      <td>{{$countAny}}</td>
                     <td>
-                      <a href="{{ url('/admin/editarGenero/' . $genero->id ) }}" class="btn btn-sm btn-success">
+                      <a href="{{url('admin/editarAnLan/'. $anyos->id)}}" class="btn btn-sm btn-success">
                         <i class="glyphicon glyphicon-pencil"></i>
                       </a>
-                      <a href="{{ url('/admin/eliminarGenero/' . $genero->id ) }}" class="btn btn-sm btn-danger">
+                      <a href="{{url('admin/eliminarAnLan/'. $anyos->id)}}" class="btn btn-sm btn-danger">
                         <i class="glyphicon glyphicon-trash "></i>
                       </a>
                     </td>
