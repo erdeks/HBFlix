@@ -33,4 +33,9 @@ class HomeController extends Controller
       $arrayPelicula = Multimedia::where('tipo', '0');
       return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula));
     }
+    public function generos()
+    {
+        $generos = Genero::all();
+        return response($generos);
+    }
 }

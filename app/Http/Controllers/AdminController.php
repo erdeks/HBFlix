@@ -155,7 +155,7 @@ class AdminController extends Controller
     }
     public function crearGeneros(){
       $arrayGeneros = Genero::all();
-      return view('admin.crearGeneros',array('arrayGeneros'=>$arrayGeneros);
+      return view('admin.crearGeneros',array('arrayGeneros'=>$arrayGeneros));
     }
     public function login(Request $request, $email, $pass){
       /*$userdata = array(

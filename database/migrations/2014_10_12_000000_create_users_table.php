@@ -22,6 +22,14 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('date');
             $table->string('admin')->default('0');//Si eres admin este campo cambiarlo a "1".
+            $table->string('fav1');
+            $table->string('fav2');
+            $table->string('fav3');
+            $table->string('fav4');
+            $table->string('subs');
+            $table->string('subInicio');
+            $table->string('subFinal');
+            $table->string('imgPerfil');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/inicio', 'HomeController@menu');
 
+Route::post('/register', 'HomeController@generos');
+
 
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@login');
