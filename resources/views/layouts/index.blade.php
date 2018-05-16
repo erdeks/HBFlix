@@ -151,9 +151,9 @@
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <ul class="list-group">
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="#" style="color: #EC67A2">&nbsp;Ver Series</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{url('admin/verSeries')}}" style="color: #EC67A2">&nbsp;Ver Series</a></li>
 
-                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="#" style="color: #EC67A2">&nbsp;Crear Serie</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{url('admin/crearSeries')}}" style="color: #EC67A2">&nbsp;Crear Serie</a></li>
                     </ul>
                   </div>
                 </div>
@@ -193,6 +193,22 @@
                 </div>
 
                 <!--FINAL MENÚ AÑO DE LANZAMIENTO-->
+                <!--Menu Codigos-->
+                <div class="panel panel-default" >
+                  <div class="panel-heading" style="background-color: #181E1F;">
+                    <h4 class="panel-title" >
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" style="color: #EC67A2"><span class="glyphicon glyphicon-folder-close" >
+                      </span>&nbsp;Codigos</a>
+                    </h4>
+                  </div>
+                  <div id="collapseSix" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{url('admin/verCodigos')}}" style="color: #EC67A2">&nbsp;Ver Codigos</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{url('admin/crearCodigos')}}" style="color: #EC67A2">&nbsp;Crear Codigos</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!--Final menu codigos-->
          @yield('content')
  </div>
     <!-- Scripts -->
