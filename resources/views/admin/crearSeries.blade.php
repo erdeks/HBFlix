@@ -98,16 +98,16 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="tipo" id="tipo" class="form-control" value="1">
-                        <div id="temporadas">
-                          <label>Temporada:</label>
-                          <input type="text" name="temporada[]">
-                          <button type="button" class="btn btn-success" onclick="addFields();">
+                        <div class="temporadas">
+                          <label>Temporada: </label>
+                          <input type="text" name="1">
+                          <button type="button" class="btn btn-success" id="addTemp">
                               <i class="glyphicon glyphicon-plus"></i>
                           </button>
-                          <button type="button" class="btn btn-success" style="margin-left: 27%;">
-                              Añadir Episodio
-                          </button>
-                    </div>
+                            <button type="button" class="btn btn-success addEp" style="margin-left: 27%;">
+                                Añadir Episodio
+                            </button><br>
+                        </div>
                     <br><div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">
                             Añadir Serie
@@ -124,10 +124,32 @@
   </div>
 </div>
 <script type="text/javascript">
-  function addFields(){
-    var ins = "";
-    ins.innerhtml = '<label>Temporada:</label><input type="text" name="temporada[]"><button type="button" class="btn btn-success" style="margin-left: 27%;">Añadir Episodio</button>';
-     document.getElementById('temporadas').appendChild(ins);
-  }
+  var temp=1;
+  var ep=0;
+  $(document).ready(function(){
+    var wrapper = $(".temporadas");
+    $("#addTemp").click(function(e){
+      temp++;
+      e.preventDefault();
+      $(wrapper).append("<div><label>Temporada: </label><input type='text' name='"+temp+"'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button><button type='button' class='btn btn-success addEp' style='margin-left: 27%;'>Añadir Episodio</button></div>");
+    });
+    /*$(".addEp").click(function(e){
+      console.log("hola");
+      e.preventDefault();
+      $(".episodios").append('<div><label>Episodio:</label><input type="text" name="episodio[]"><button type="button" class="btn btn-danger" id="rmTemp"><i class="glyphicon glyphicon-minus"></i></button></div>');
+    });*/
+    $(wrapper).on('click', '.addEp', function(){
+      var t=$(this).prev().prev().attr("name");
+      ep++;
+      $(this).after("<div><label>Episodio: </label><input type='text' name='"+t+ep+"'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
+    });
+
+    $(wrapper).on("click", "#rmTemp", function(e){
+      e.preventDefault();
+      $(this).parent('div').remove();
+    });
+
+  });
+
 </script>
 @endsection
