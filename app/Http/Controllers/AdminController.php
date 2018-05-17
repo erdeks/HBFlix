@@ -11,7 +11,7 @@ use App\ALanzamiento;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-
+use App\Codigo;
 
 class AdminController extends Controller
 {
@@ -129,25 +129,20 @@ class AdminController extends Controller
 
 	    return redirect('admin/verPeliculas');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function verSeries(){
+      $arraySeries = Multimedia::where('tipo', '1')->get();
+      return view('admin.verSeries',array('arraySeries'=>$arraySeries));
+    }
+    public function crearSeries(){
+      $contGenero = Genero::all();
+    	$contAn = ALanzamiento::all();
+      return view('admin.crearSeries',array('arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
+    }
     public function verUsuarios()
     {
         $arrayUsuarios = User::all();
         return view('admin.verUsuarios',array('arrayUsuarios' => $arrayUsuarios));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
     public function verGeneros(){
       $arrayGeneros = Genero::all();
       $countGeneros = Multimedia::select('genero')->get();
@@ -161,6 +156,7 @@ class AdminController extends Controller
       $genero = new Genero();
       $genero->nombre = $request->input('genero');
       $genero->save();
+      \Session::flash('flash_message', 'Genero guardado correctamente ');
       return redirect('admin/crearGeneros');
     }
     public function mostrarGenero($id){
@@ -193,6 +189,7 @@ class AdminController extends Controller
       $anyo = new ALanzamiento();
       $anyo->aLanzamiento = $request->input('aLan');
       $anyo->save();
+      \Session::flash('flash_message', 'Año guardado correctamente ');
       return redirect('admin/crearAnLan');
     }
     public function mostrarAnLan($id){
@@ -211,6 +208,23 @@ class AdminController extends Controller
       $anyo->delete();
 
 	    return redirect('admin/verAnLan');
+    }
+    public function verCodigos(){
+      $arrayCodigos = Codigo::all();
+      return view('admin.verCodigos', array('arrayCodigos'=>$arrayCodigos));
+
+    }
+    public function crearCodigos(){
+      $arrayCodigos = Codigo::all();
+      return view('admin.crearCodigos', array('arrayCodigos'=>$arrayCodigos));
+    }
+    public function guardarCodigos(Request $request){
+      $codigo = new Codigo();
+      $codigo->codigo = $request->input('codigo');
+      $codigo->usado = $request->input('usado');
+      $codigo->save();
+      \Session::flash('flash_message', 'Codigo creado correctamente ');
+      return redirect('admin/crearCodigos');
     }
     public function login(Request $request, $email, $pass){
       /*$userdata = array(

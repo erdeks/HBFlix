@@ -45,6 +45,12 @@ class HBFlixTables extends Migration
         $table->string('nacionalidad');
         $table->timestamps();
       });
+      Schema::create('codigos', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('codigo');
+        $table->string('usado');
+        $table->timestamps();
+      });
       Schema::create('actorMultimedia', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('idActor')->unsigned();

@@ -57,6 +57,10 @@ Route::get('/admin/editarAnLan/{id}', 'AdminController@mostrarAnLan');
 Route::post('/admin/editarAnLan','AdminController@editarAnLan');
 Route::delete('/admin/eliminarAnLan/{id}','AdminController@eliminarAnLan');
 Route::get('/admin/eliminarAnLan/{id}','AdminController@eliminarAnLan');
+//Menu Codigos
+Route::get('/admin/verCodigos','AdminController@verCodigos');
+Route::get('/admin/crearCodigos','AdminController@crearCodigos');
+Route::post('/admin/crearCodigos','AdminController@guardarCodigos');
 //Perfil
 Route::get('/inicio/perfil','PerfilController@perfil');
 //Mostrar Generos
