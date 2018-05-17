@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Genero;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -68,7 +69,17 @@ class RegisterController extends Controller
             'apellido' => $data['apellido'],
             'telefono'=>$data['telefono'],
             'date' => $data['date'],
+            'fav1' => $data['check'][0],
+            'fav2' => $data['check'][1],
+            'fav3' => $data['check'][2],
+            'fav4' => $data['check'][3],
             'password' => bcrypt($data['password']),
+
         ]);
+    }
+    public function showRegistrationForm()
+    {
+        $genero = Genero::all();
+        return view('auth.register', compact('genero'));
     }
 }

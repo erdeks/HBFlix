@@ -15,12 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/inicio', 'HomeController@menu');
 
-Route::post('/register', 'HomeController@generos');
-
+Route::post('/register', 'RegisterController@showRegistrationForm');
+Auth::routes();
 
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@login');

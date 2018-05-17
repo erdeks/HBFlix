@@ -20,7 +20,7 @@
          src: url('fonts/BLADRMF_.TTF');
        }
         .container{
-          margin-top: 10%;
+          margin-top: 6%;
         }
         body{
           background-color: #181E1F;

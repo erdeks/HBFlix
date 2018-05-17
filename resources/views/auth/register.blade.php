@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <title>HBFlix</title>
         <style>
@@ -210,17 +211,39 @@
 				        		<div class="col-md-8 col-md-offset-2">
 				        		<div id="logotipo" style="color: #EC67A2;text-align: center;">Favoritos</div></br></br>
 					                <ul class="chec-radio">
-					                
+					                	@foreach($genero as $key => $genero)
 										<li class="pz">
 											<label class="radio-inline">
-												<input type="checkbox" id="pro-chx-residential" name="" class="pro-chx" value="yes" checked>
-												<div class="clab"></div>
+												<input type="checkbox" id="pro-chx-residential" name="check[]" class="pro-chx" value="{{$genero->nombre}}" >
+												<div class="clab">{{$genero->nombre}}</div>
 											</label>
 										</li>
-									
+										@endforeach
+										<input type="text" id="fav1" name="fav1" value="">
+										<input type="text" id="fav2" name="fav2" value="">
+										<input type="text" id="fav3" name="fav3" value="">
+										<input type="text" id="fav4" name="fav4" value="">
 									</ul></br></br></br>
 					                        <input type="button" value="Volver" onclick="alanteUno()" class="btn btn-sm" style="background-color: #EC67A2;color: white;float: left;">
 					                        <input type="button" value="Siguiente" onclick="alanteCuatro()" class="btn btn-sm" style="background-color: #EC67A2;color: white;margin-left: 80%">
+					                	</div>	
+					            	</div>
+					        	</div>
+					        	<div class="row" id="pagar" style="display: none;">
+				        			<div class="col-md-8 col-md-offset-2">
+						        		<div id="logotipo" style="color: #EC67A2;text-align: center;">activar cuenta B</div></br></br>
+					                        <label for="password" class="col-md-4 control-label" style="color: #EC67A2"></label>
+					                            <div class="col-md-6">
+					                            <label for="password" class="col-md-4 control-label" style="color: #EC67A2">CODE</label></br>
+					                                <input id="code" type="text" class="form-control" name="code" value="" required autofocus>
+
+					                                
+					                            </div>
+					                        </br></br></br>
+					                        <input type="button" value="Volver" onclick="alanteDos()" class="btn btn-sm" style="background-color: #EC67A2;color: white;float: left;">
+					                        <button type="submit" class="btn " style="background-color: #EC67A2;color: white;margin-left: 80%">
+				                                Login
+				                            </button>
 					                	</div>	
 					            	</div>
 					        	</div>
@@ -240,7 +263,7 @@
 			          document.getElementById('pass').style.display = 'block';
 			          document.getElementById('fav').style.display = 'none';
 			          document.getElementById('pagar').style.display = 'none';
-			          document.getElementById('estado').innerHTML = "Elige tus favoritos!";
+			          document.getElementById('estado').innerHTML = "Ya casi estas!";
 			          document.getElementById('barraProgres').setAttribute("style","width:33%;background-color: #EC67A2");
 			        }
 			        function alanteDos(){
@@ -248,7 +271,7 @@
 		              document.getElementById('pass').style.display = 'none';
 		              document.getElementById('fav').style.display = 'block';
 		              document.getElementById('pagar').style.display = 'none';
-		              document.getElementById('estado').innerHTML = "Ya casi estas!";
+		              document.getElementById('estado').innerHTML = "Elige tus favoritos!";
 		              document.getElementById('barraProgres').setAttribute("style","width:66%;background-color: #EC67A2");
 			        }
 			         function alanteCuatro(){
@@ -256,9 +279,40 @@
 		              document.getElementById('pass').style.display = 'none';
 		              document.getElementById('fav').style.display = 'none';
 		              document.getElementById('pagar').style.display = 'block';
-		              document.getElementById('estado').innerHTML = "Has terminado!";
+		              document.getElementById('estado').innerHTML = "Introduce el codigo y as terminado!";
 		              document.getElementById('barraProgres').setAttribute("style","width:100%;background-color: #EC67A2");
 			        }
+
+			        
+    			
+    				localStorage.contador = 0;
+    				
+    				
+			   		$('.pro-chx').on('change', function() {
+			   			//localStorage.contador = parseInt(localStorage.contador) + 1;
+					    //solu = localStorage.contador;
+					    //console.log(solu);
+					    console.log("entro en el clic");
+			   			if( $('.pro-chx').prop('checked') ) {
+						    console.log("Ya has seleccionado todos");
+						    //localStorage.contador = 3;
+						}else{
+				   			var checkedValue = null; 
+							var inputElements = document.getElementsByClassName('pro-chx');
+							j = 1;
+							for(var i=0; inputElements[i]; ++i){
+							      if(inputElements[i].checked){
+							           checkedValue = inputElements[i].value;
+							           //document.getElementById().value = checkedValue;
+							           break;
+							      }
+							}
+						}
+						   if($('.pro-chx:checked').length > 4) {
+						       this.checked = false;
+						       console.log(this.checked);
+						   }					
+						});
 
 			      </script>
 			      <!--
