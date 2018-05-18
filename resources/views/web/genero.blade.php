@@ -20,10 +20,10 @@ a:hover {
 @section('content')
     <div class="col-md-8">
       @foreach($arrayPelis as $key => $peli)
-        <a href="{{url('inicio/'.$peli->)}}">
+        <a href="{{url('inicio/'.$peli->titulo)}}">
           <img src="{{$peli->rutaImg}}" class="imgTam">
         </a>
-    		<a href="#">
+    		<a href="{{url('inicio/'.$peli->titulo)}}">
     		  <h3 class="movie-title">{{$peli->titulo}}</h3>
     		</a>
     		<label>Genero</label>
