@@ -102,7 +102,7 @@
                           <label>Temporada: </label>
                           <input type="text" name="1">
                           <button type="button" class="btn btn-success" id="addTemp">
-                              <i class="glyphicon glyphicon-plus"></i>
+                              Añadir Temporada
                           </button>
                             <button type="button" class="btn btn-success addEp" style="margin-left: 27%;">
                                 Añadir Episodio
