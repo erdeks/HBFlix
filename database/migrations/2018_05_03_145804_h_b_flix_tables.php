@@ -34,7 +34,8 @@ class HBFlixTables extends Migration
       Schema::create('episodios', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('idTemporada')->unsigned();
-        $table->string('numeroEpisodio');
+        $table->string('orden');
+        $table->string('titulo');
         $table->timestamps();
         $table->foreign('idTemporada')->references('id')->on('temporadas')->onDelete('cascade');
       });
