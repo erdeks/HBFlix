@@ -65,7 +65,7 @@
 
             <div class="panel-body">
 
-                <form action="{{ url('admin/crearPeliculas') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/crearSeries') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <!--Nombre usuario-->
@@ -76,9 +76,9 @@
                         <!-- -->
                         <input type="file" name="imgSerie" id="imgPeli" class="form-control">
 
-                        <label for="titulo">serie: </label>
+                        <label for="titulo">Video serie: </label>
                         <!-- -->
-                        <input type="file" name="serie" id="serie" class="form-control">
+                        <input type="file" name="vidSerie" id="serie" class="form-control">
 
                         <label for="texto">Resúmen de la Serie: </label>
                         <!-- -->
@@ -97,17 +97,18 @@
                                 <option value="{{$anyo->aLanzamiento}}">{{$anyo->aLanzamiento}}</option>
                             @endforeach
                         </select>
+                        <!--Aqui le decimos que es del tipo 1 que seria serie-->
                         <input type="hidden" name="tipo" id="tipo" class="form-control" value="1">
-                        <div class="temporadas">
+                        <!--<div class="temporadas">
                           <label>Temporada: </label>
-                          <input type="text" name="1">
+                          <input type="text" name="t[]">
                           <button type="button" class="btn btn-success" id="addTemp">
                               Añadir Temporada
                           </button>
                             <button type="button" class="btn btn-success addEp" style="margin-left: 27%;">
                                 Añadir Episodio
                             </button><br>
-                        </div>
+                        </div>-->
                     <br><div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">
                             Añadir Serie
@@ -124,24 +125,19 @@
   </div>
 </div>
 <script type="text/javascript">
-  var temp=1;
+  var temp=0;
   var ep=0;
   $(document).ready(function(){
     var wrapper = $(".temporadas");
     $("#addTemp").click(function(e){
       temp++;
       e.preventDefault();
-      $(wrapper).append("<div><label>Temporada: </label><input type='text' name='"+temp+"'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button><button type='button' class='btn btn-success addEp' style='margin-left: 27%;'>Añadir Episodio</button></div>");
+      $(wrapper).append("<div><label>Temporada: </label><input type='text' name='t[]'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button><button type='button' class='btn btn-success addEp' style='margin-left: 27%;'>Añadir Episodio</button></div>");
     });
-    /*$(".addEp").click(function(e){
-      console.log("hola");
-      e.preventDefault();
-      $(".episodios").append('<div><label>Episodio:</label><input type="text" name="episodio[]"><button type="button" class="btn btn-danger" id="rmTemp"><i class="glyphicon glyphicon-minus"></i></button></div>');
-    });*/
     $(wrapper).on('click', '.addEp', function(){
       var t=$(this).prev().prev().attr("name");
       ep++;
-      $(this).after("<div><label>Episodio: </label><input type='text' name='"+t+ep+"'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
+      $(this).after("<div><label>Episodio: </label><input type='text' name='ep[]'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
     });
 
     $(wrapper).on("click", "#rmTemp", function(e){

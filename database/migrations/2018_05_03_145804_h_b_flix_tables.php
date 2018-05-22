@@ -34,7 +34,8 @@ class HBFlixTables extends Migration
       Schema::create('episodios', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('idTemporada')->unsigned();
-        $table->string('numeroEpisodio');
+        $table->string('orden');
+        $table->string('titulo');
         $table->timestamps();
         $table->foreign('idTemporada')->references('id')->on('temporadas')->onDelete('cascade');
       });
@@ -68,14 +69,6 @@ class HBFlixTables extends Migration
       Schema::create('a_lanzamientos', function (Blueprint $table) {
         $table->increments('id');
         $table->string('aLanzamiento');
-        $table->timestamps();
-      });
-      Schema::create('favoritos', function (Blueprint $table) {
-        $table->increments('id');
-        $table->integer('idUser')->unsigned();
-        $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-        $table->integer('idMultimedia')->unsigned();
-        $table->foreign('idMultimedia')->references('id')->on('multimedia')->onDelete('cascade');
         $table->timestamps();
       });
     }

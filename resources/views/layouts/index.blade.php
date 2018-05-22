@@ -154,6 +154,8 @@
                       <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-flash text-success"></span><a href="{{url('admin/verSeries')}}" style="color: #EC67A2">&nbsp;Ver Series</a></li>
 
                       <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{url('admin/crearSeries')}}" style="color: #EC67A2">&nbsp;Crear Serie</a></li>
+                      <li class="list-group-item" style="background-color: #282F30;"><span class="glyphicon glyphicon-file text-info"></span><a href="{{url('admin/crearEpisodios')}}" style="color: #EC67A2">&nbsp;Crear Episodios</a></li>
+
                     </ul>
                   </div>
                 </div>
