@@ -224,9 +224,10 @@
   a:link 
   { 
     text-decoration:none; 
-  } 
+  }
 </style>
 </head>
+@if(Auth::user()->subs === "1")
 <body style="background-color: #181E1F;">
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="padding: 5px;">
@@ -261,7 +262,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="#" data-toggle="collapse" data-target="#submenu-1" style="color: #EC67A2;text-align: center;"><i class="glyphicon glyphicon-list-alt"></i>
+                    <a  data-toggle="collapse" data-target="#submenu-1" style="color: #EC67A2;text-align: center;" ><i class="glyphicon glyphicon-list-alt"></i>
                      PERFIL</a>
                 </li>
                 @if(Auth::user()->admin == 1)
@@ -330,3 +331,31 @@
       <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+@else
+<style type="text/css">
+.centrar{
+  text-align: center;
+  margin-top: 10%;
+  width: 50%;
+  margin-left: 25%;
+}
+</style>
+<div class="panel panel-danger centrar">
+
+  <div class="panel-heading">Tu subscripción está terminada...</div>
+  <div class="panel-body" style="text-align: left;">
+    <h2>Usuario:<strong> {{Auth::user()->name}}</strong></h2>
+    <h3 style="text-align: center"><u>Codigo</u></h3>
+    <p></p>
+  </div>
+  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <button type="button" class="btn btn-primary">Volver al Inicio</button></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+  </br>
+    <p>  </p>
+</div>
+
+
+@endif

@@ -49,6 +49,7 @@ class HBFlixTables extends Migration
         $table->increments('id');
         $table->string('codigo');
         $table->string('usado');
+        $table->string('user')->default('Sin utilizar');
         $table->timestamps();
       });
       Schema::create('actorMultimedia', function (Blueprint $table) {

@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 
 Route::get('/inicio', 'HomeController@menu');
-
+Route::post('/register', 'RegisterController@create');
+Route::get('/register', 'RegisterController@create');
 Route::post('/register', 'RegisterController@showRegistrationForm');
 Auth::routes();
 

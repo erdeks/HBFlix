@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Genero;
+use App\Codigo;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,8 +64,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $admin = $data['code'];
-        if($admin == '12345678'){
+        $code = $data['code'];
+
+        if (empty( $data['check'][0])) { //$data['check'][0]
+            $check1 = "vacio";
+        }else{
+            $check1 = $data['check'][0];
+        }
+        if (empty( $data['check'][1])) { //$data['check'][0]
+            $check2 = "vacio";
+        }else{
+            $check2 = $data['check'][1];
+        }
+        if (empty( $data['check'][2])) { //$data['check'][0]
+            $check3 = "vacio";
+        }else{
+            $check3 = $data['check'][2];
+        }
+        if (empty( $data['check'][3])) { //$data['check'][0]
+            $check4 = "vacio";
+        }else{
+            $check4 = $data['check'][3];
+        }
+
+
+
+
+
+        if($code == '12345678'){
             $uno = "1";
             $path = '/images/perfil.jpg';
             return User::create([
@@ -73,10 +100,10 @@ class RegisterController extends Controller
                 'apellido' => $data['apellido'],
                 'telefono'=>$data['telefono'],
                 'date' => $data['date'],
-                'fav1' => $data['check'][0],
-                'fav2' => $data['check'][1],
-                'fav3' => $data['check'][2],
-                'fav4' => $data['check'][3],
+                'fav1' => $check1,
+                'fav2' => $check2,
+                'fav3' => $check3,
+                'fav4' => $check4,
                 'admin' => $uno,
                 'subs'  => $uno,//activa la subscripción
                 'imgPerfil' => $path,
@@ -84,20 +111,67 @@ class RegisterController extends Controller
 
             ]);
         }else{
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'apellido' => $data['apellido'],
-                'telefono'=> $data['telefono'],
-                'date' => $data['date'],
-                'fav1' => $data['check'][0],
-                'fav2' => $data['check'][1],
-                'fav3' => $data['check'][2],
-                'fav4' => $data['check'][3],
-                'admin' => $data['code'],
-                'imgPerfil' => $path,
-                'password' => bcrypt($data['password']),
-            ]);
+            $codigoValido = Codigo::where('codigo', $code)->first();
+            if($codigoValido){
+                if($codigoValido->usado == "0"){  
+                    $uno = "1";
+                    $path = '/images/perfil.jpg';
+
+
+                    $codigo= Codigo::where('codigo', $code)->first();
+                    $codigo->usado = "1";
+                    $codigo->user = $data['email'];
+                    $codigo->save();
+
+                    return User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'apellido' => $data['apellido'],
+                        'telefono'=> $data['telefono'],
+                        'date' => $data['date'],
+                        'fav1' => $check1,
+                        'fav2' => $check2,
+                        'fav3' => $check3,
+                        'fav4' => $check4,
+                        'subs'  => $uno,
+                        'admin' => '0',
+                        'imgPerfil' => $path,
+                        'password' => bcrypt($data['password']),
+                    ]);
+                }else{
+                    $path = '/images/perfil.jpg';
+                    return User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'apellido' => $data['apellido'],
+                        'telefono'=> $data['telefono'],
+                        'date' => $data['date'],
+                        'fav1' => $check1,
+                        'fav2' => $check2,
+                        'fav3' => $check3,
+                        'fav4' => $check4,
+                        'admin' => '0',
+                        'imgPerfil' => $path,
+                        'password' => bcrypt($data['password']),
+                    ]);
+                }
+            }else{
+                $path = '/images/perfil.jpg';
+                return User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'apellido' => $data['apellido'],
+                        'telefono'=> $data['telefono'],
+                        'date' => $data['date'],
+                        'fav1' => $check1,
+                        'fav2' => $check2,
+                        'fav3' => $check3,
+                        'fav4' => $check4,
+                        'admin' => '0',
+                        'imgPerfil' => $path,
+                        'password' => bcrypt($data['password']),
+                    ]);
+            }
         }
     }
     public function showRegistrationForm()

@@ -258,6 +258,7 @@
 		              document.getElementById('barraProgres').setAttribute("style","width:66%;background-color: #EC67A2");
 			        }
 			         function alanteCuatro(){
+			         	
 		              document.getElementById('info').style.display = 'none';
 		              document.getElementById('pass').style.display = 'none';
 		              document.getElementById('fav').style.display = 'none';
