@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Codigo;
+use App\Temporada;
+use App\Episodio;
 
 class AdminController extends Controller
 {
@@ -137,6 +139,89 @@ class AdminController extends Controller
       $contGenero = Genero::all();
     	$contAn = ALanzamiento::all();
       return view('admin.crearSeries',array('arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
+    }
+    public function guardarSeries(Request $request){
+        $serie= new Multimedia();
+        //Si el campo esta vacio no crea post
+
+        $serie->titulo = $request->input('titulo');
+        $serie->genero = $request->input('genero');
+        $serie->aLanzamiento = $request->input('anyo');
+        $serie->resumen = $request->input('resumen');
+        $serie->rutaImg = '/series/imgSeries/'.$request->input('titulo');
+        $serie->rutaVid = '/series/VideoSeries/'.$request->input('titulo');
+        $serie->tipo=$request->input('tipo');
+        $serie->save();
+
+        $video = Input::file("vidSerie");
+        $vPath = public_path().'/series/VideoSeries/';
+        $video->move($vPath, $request->input('titulo'));
+
+      $image = \Image::make(\Input::file('imgSerie'));
+      $path = public_path().'/series/imgSeries/';
+        $image->resize(250,356);
+        $image->save($path.$request->input('titulo'));
+        /*
+        $temp = new Temporada();
+        $ep = new Episodio();
+        $temporada = $request->input('t[]');
+        $episodio = $request->input('ep[]');
+        $countTemp=0;
+
+        foreach ($temporada as $key => $temp) {
+          $countTemp++;
+          if($temp){
+            //cojo el id de la serie que estoy insertando
+            $mult = Multimeda::orderBy('id', 'DESC')->first();
+            $temp->idMultimedia = $mult;
+            $temp->temporada = $data['t'[$countTemp]];
+            $temp->save();
+          }
+          $orden=0;
+          $countEp=0;
+          foreach ($episodio as $key => $ep) {
+            $countEp++;
+            if($ep){
+              $orden++;
+              //cojo el id de la temporada que estoy insertando
+              $te = Temporada::orderBy('id', 'DESC')->first();
+              $ep->idTemporada = $te;
+              $ep->orden = $orden;
+              $ep->titulo = $data['ep'[$countEp]];
+              $ep->save();
+            }
+          }
+        }*/
+      \Session::flash('flash_message', 'Serie guardada correctamente ');
+      return redirect('admin/crearSeries');
+
+    }
+    public function crearEpisodios(){
+      $arraySeries = Multimedia::where('tipo', '1')->get();
+      return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
+    }
+    public function guardarEpisodios(Request $request, array $data){
+
+      $temporada = new Temporada();
+      $temporada->idMultimedia = $request->input('id');
+      $temporada->temporada = $request->input('temporada');
+      $temporada->save();
+      $ep = new Episodio();
+      $episodio = Input::get('ep');
+      $orden=0;
+      $countEp=0;
+      //cojo el id de la temporada que estoy insertando
+      $te = Temporada::orderBy('id', 'DESC')->first();
+      foreach ($episodio as $key => $ep) {
+        $countEp++;
+        if($ep){
+          $orden++;
+          $ep->idTemporada = $te;
+          $ep->orden = $orden;
+          $ep->titulo = $data['ep'[$countEp]];
+          $ep->save();
+        }
+      }
     }
     public function verUsuarios()
     {

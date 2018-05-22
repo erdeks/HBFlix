@@ -69,7 +69,7 @@
                     <a href="{{ url('/admin/verSer/' . $serie->id ) }}">
                       <img src="{{url('series/imgSeries/'.$serie->titulo)}}" alt="{{$serie->titulo}}" style="height: 200px; border-radius: 8px;">
                     </a></br></br>
-                    <a href="{{ url('/admin/verPeli/' . $pelicula->id ) }}">
+                    <a href="{{ url('/admin/verSer/' . $serie->id ) }}">
                       <p style="color:  #EC67A2;"><strong>{{$serie->titulo}}</strong></p>
                     </a>
                     <span style="color:  #EC67A2; text-align: center;">{{$serie->aLanzamiento}}</span>

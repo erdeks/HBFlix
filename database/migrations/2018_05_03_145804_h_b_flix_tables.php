@@ -70,14 +70,6 @@ class HBFlixTables extends Migration
         $table->string('aLanzamiento');
         $table->timestamps();
       });
-      Schema::create('favoritos', function (Blueprint $table) {
-        $table->increments('id');
-        $table->integer('idUser')->unsigned();
-        $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-        $table->integer('idMultimedia')->unsigned();
-        $table->foreign('idMultimedia')->references('id')->on('multimedia')->onDelete('cascade');
-        $table->timestamps();
-      });
     }
 
     /**
