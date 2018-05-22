@@ -9,55 +9,117 @@
   <div class="row">
     <h1 style="color: #EC67A2;margin-top: 8%;text-align: center;font-family: LOGO;"> Estrenos</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
         <div id="estrenos" style="margin-left: 3%">
-            @foreach( $arrayPelicula as $key => $pelicula )
+        <?php $cont=1 ?>
+            @foreach( $estrenos as $key => $estreno )
+             @if ($cont <= 4)
                 <div class="hijo" style=" float: left; padding: 3.1%;">
                   <div class="portada-p">
                     <a href="#">
-                      <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
+                      <img src="{{url('peliculas/imgPeliculas/'.$estreno->titulo)}}" alt="{{$estreno->titulo}}" style="height: 270px; border-radius: 8px;">
                     </a></br></br>
                     <a href="#">
-                      <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
+                      <p style="color:  #EC67A2;"><strong>{{$estreno->titulo}}</strong></p>
                     </a>
-                    <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
+                    <span style="color:  #EC67A2; text-align: center;">{{$estreno->aLanzamiento}}</span>
                   </div>
                 </div>
+              @endif
+              <?php $cont++ ?>
           	@endforeach
         </div>
     </div>
   <div class="row">
     <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Favoritos</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
         <div id="favoritos" style="margin-left: 3%">
+        <?php $cont=1 ?>
             @foreach( $arrayPelicula as $key => $pelicula )
-    	        <div class="hijo" style=" float: left; padding: 3.1%;">
-    	          <div class="portada-p">
-    	            <a href="#">
-    	              <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
-    	            </a></br></br>
-    	            <a href="#">
-    	              <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
-    	            </a>
-    	            <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
-    	          </div>
-    	        </div>
+
+            	@if($pelicula->genero === Auth::user()->fav1 )
+	            	@if ($cont <= 8)
+		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
+		    	          <div class="portada-p">
+		    	            <a href="#">
+		    	              <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
+		    	            </a></br></br>
+		    	            <a href="#">
+		    	              <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
+		    	            </a>
+		    	            <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
+		    	          </div>
+		    	        </div>
+	    	        @endif
+              		<?php $cont++ ?>
+              	@elseif($pelicula->genero === Auth::user()->fav2)
+              		@if ($cont <= 8)
+		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
+		    	          <div class="portada-p">
+		    	            <a href="#">
+		    	              <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
+		    	            </a></br></br>
+		    	            <a href="#">
+		    	              <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
+		    	            </a>
+		    	            <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
+		    	          </div>
+		    	        </div>
+	    	        @endif
+              		<?php $cont++ ?>
+
+              	@elseif($pelicula->genero === Auth::user()->fav3)
+              		@if ($cont <= 8)
+		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
+		    	          <div class="portada-p">
+		    	            <a href="#">
+		    	              <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
+		    	            </a></br></br>
+		    	            <a href="#">
+		    	              <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
+		    	            </a>
+		    	            <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
+		    	          </div>
+		    	        </div>
+	    	        @endif
+              		<?php $cont++ ?>
+
+              	@elseif($pelicula->genero === Auth::user()->fav4)
+              		@if ($cont <= 8)
+		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
+		    	          <div class="portada-p">
+		    	            <a href="#">
+		    	              <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
+		    	            </a></br></br>
+		    	            <a href="#">
+		    	              <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
+		    	            </a>
+		    	            <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
+		    	          </div>
+		    	        </div>
+	    	        @endif
+              		<?php $cont++ ?>
+              	@endif
     	    @endforeach
         </div>
     </div>
   <div class="row">
     <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Ultimas agregadas</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
         <div id="favoritos" style="margin-left: 3%">
-            @foreach( $arrayPelicula as $key => $pelicula )
-              <div class="hijo" style=" float: left; padding: 3.1%;">
-                <div class="portada-p">
-                  <a href="#">
-                    <img src="{{url('peliculas/imgPeliculas/'.$pelicula->titulo)}}" alt="{{$pelicula->titulo}}" style="height: 270px; border-radius: 8px;">
-                  </a></br></br>
-                  <a href="#">
-                    <p style="color:  #EC67A2;"><strong>{{$pelicula->titulo}}</strong></p>
-                  </a>
-                  <span style="color:  #EC67A2; text-align: center;">{{$pelicula->aLanzamiento}}</span>
+            <?php $cont=1 ?>
+            @foreach( $ultimasAdd as $key => $add )
+             @if ($cont <= 4)
+                <div class="hijo" style=" float: left; padding: 3.1%;">
+                  <div class="portada-p">
+                    <a href="#">
+                      <img src="{{url('peliculas/imgPeliculas/'.$add->titulo)}}" alt="{{$add->titulo}}" style="height: 270px; border-radius: 8px;">
+                    </a></br></br>
+                    <a href="#">
+                      <p style="color:  #EC67A2;"><strong>{{$add->titulo}}</strong></p>
+                    </a>
+                    <span style="color:  #EC67A2; text-align: center;">{{$add->aLanzamiento}}</span>
+                  </div>
                 </div>
-              </div>
-          @endforeach
+              @endif
+              <?php $cont++ ?>
+          	@endforeach
         </div>
     </div>
   </div>

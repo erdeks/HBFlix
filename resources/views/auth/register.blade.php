@@ -118,17 +118,13 @@
 			                            </div>
 			                        </div>
 			                        <!--Apellido-->
-			                        <div class="form-group{{ $errors->has('apellido') ? ' has-error' : '' }}">
+			                        <div class="form-group">
 			                            <label for="apellido" class="col-md-4 control-label" style="color: #EC67A2">Apellido</label>
 
 			                            <div class="col-md-6">
-			                                <input id="apellido" type="text" class="form-control" name="apellido" value="{{ old('apellido') }}" required autofocus>
+			                                <input id="apellido" type="text" class="form-control" name="apellido" value="" required autofocus>
 
-			                                @if ($errors->has('apellido'))
-			                                    <span class="help-block">
-			                                        <strong>{{ $errors->first('apellido') }}</strong>
-			                                    </span>
-			                                @endif
+			                               
 			                            </div>
 			                        </div>
 			                        <!--Fecha Nacimiento-->
@@ -146,17 +142,11 @@
 			                            </div>
 			                        </div>
 			                        <!--Telefono-->
-			                        <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
+			                        <div class="form-group">
 			                            <label for="telefono" class="col-md-4 control-label" style="color: #EC67A2">Telefono</label>
 
 			                            <div class="col-md-6">
-			                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" required autofocus>
-
-			                                @if ($errors->has('telefono'))
-			                                    <span class="help-block">
-			                                        <strong>{{ $errors->first('telefono') }}</strong>
-			                                    </span>
-			                                @endif
+			                                <input id="telefono" type="text" class="form-control" name="telefono" value="" required autofocus>
 			                            </div>
 			                        </div>
 			                        <input type="button" value="Siguiente" onclick="alanteUno()" class="btn btn-sm" style="background-color: #EC67A2;color: white;margin-left: 90%">
@@ -219,10 +209,6 @@
 											</label>
 										</li>
 										@endforeach
-										<input type="text" id="fav1" name="fav1" value="">
-										<input type="text" id="fav2" name="fav2" value="">
-										<input type="text" id="fav3" name="fav3" value="">
-										<input type="text" id="fav4" name="fav4" value="">
 									</ul></br></br></br>
 					                        <input type="button" value="Volver" onclick="alanteUno()" class="btn btn-sm" style="background-color: #EC67A2;color: white;float: left;">
 					                        <input type="button" value="Siguiente" onclick="alanteCuatro()" class="btn btn-sm" style="background-color: #EC67A2;color: white;margin-left: 80%">
@@ -232,12 +218,9 @@
 					        	<div class="row" id="pagar" style="display: none;">
 				        			<div class="col-md-8 col-md-offset-2">
 						        		<div id="logotipo" style="color: #EC67A2;text-align: center;">activar cuenta B</div></br></br>
-					                        <label for="password" class="col-md-4 control-label" style="color: #EC67A2"></label>
 					                            <div class="col-md-6">
-					                            <label for="password" class="col-md-4 control-label" style="color: #EC67A2">CODE</label></br>
+					                            <label for="code" class="col-md-4 control-label" style="color: #EC67A2">CODE</label></br>
 					                                <input id="code" type="text" class="form-control" name="code" value="" required autofocus>
-
-					                                
 					                            </div>
 					                        </br></br></br>
 					                        <input type="button" value="Volver" onclick="alanteDos()" class="btn btn-sm" style="background-color: #EC67A2;color: white;float: left;">

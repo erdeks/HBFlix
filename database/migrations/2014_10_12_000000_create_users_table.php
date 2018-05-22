@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('apellido');
             $table->string('email')->unique();
-            $table->string('telefono')->default('10110010101');
+            $table->string('telefono');
             $table->string('password');
             $table->string('date');
-            $table->string('admin')->default('0');//Si eres admin este campo cambiarlo a "1".
+            $table->string('admin');//Si eres admin este campo cambiarlo a "1".
             $table->string('fav1')->default('0');
             $table->string('fav2')->default('0');
             $table->string('fav3')->default('0');

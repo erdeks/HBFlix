@@ -30,8 +30,11 @@ class HomeController extends Controller
     public function menu(){
       $genero=Genero::all();
       $aLanzamiento = ALanzamiento::all();
-      $arrayPelicula = Multimedia::where('tipo', '0');
-      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula));
+      $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
+      $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
+      $estrenos = Multimedia::orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      $ultimasAdd = Multimedia::orderBy('created_at', 'DESC')->get();
+      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd));
     }
     public function generos()
     {

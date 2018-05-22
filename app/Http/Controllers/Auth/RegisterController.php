@@ -63,19 +63,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'apellido' => $data['apellido'],
-            'telefono'=>$data['telefono'],
-            'date' => $data['date'],
-            'fav1' => $data['check'][0],
-            'fav2' => $data['check'][1],
-            'fav3' => $data['check'][2],
-            'fav4' => $data['check'][3],
-            'password' => bcrypt($data['password']),
+        $admin = $data['code'];
+        if($admin == '12345678'){
+            $uno = "1";
+            $path = '/images/perfil.jpg';
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'apellido' => $data['apellido'],
+                'telefono'=>$data['telefono'],
+                'date' => $data['date'],
+                'fav1' => $data['check'][0],
+                'fav2' => $data['check'][1],
+                'fav3' => $data['check'][2],
+                'fav4' => $data['check'][3],
+                'admin' => $uno,
+                'subs'  => $uno,//activa la subscripción
+                'imgPerfil' => $path,
+                'password' => bcrypt($data['password']),
 
-        ]);
+            ]);
+        }else{
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'apellido' => $data['apellido'],
+                'telefono'=> $data['telefono'],
+                'date' => $data['date'],
+                'fav1' => $data['check'][0],
+                'fav2' => $data['check'][1],
+                'fav3' => $data['check'][2],
+                'fav4' => $data['check'][3],
+                'admin' => $data['code'],
+                'imgPerfil' => $path,
+                'password' => bcrypt($data['password']),
+            ]);
+        }
     }
     public function showRegistrationForm()
     {
