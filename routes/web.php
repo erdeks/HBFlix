@@ -63,5 +63,7 @@ Route::get('/admin/crearCodigos','AdminController@crearCodigos');
 Route::post('/admin/crearCodigos','AdminController@guardarCodigos');
 //Perfil
 Route::get('/inicio/perfil','PerfilController@perfil');
+Route::get('/inicio/perfil/editarPerfil','PerfilController@editarPerfil');
+Route::post('/inicio/perfil/editarPerfil','PerfilController@update');
 //Mostrar Generos
 Route::get('/inicio/{nombre}', 'GeneroController@main');

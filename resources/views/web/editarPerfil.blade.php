@@ -23,9 +23,6 @@
   table{
     bor
   }
-  .table2{
-    margin-top: 5% !important;
-  }
 
 </style>
 @section('content')
@@ -41,36 +38,48 @@
                  <img alt="User Pic" src="#" class="img-circle img-responsive">
                </div>
                <div class=" col-md-9 col-lg-9 ">
+                 <form action="{{ url('/inicio/perfil/editarPerfil') }}" method="POST">
+                   {{ csrf_field() }}
                  <table class="table table-user-information">
                    <tbody>
                      <tr>
+                       <td></td>
+                       <td><input type="hidden" name="id" value="{{ Auth::user()->id }}" class="form-control"></td>
+                     </tr>
+                     <tr>
                        <td>Nombre:</td>
-                       <td>{{Auth::user()->name}}</td>
+                       <td><input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control"></td>
                      </tr>
                      <tr>
                        <td>Apellido:</td>
-                       <td>{{Auth::user()->apellido}}</td>
+                       <td><input type="text" name="apellido" value="{{ Auth::user()->apellido }}" class="form-control"></td>
                      </tr>
                      <tr>
                        <td>Email:</td>
-                       <td>{{Auth::user()->email}}</td>
+                       <td><input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control"></td>
                      </tr>
                      <tr>
                        <td>Telefono:</td>
-                       <td>{{Auth::user()->telefono}}</td>
+                       <td><input type="text" name="telefono" value="{{ Auth::user()->telefono }}" class="form-control"></td>
                      </tr>
+
                      <tr>
                        <td>Fecha de nacimiento:</td>
-                       <td>{{Auth::user()->date}}</td>
+                       <td><input type="text" name="fechaNac" value="{{ Auth::user()->date }}" class="form-control"></td>
                      </tr>
+                     <tr>
+                      <td></td>
+                      <td><input type="hidden" name="password" value="{{ Auth::user()->password }}" class="form-control"></td>
+                    </tr>
 
                    </tbody>
                  </table>
-                 <a href="{{ url('/inicio/perfil/editarPerfil') }}" class="btn btn-primary" style="margin-left:80%;">Editar perfil</a>
+                 <input type="submit" value="Guardar Cambios" class="btn btn-primary" style="margin-left:70%;">
+
+               </form>
                </div>
              </div>
            </div>
-
       <!--<div class="infoPos">
           <table class="table table-user-information">
             <tr>
@@ -103,34 +112,6 @@
         	</table>
         </div>-->
         </div>
-        <div class="panel panel-info" style="background-color:#1a242f; margin-top: 5%;">
-          <div class="panel-heading" style="background-color:black;">
-            <h3 class="panel-title" style="color:#EC67A2;">Generos</h3>
-          </div>
-          <div class="panel-body">
-           <table class="table table-user-information">
-             <tbody>
-               <tr>
-                 <td>Genero 1:</td>
-                 <td>{{Auth::user()->fav1}}</td>
-               </tr>
-               <tr>
-                 <td>Genero 2:</td>
-                 <td>{{Auth::user()->fav2}}</td>
-               </tr>
-               <tr>
-                 <td>Genero 3:</td>
-                 <td>{{Auth::user()->fav3}}</td>
-               </tr>
-               <tr>
-                 <td>Genero 4:</td>
-                 <td>{{Auth::user()->fav4}}</td>
-               </tr>
-            </tbody>
-         </table>
-       </div>
-     </div>
-   </div>
       </div>
     </div>
   </div>

@@ -38,8 +38,8 @@
             </div>
             <div class="panel-body" style="background-color: #282F30;">
             <p style="color:  #EC67A2;">Menú peliculas En proceso...</p>
-            <div class="container" style="background-color: white; border-radius: 8px;">
-              <h2>Usuarios</h2>            
+            <div class="container" style="background-color: white; border-radius: 8px; display:block;" id="info">
+              <h2>Usuarios</h2>
               <table class="table">
                 <thead>
                   <tr>
@@ -56,14 +56,8 @@
                     <td>{{$user->apellido}}</td>
                     <td>{{$user->email}}</td>
                     <td>
-                      <button class="btn btn-sm btn-success">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                      </button>
-                      <button class="btn btn-sm btn-info">
+                      <button class="btn btn-sm btn-info" onclick="mostrar()">
                         <i class="glyphicon glyphicon-zoom-in"></i>
-                      </button>
-                      <button class="btn btn-sm btn-danger">
-                        <i class="glyphicon glyphicon-trash "></i>
                       </button>
                       <button class="btn btn-sm btn-warning">
                         <i class="glyphicon glyphicon-refresh"></i>
@@ -74,9 +68,48 @@
                 </tbody>
               </table>
             </div>
+            <div class="container" style="background-color: white; border-radius: 8px; display:none;" id="userInfo">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Firstname</th>
+                      <th>Lastname</th>
+                      <th>Email</th>
+                      <th>Telefono</th>
+                      <th>Fecha Nacimiento</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @foreach( $arrayUsuarios as $key => $user )
+                    <tr>
+                      <td>{{$user->name}}</td>
+                      <td>{{$user->apellido}}</td>
+                      <td>{{$user->email}}</td>
+                      <td>{{$user->telefono}}</td>
+                      <td>{{$user->date}}</td>
+                      <td>
+                        <button class="btn btn-sm btn-info" onclick="noMostrar()">Ocultar</button>
+                      </td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+
+              </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+function mostrar(){
+  document.getElementById('userInfo').style.display = 'block';
+  document.getElementById('info').style.display = 'none';
+}
+function noMostrar(){
+  document.getElementById('userInfo').style.display = 'none';
+  document.getElementById('info').style.display = 'block';
+}
+</script>
 @endsection
