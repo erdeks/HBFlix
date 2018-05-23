@@ -124,7 +124,8 @@ class AdminController extends Controller
 
     	$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
 	    unlink($eliminar);
-
+      $eliminar = public_path().'/peliculas/VideoPeliculas/'.$serie->titulo;
+      unlink($eliminar);
 	    //$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
 	    //unlink($eliminar);
 	    $peli->delete();
@@ -161,37 +162,7 @@ class AdminController extends Controller
       $path = public_path().'/series/imgSeries/';
         $image->resize(250,356);
         $image->save($path.$request->input('titulo'));
-        /*
-        $temp = new Temporada();
-        $ep = new Episodio();
-        $temporada = $request->input('t[]');
-        $episodio = $request->input('ep[]');
-        $countTemp=0;
 
-        foreach ($temporada as $key => $temp) {
-          $countTemp++;
-          if($temp){
-            //cojo el id de la serie que estoy insertando
-            $mult = Multimeda::orderBy('id', 'DESC')->first();
-            $temp->idMultimedia = $mult;
-            $temp->temporada = $data['t'[$countTemp]];
-            $temp->save();
-          }
-          $orden=0;
-          $countEp=0;
-          foreach ($episodio as $key => $ep) {
-            $countEp++;
-            if($ep){
-              $orden++;
-              //cojo el id de la temporada que estoy insertando
-              $te = Temporada::orderBy('id', 'DESC')->first();
-              $ep->idTemporada = $te;
-              $ep->orden = $orden;
-              $ep->titulo = $data['ep'[$countEp]];
-              $ep->save();
-            }
-          }
-        }*/
       \Session::flash('flash_message', 'Serie guardada correctamente ');
       return redirect('admin/crearSeries');
 
@@ -219,6 +190,25 @@ class AdminController extends Controller
       }
       $arraySeries = Multimedia::where('tipo', '1')->get();
       return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
+    }
+    public function eliminarSerie($id){
+    	$serie = Multimedia::find($id);
+      $idSerie = $serie->id;
+      $temp = Temporada::select()->where('idMultimedia', $idSerie);
+      foreach ($temp as $key => $t) {
+        $idTemp = $t->id;
+        Episodio::where('idTemporada', $idTemp)->delete();
+      }
+      Temporada::where('idMultimedia', $idSerie)->delete();
+    	$eliminar = public_path().'/series/imgSeries/'.$serie->titulo;
+	    unlink($eliminar);
+      $eliminar = public_path().'/series/VideoSeries/'.$serie->titulo;
+      unlink($eliminar);
+	    //$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
+	    //unlink($eliminar);
+	    $serie->delete();
+
+	    return redirect('admin/verSeries');
     }
     public function verUsuarios()
     {

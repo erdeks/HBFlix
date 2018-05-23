@@ -46,6 +46,8 @@ Route::get('/admin/crearSeries','AdminController@crearSeries');
 Route::post('/admin/crearSeries','AdminController@guardarSeries');
 Route::get('/admin/crearEpisodios','AdminController@crearEpisodios');
 Route::post('/admin/crearEpisodios','AdminController@guardarEpisodios');
+Route::delete('/admin/eliminarSerie/{id}','AdminController@eliminarSerie');
+Route::get('/admin/eliminarSerie/{id}','AdminController@eliminarSerie');
 //Menú género
 Route::get('/admin/verGeneros','AdminController@verGeneros');
 Route::get('/admin/crearGeneros','AdminController@crearGeneros');
