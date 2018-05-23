@@ -70,64 +70,34 @@
                </div>
              </div>
            </div>
-
-      <!--<div class="infoPos">
-          <table class="table table-user-information">
-            <tr>
-              <th colspan="2">Perfil</th>
-            </tr>
-          	<tr>
-              	<td>Nombre:</td>
-              	<td>{{Auth::user()->name}}</td>
-              </tr>
-              <tr>
-              	<td>Apellido:</td>
-              	<td>{{Auth::user()->apellido}}</td>
-              </tr>
-              <tr>
-              	<td>Fecha de nacimiento:</td>
-              	<td>{{Auth::user()->date}}</td>
-              </tr>
-            	<tr>
-              	<td>Email</td>
-              	<td><a href="mailto:{{Auth::user()->email}}">{{Auth::user()->email}}</a></td>
-              </tr>
-              <tr>
-              	<td>Numero de telefono:</td>
-              	<td>{{Auth::user()->telefono}}</td>
-              </tr>
-            	<tr>
-              	<td>Fecha de creación:</td>
-              	<td>{{Auth::user()->created_at}}</td>
-            	</tr>
-        	</table>
-        </div>-->
         </div>
         <div class="panel panel-info" style="background-color:#1a242f; margin-top: 5%;">
           <div class="panel-heading" style="background-color:black;">
-            <h3 class="panel-title" style="color:#EC67A2;">Generos</h3>
+            <h3 class="panel-title" style="color:#EC67A2;">Favoritos</h3>
+
           </div>
           <div class="panel-body">
            <table class="table table-user-information">
              <tbody>
                <tr>
-                 <td>Genero 1:</td>
+                 <td>Favorito 1:</td>
                  <td>{{Auth::user()->fav1}}</td>
                </tr>
                <tr>
-                 <td>Genero 2:</td>
+                 <td>Favorito 2:</td>
                  <td>{{Auth::user()->fav2}}</td>
                </tr>
                <tr>
-                 <td>Genero 3:</td>
+                 <td>Favorito 3:</td>
                  <td>{{Auth::user()->fav3}}</td>
                </tr>
                <tr>
-                 <td>Genero 4:</td>
+                 <td>Favorito 4:</td>
                  <td>{{Auth::user()->fav4}}</td>
                </tr>
             </tbody>
          </table>
+         <a href="{{url('/inicio/perfil/editarFavs')}}" class="btn btn-success" style="margin-left:80%;">Editar</a>
        </div>
      </div>
    </div>

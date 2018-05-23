@@ -22,7 +22,7 @@ class PerfilController extends Controller
   $aLanzamiento = ALanzamiento::all();
   return view('web.editarPerfil', array('arrayUser'=>$arrayUser, 'arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
 }
-public function update(Request $request){
+  public function update(Request $request){
        $user= User::find($request->input('id'));
        $user->id = $request->input('id');
        $user->name = $request->input('name');
@@ -37,4 +37,8 @@ public function update(Request $request){
        $aLanzamiento = ALanzamiento::all();
        return view('web.perfil', array('arrayUser'=>$arrayUser, 'arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
    }
+   public function updateFavs(){
+     
+   }
+
 }
