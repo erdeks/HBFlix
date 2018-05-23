@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Genero;
 use App\ALanzamiento;
+use App\Http\Controllers\Auth;
 class PerfilController extends Controller
 {
   public function perfil()
@@ -37,8 +38,19 @@ class PerfilController extends Controller
        $aLanzamiento = ALanzamiento::all();
        return view('web.perfil', array('arrayUser'=>$arrayUser, 'arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
    }
-   public function updateFavs(){
-     
+   public function updateFavs(Request $request){
+      
+      $user = User::find($request->input('id'));
+
+      $user->fav1 = $request->input('fav1');
+      $user->fav2 = $request->input('fav2');
+      $user->fav3 = $request->input('fav3');
+      $user->fav4 = $request->input('fav4');
+      $user->save();
+
+      return redirect('/inicio/perfil');
+
+
    }
 
 }
