@@ -31,14 +31,14 @@
 @section('content')
   <div class="col-md-8" style="margin-top:7%; margin-left:7%;">
     <div style="width:100%;">
-         <div class="panel panel-info" style="background-color:#1a242f;">
-           <div class="panel-heading" style="background-color:black;">
+         <div class="panel panel-info" style="background-color:#1d2424;">
+           <div class="panel-heading" style="background-color:#272727;">
              <h3 class="panel-title" style="color:#EC67A2;">PERFIL</h3>
            </div>
            <div class="panel-body">
              <div class="row">
                <div class="col-md-3 col-lg-3 " align="center">
-                 <img alt="User Pic" src="{{url('images/perfil')}}" class="img-circle img-responsive">
+                 <img alt="User Pic" src="{{url('peliculas/1.png')}}" class="img-circle img-responsive">
                </div>
                <div class=" col-md-9 col-lg-9 ">
                  <table class="table table-user-information">
@@ -71,12 +71,13 @@
              </div>
            </div>
         </div>
-        <div class="panel panel-info" style="background-color:#1a242f; margin-top: 5%;">
-          <div class="panel-heading" style="background-color:black;">
+        <div class="panel panel-info" style="background-color:#1d2424; margin-top: 5%;">
+          <div class="panel-heading" style="background-color:#272727;">
             <h3 class="panel-title" style="color:#EC67A2;">Favoritos</h3>
 
           </div>
-          <div class="panel-body">
+          <!--Hasta aquí-->
+          <div class="panel-body" id="ver" style="display: block;">
            <table class="table table-user-information">
              <tbody>
                <tr>
@@ -97,13 +98,80 @@
                </tr>
             </tbody>
          </table>
-         <a href="{{url('/inicio/perfil/editarFavs')}}" class="btn btn-success" style="margin-left:80%;">Editar</a>
+         <button value="Editar" class="btn btn-primary" onclick="mostrar()" style="margin-left:80%;">Editar</button>
        </div>
+       <!--Hasta aquí-->
+       <!--Hasta aquí-->
+       <form action="{{ url('/inicio/perfil/editarFav') }}" method="POST" enctype="multipart/form-data">
+       {{ csrf_field() }}
+       <input type="hidden" name="id" value="{{ Auth::user()->id }}" class="form-control"></td>
+          <div class="panel-body" id="selector" style="display: none;">
+           <table class="table table-user-information">
+             <tbody>
+               <tr>
+                 <td>Favorito 1:</td>
+                 <td>
+                 <select id="fav1" name="fav1" >
+                    @foreach( $arrayGenero as $key => $genero )
+                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    @endforeach
+                </select>
+                </td>
+                <td>Actual: {{Auth::user()->fav1}}</td>
+               </tr>
+               <tr>
+                 <td>Favorito 2:</td>
+                 <td>
+                 <select id="fav2" name="fav2" >
+                    @foreach( $arrayGenero as $key => $genero )
+                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    @endforeach
+                </select>
+                </td>
+                <td>Actual: {{Auth::user()->fav2}}</td>
+               </tr>
+               <tr>
+                 <td>Favorito 3:</td>
+                 <td>
+                 <select id="fav3" name="fav3" >
+                    @foreach( $arrayGenero as $key => $genero )
+                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    @endforeach
+                </select>
+                </td>
+                <td>Actual: {{Auth::user()->fav3}}</td>
+               </tr>
+               <tr>
+                 <td>Favorito 4:</td>
+                 <td>
+                 <select id="fav4" name="fav4" >
+                    @foreach( $arrayGenero as $key => $genero )
+                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    @endforeach
+                </select>
+                </td>
+                <td>Actual: {{Auth::user()->fav4}}</td>
+               </tr>
+            </tbody>
+         </table>
+         <button type="submit" value="Confirmar" class="btn btn-primary" onclick="noMostrar()" style="margin-left:80%;">Guardar cambios</button>
+       </div>
+       <!--Hasta aquí-->
+     </form>
      </div>
    </div>
       </div>
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+    function mostrar(){
+      document.getElementById('ver').style.display = 'none';
+      document.getElementById('selector').style.display = 'block';
+    }
+    function noMostrar(){
+      document.getElementById('ver').style.display = 'block';
+      document.getElementById('selector').style.display = 'none';
+    }
+</script>
 @endsection

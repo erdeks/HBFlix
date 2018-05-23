@@ -28,14 +28,14 @@
 @section('content')
   <div class="col-md-8" style="margin-top:7%; margin-left:7%;">
     <div style="width:100%;">
-         <div class="panel panel-info" style="background-color:#1a242f;">
-           <div class="panel-heading" style="background-color:black;">
+         <div class="panel panel-info" style="background-color:#1d2424;">
+           <div class="panel-heading" style="background-color:#272727;">
              <h3 class="panel-title" style="color:#EC67A2;">PERFIL</h3>
            </div>
            <div class="panel-body">
              <div class="row">
                <div class="col-md-3 col-lg-3 " align="center">
-                 <img alt="User Pic" src="#" class="img-circle img-responsive">
+                 <img alt="User Pic" src="{{url('peliculas/1.png')}}" class="img-circle img-responsive">
                </div>
                <div class=" col-md-9 col-lg-9 ">
                  <form action="{{ url('/inicio/perfil/editarPerfil') }}" method="POST">

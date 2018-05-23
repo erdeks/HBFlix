@@ -87,10 +87,6 @@ class RegisterController extends Controller
             $check4 = $data['check'][3];
         }
 
-
-
-
-
         if($code == '12345678'){
             $uno = "1";
             $path = '/images/perfil.jpg';
