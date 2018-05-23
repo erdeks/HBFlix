@@ -85,7 +85,6 @@ class HBFlixTables extends Migration
       Schema::dropIfExists('pelicula');
       Schema::dropIfExists('actor');
       Schema::dropIfExists('director');
-      Schema::dropIfExists('favorito');
       Schema::dropIfExists('directorSeriesPeliculas');
       Schema::dropIfExists('actorSeriesPeliculas');
     }

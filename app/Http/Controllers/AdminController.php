@@ -200,28 +200,25 @@ class AdminController extends Controller
       $arraySeries = Multimedia::where('tipo', '1')->get();
       return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
     }
-    public function guardarEpisodios(Request $request, array $data){
+    public function guardarEpisodios(Request $request){
 
       $temporada = new Temporada();
       $temporada->idMultimedia = $request->input('id');
       $temporada->temporada = $request->input('temporada');
       $temporada->save();
-      $ep = new Episodio();
-      $episodio = Input::get('ep');
-      $orden=0;
-      $countEp=0;
-      //cojo el id de la temporada que estoy insertando
       $te = Temporada::orderBy('id', 'DESC')->first();
-      foreach ($episodio as $key => $ep) {
-        $countEp++;
-        if($ep){
-          $orden++;
-          $ep->idTemporada = $te;
-          $ep->orden = $orden;
-          $ep->titulo = $data['ep'[$countEp]];
-          $ep->save();
-        }
+
+      $orden = 1;
+      foreach( $request->input('ep') as $v ) {
+        $ep = new Episodio();
+        $ep->idTemporada = $te->id;
+        $ep->orden = strval($orden);
+        $ep->titulo = $v;
+        $ep->save();
+        $orden++;
       }
+      $arraySeries = Multimedia::where('tipo', '1')->get();
+      return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
     }
     public function verUsuarios()
     {
