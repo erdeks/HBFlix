@@ -59,9 +59,6 @@
                       <button class="btn btn-sm btn-info" onclick="mostrar()">
                         <i class="glyphicon glyphicon-zoom-in"></i>
                       </button>
-                      <button class="btn btn-sm btn-warning">
-                        <i class="glyphicon glyphicon-refresh"></i>
-                      </button>
                     </td>
                   </tr>
                 @endforeach
