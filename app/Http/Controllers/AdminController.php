@@ -192,23 +192,18 @@ class AdminController extends Controller
       return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
     }
     public function verSer($id){
-
-    	$ser= Multimedia::find($id);
-      $idSer = $ser->id;
-      $temp = Temporada::select()->where('idMultimedia', $idSer);
-      $episodios=[];
-      foreach ($temp as $key => $t) {
-        $idTemp = $t->id;
-        $episodio=Episodio::where('idTemporada', $idTemp);
-        $count=0;
-        foreach ($episodio as $key => $epi) {
-          $epi[][]
-        }
-      }
+    	$series= Multimedia::find($id);
+      $idSerie = $series->id;
+      $temporadas = Temporada::all();
+      $arrayEpisodios = Episodio::all();
     	$serie = Multimedia::where('tipo', '0')->get();
     	$contGenero = Genero::all();
     	$contAn = ALanzamiento::all();
-      return view('admin.verSer', array('ser'=>$ser,'serie'=>$serie,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
+      foreach($temporadas as $key=> $temporada){
+        \Log::info('sdkais'.$temporada);
+      }
+
+      return view('admin.verSer', array('series'=>$series,'serie'=>$serie,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn, 'arrayEpisodios'=>$arrayEpisodios, 'temporadas'=>$temporadas));
 
     }
     public function eliminarSerie($id){

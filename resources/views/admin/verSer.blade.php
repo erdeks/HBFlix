@@ -42,34 +42,51 @@
           <input type="button" value="Ver Temporadas" onclick="temporadas()" class="btn btn-sm btn-success" style="margin: 5px;">
         </p>
        <!--Empieza-->
-       <img src="{{url('series/imgSeries/'.$ser->titulo)}}" alt="{{$ser->titulo}}" style="height: 350px; border-radius: 8px; float: left;">
-       <h1 style="color:  #EC67A2;text-align: center;"><strong>Titulo:</strong> {{$ser->titulo}}</h1>
+       <img src="{{url('series/imgSeries/'.$series->titulo)}}" alt="{{$series->titulo}}" style="height: 350px; border-radius: 8px; float: left;">
+       <h1 style="color:  #EC67A2;text-align: center;"><strong>Titulo:</strong> {{$series->titulo}}</h1>
        </br>
        <ul>
-         <li style="color:  #EC67A2;text-align: center; list-style:none;"><H1>Género: {{$ser->genero}}</H1></li>
-         <li style="color:  #EC67A2;text-align: center; list-style:none;"><H1>Año: {{$ser->aLanzamiento}}</H1></li>
+         <li style="color:  #EC67A2;text-align: center; list-style:none;"><H1>Género: {{$series->genero}}</H1></li>
+         <li style="color:  #EC67A2;text-align: center; list-style:none;"><H1>Año: {{$series->aLanzamiento}}</H1></li>
        </ul>
        <h1 style="color:  #EC67A2;text-align: center;">Resumen</h1>
-       <p style="color:  #EC67A2;text-align: center;">{{$ser->resumen}}</p>
+       <p style="color:  #EC67A2;text-align: center;">{{$series->resumen}}</p>
       </div>
     </div>
-  </div>
-    <!--Acaba-->
-    <div class="col-sm-9 col-md-9" id='divTemp' style="display: none;">
-      <div class="panel">
-        <div class="panel-heading" style="background-color: #181E1F;">
-          <h3 class="panel-title" style="color: #EC67A2">{{$ser->titulo}}</h3>
+    <div class="panel">
+      <div class="panel-heading" style="background-color: #181E1F;">
+        <h3 class="panel-title" style="color: #EC67A2">Capitulos</h3>
+      </div>
+      <div class="panel-body" style="background-color: #282F30;">
+        <div class="panel-group" style="background-color: #282F30;">
+          <div class="panel panel-default" style="background-color: #282F30;">
+
+            @foreach ( $temporadas as $key => $temp )
+              @if($series->id == $temp->idMultimedia)
+            <div class="panel-heading"style="background-color: #282F30;">
+    					<h4 class="panel-title" style="background-color: #282F30;">
+    						<h4><a data-toggle="collapse" href="#collapse{{$key}}" style="color: #EC67A2">Temporada{{$temp->temporada}}</a></h4>
+    					</h4>
+    				</div>
+    				<div id="collapse{{$key}}" class="panel-collapse collapse" style="background-color: #282F30;">
+    					<div class="panel-body" style="background-color: #282F30;">
+                @foreach ( $arrayEpisodios as $key => $ep )
+                  @if($temp->id == $ep->idTemporada)
+                  <ul>
+                    <li style="color: #EC67A2"> Episodio{{$ep->orden}}: {{$ep->titulo}}</li>
+                  </ul>
+                  @endif
+                @endforeach
+              </div>
+            </div>
+              @endif
+            @endforeach
+          </div>
         </div>
-        <div class="panel-body" style="background-color: #282F30;">
-        <p style="color:  #EC67A2;">
-          <input type="button" value="Volver atras" onclick="volverAtras()" class="btn btn-sm btn-danger" style="margin: 5px;">
-          <input type="button" value="Ver Info" onclick="info()" class="btn btn-sm btn-success" style="margin: 5px;">
-        </p>
-       <!--Empieza-->
-       
       </div>
     </div>
   </div>
+
     </div>
   </div>
   <script type="text/javascript">

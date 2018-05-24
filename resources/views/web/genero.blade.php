@@ -16,6 +16,7 @@ a:hover {
   height: 300px;
 }
 
+
 </style>
 @section('content')
     <div class="col-md-8">

@@ -20,11 +20,11 @@
 }
 
 #wrapper {
-    padding-left: 0;    
+    padding-left: 0;
 }
 
 #page-wrapper {
-    width: 100%;        
+    width: 100%;
     padding: 0;
     background-color: #fff;
 }
@@ -124,7 +124,7 @@
     padding: 10px 15px 10px 38px;
     text-decoration: none;
     /*color: #999;*/
-    color: #fff;    
+    color: #fff;
 }
 
 .side-nav>li>ul>li>a:hover {
@@ -158,7 +158,7 @@
   min-height: 1rem;
   padding-left: 0;
   margin-right: 0;
-  cursor: pointer; 
+  cursor: pointer;
 }
   .custom-checkbox .custom-control-indicator {/* color del fondo*/
     content: "";
@@ -173,7 +173,7 @@
     transition: background .3s ease;
     vertical-align: middle;
     margin: 0 16px;
-    box-shadow: none; 
+    box-shadow: none;
   }
     .custom-checkbox .custom-control-indicator:after {
       content: "";
@@ -187,28 +187,28 @@
       left: -2px;
       top: -4px;
       -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
-      transition: left .3s ease, background .3s ease, box-shadow .1s ease; 
+      transition: left .3s ease, background .3s ease, box-shadow .1s ease;
     }
   .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
     background-color: #818181;
     background-image: none;
-    box-shadow: none !important; 
+    box-shadow: none !important;
   }
     .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
       background-color: #EC67A2;
-      left: 15px; 
+      left: 15px;
     }
   .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
-    box-shadow: none !important; 
+    box-shadow: none !important;
   }
   html,body{
-    overflow-x: hidden; 
-    color:black; 
+    overflow-x: hidden;
+    color:black;
     font-family:'Opens Sans',helvetica;
-    height:100%; 
-    width:101%; 
-    margin: 0px; 
-    padding: 0px; 
+    height:100%;
+    width:101%;
+    margin: 0px;
+    padding: 0px;
  }
    ::-webkit-scrollbar {
       display: none;
@@ -221,9 +221,9 @@
     font-family: LOGO;
     src: url('fonts/BLADRMF_.TTF');
   }
-  a:link 
-  { 
-    text-decoration:none; 
+  a:link
+  {
+    text-decoration:none;
   }
 </style>
 </head>
@@ -246,7 +246,7 @@
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
-           
+
         </ul>
          <div class="nav top-nav" style="text-align: center; margin-top: 1%;">
             <strong style="color: #EC67A2" class="logotipo" id="peFue">peliculas</strong>
@@ -294,7 +294,7 @@
                   <a href="investigaciones/favoritas" style="color: #EC67A2; text-align: center;"><i class="glyphicon glyphicon-film"></i> GÉNEROS</a>
                     <ul style="height:245px; width:100%; overflow:hidden; overflow-y:scroll;">
                     @foreach($arrayGenero as $key => $genero )
-                      <li style=""><a style="color: #EC67A2;"><i class="glyphicon glyphicon-chevron-right"></i> {{$genero->nombre}}</a></li>
+                      <li style=""><a href="{{url('inicio/'.$genero->id)}}" style="color: #EC67A2;"><i class="glyphicon glyphicon-chevron-right"></i> {{$genero->nombre}}</a></li>
                     @endforeach
                     </ul>
                 </li>
