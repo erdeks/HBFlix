@@ -44,7 +44,7 @@ class AdminController extends Controller
     	$peliculas = Multimedia::where('tipo', '0')->get();
     	$contGenero = Genero::all();
     	$contAn = ALanzamiento::all();
-        return view('admin.verPeli', array('peli'=>$peli,'arrayPelicula'=>$peliculas,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
+      return view('admin.verPeli', array('peli'=>$peli,'arrayPelicula'=>$peliculas,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
 
     }
 
@@ -190,6 +190,26 @@ class AdminController extends Controller
       }
       $arraySeries = Multimedia::where('tipo', '1')->get();
       return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
+    }
+    public function verSer($id){
+
+    	$ser= Multimedia::find($id);
+      $idSer = $ser->id;
+      $temp = Temporada::select()->where('idMultimedia', $idSer);
+      $episodios=[];
+      foreach ($temp as $key => $t) {
+        $idTemp = $t->id;
+        $episodio=Episodio::where('idTemporada', $idTemp);
+        $count=0;
+        foreach ($episodio as $key => $epi) {
+          $epi[][]
+        }
+      }
+    	$serie = Multimedia::where('tipo', '0')->get();
+    	$contGenero = Genero::all();
+    	$contAn = ALanzamiento::all();
+      return view('admin.verSer', array('ser'=>$ser,'serie'=>$serie,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn));
+
     }
     public function eliminarSerie($id){
     	$serie = Multimedia::find($id);
