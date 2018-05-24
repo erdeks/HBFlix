@@ -150,7 +150,7 @@ class AdminController extends Controller
         $serie->aLanzamiento = $request->input('anyo');
         $serie->resumen = $request->input('resumen');
         $serie->rutaImg = '/series/imgSeries/'.$request->input('titulo');
-        $serie->rutaVid = '/series/VideoSeries/'.$request->input('titulo');
+        $serie->rutaVid = '/series/VideoSeries/'.$request->input('titulo'); //cambiar a vacio y colocar en guardarEpisodio
         $serie->tipo=$request->input('tipo');
         $serie->save();
 
