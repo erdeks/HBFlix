@@ -32,9 +32,11 @@ class HomeController extends Controller
       $aLanzamiento = ALanzamiento::all();
       $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
       $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
-      $estrenos = Multimedia::orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
-      $ultimasAdd = Multimedia::orderBy('created_at', 'DESC')->get();
-      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd));
+      $estrenosSer = Multimedia::where('tipo', '1')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
+      $ultimasAddSer = Multimedia::where('tipo', '1')->orderBy('created_at', 'DESC')->get();
+      return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenosPeli'=>$estrenosPeli,'ultimasAddPeli'=>$ultimasAddPeli, 'estrenosSer'=>$estrenosSer,'ultimasAddSer'=>$ultimasAddSer));
     }
     public function generos()
     {

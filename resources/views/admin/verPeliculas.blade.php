@@ -52,7 +52,7 @@
                 </form>
             </nav>
             <div class="container " style="background-color: #2E3637; border-radius: 8px;">
-              
+
               <!--Aqui empieza-->
               @foreach( $arrayPelicula as $key => $pelicula )
                 <div class="hijo" style="margin-top: 5%; float: left; padding: 3.1%;">

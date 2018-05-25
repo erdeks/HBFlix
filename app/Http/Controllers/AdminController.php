@@ -124,7 +124,7 @@ class AdminController extends Controller
 
     	$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
 	    unlink($eliminar);
-      $eliminar = public_path().'/peliculas/VideoPeliculas/'.$serie->titulo;
+      $eliminar = public_path().'/peliculas/VideoPeliculas/'.$peli->titulo;
       unlink($eliminar);
 	    //$eliminar = public_path().'/peliculas/imgPeliculas/'.$peli->titulo;
 	    //unlink($eliminar);
@@ -178,18 +178,6 @@ class AdminController extends Controller
       $te = Temporada::orderBy('id', 'DESC')->first();
       $serie = Multimedia::where('id', $temporada->idMultimedia)->first();
       $orden = 1;
-      /*foreach( $request->input('ep') as $v ) {
-        $ep = new Episodio();
-        $ep->idTemporada = $te->id;
-        $ep->orden = strval($orden);
-        $ep->titulo = $v;
-        $ep->save();
-        $orden++;
-      }
-
-      foreach( $request->input('vidSerie') as $video){
-        $ep =
-      }*/
       $length = sizeof($request->input('ep'));
       for($x=0;$x<$length;$x++){
         $ep = new Episodio();
@@ -217,9 +205,6 @@ class AdminController extends Controller
     	$serie = Multimedia::where('tipo', '0')->get();
     	$contGenero = Genero::all();
     	$contAn = ALanzamiento::all();
-      foreach($temporadas as $key=> $temporada){
-        \Log::info('sdkais'.$temporada);
-      }
 
       return view('admin.verSer', array('series'=>$series,'serie'=>$serie,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn, 'arrayEpisodios'=>$arrayEpisodios, 'temporadas'=>$temporadas));
 

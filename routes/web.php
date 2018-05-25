@@ -78,3 +78,6 @@ Route::post('/inicio/perfil/editarFav','PerfilController@updateFavs');
 Route::get('/inicio/nombre/{nombre}', 'GeneroController@main');
 //Mostrar Años
 Route::get('/inicio/anyo/{anyo}', 'AnyoController@anyos');
+//Detalles Multimedia
+Route::get('/inicio/verPelicula/{id}','MultimediaController@verPelicula');
+Route::get('/inicio/verSerie/{id}','MultimediaController@verSerie');
