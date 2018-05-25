@@ -36,6 +36,7 @@ class HBFlixTables extends Migration
         $table->integer('idTemporada')->unsigned();
         $table->string('orden');
         $table->string('titulo');
+        $table->string('rutaVid');
         $table->timestamps();
         $table->foreign('idTemporada')->references('id')->on('temporadas')->onDelete('cascade');
       });

@@ -103,7 +103,7 @@
   $(document).ready(function(){
     var wrapper = $(".temporadas");
     $(wrapper).on('click', '.addEp', function(){
-      $(this).after("<div><label>Episodio: </label><input type='text' name='ep[]'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
+      $(this).before("<div><label>Episodio: </label><input type='text' name='ep[]'><br><label for='vidSerie'>Video serie: </label><input type='file' name='vidSerie[]' id='serie' class='form-control'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
     });
 
     $(wrapper).on("click", "#rmTemp", function(e){

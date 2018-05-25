@@ -1,3 +1,5 @@
+<h1>Manual Descarga y desarrollo</h1>
+
 $ sudo apt-get install composer git php7.0 php7.0-mbstring
 
 $ git clone https://github.com/erdeks/HBFlix

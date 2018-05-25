@@ -46,6 +46,9 @@ Route::get('/admin/crearSeries','AdminController@crearSeries');
 Route::post('/admin/crearSeries','AdminController@guardarSeries');
 Route::get('/admin/crearEpisodios','AdminController@crearEpisodios');
 Route::post('/admin/crearEpisodios','AdminController@guardarEpisodios');
+Route::delete('/admin/eliminarSerie/{id}','AdminController@eliminarSerie');
+Route::get('/admin/eliminarSerie/{id}','AdminController@eliminarSerie');
+Route::get('/admin/verSer/{id}', 'AdminController@verSer');
 //Menú género
 Route::get('/admin/verGeneros','AdminController@verGeneros');
 Route::get('/admin/crearGeneros','AdminController@crearGeneros');
@@ -76,4 +79,6 @@ Route::get('/inicio/perfil/code','PerfilController@updateCode');
 Route::get('/inicio/newCode','HomeController@upDateCode');
 Route::post('/inicio/newCode','HomeController@upDateCode');
 //Mostrar Generos
-Route::get('/inicio/{nombre}', 'GeneroController@main');
+Route::get('/inicio/nombre/{nombre}', 'GeneroController@main');
+//Mostrar Años
+Route::get('/inicio/anyo/{anyo}', 'AnyoController@anyos');

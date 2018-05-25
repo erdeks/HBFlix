@@ -76,10 +76,6 @@
                         <!-- -->
                         <input type="file" name="imgSerie" id="imgPeli" class="form-control">
 
-                        <label for="titulo">Video serie: </label>
-                        <!-- -->
-                        <input type="file" name="vidSerie" id="serie" class="form-control">
-
                         <label for="texto">Resúmen de la Serie: </label>
                         <!-- -->
                         <textarea id="resumen" name="resumen" cols="44" class="form-control" required></textarea></br>
