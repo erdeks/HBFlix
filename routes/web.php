@@ -74,6 +74,10 @@ Route::get('/inicio/perfil','PerfilController@perfil');
 Route::get('/inicio/perfil/editarPerfil','PerfilController@editarPerfil');
 Route::post('/inicio/perfil/editarPerfil','PerfilController@update');
 Route::post('/inicio/perfil/editarFav','PerfilController@updateFavs');
+Route::post('/inicio/perfil/code','PerfilController@updateCode');
+Route::get('/inicio/perfil/code','PerfilController@updateCode');
+Route::get('/inicio/newCode','HomeController@upDateCode');
+Route::post('/inicio/newCode','HomeController@upDateCode');
 //Mostrar Generos
 Route::get('/inicio/nombre/{nombre}', 'GeneroController@main');
 //Mostrar Años

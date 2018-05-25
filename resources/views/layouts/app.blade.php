@@ -246,7 +246,11 @@
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
+<<<<<<< HEAD
+           <li style="color: #EC67A2;"><strong>Tu subscripción termina: {{Auth::user()->subFinal}}</strong></li>
+=======
 
+>>>>>>> a4365a0d71e8fc856cd1e51ff3eebc45abe3ffe6
         </ul>
          <div class="nav top-nav" style="text-align: center; margin-top: 1%;">
             <strong style="color: #EC67A2" class="logotipo" id="peFue">peliculas</strong>
@@ -337,25 +341,39 @@
   text-align: center;
   margin-top: 10%;
   width: 50%;
-  margin-left: 25%;
+  margin-left: 15%;
 }
+html,body{
+    background-color:  #272727;
+ }
+
 </style>
-<div class="panel panel-danger centrar">
+<div class="centrar">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Tu cuenta no tiene subscripción, introduce tu código y unete a HBFLIX</div>
+    <div class="panel-body" style="text-align: left;">
+      <h2>Usuario:<strong> {{Auth::user()->name}}</strong></h2>
+      @if(Session::has('flash_message'))
+         <div class="alert alert-danger alert-dismissable col-md-offset-3 col-md-6">               
+         <strong> ¡Mal mal muuy mal!</strong> {{Session::get('flash_message')}}
+        </div></br></br></br></br>
 
-  <div class="panel-heading">Tu subscripción está terminada...</div>
-  <div class="panel-body" style="text-align: left;">
-    <h2>Usuario:<strong> {{Auth::user()->name}}</strong></h2>
-    <h3 style="text-align: center"><u>Codigo</u></h3>
-    <p></p>
+      @endif
+      <h3><u>Código</u></h3>
+      <form action="{{ url('inicio/newCode') }}" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <input  type="text" name="validad_code" required>
+        <input  type="hidden" name="id_user" value="{{Auth::user()->id3}}">
+        <button class="btn btn-success" type="submit">Enviar código!</button>
+      </form>
+    </div>
+    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      <button type="button" class="btn btn-primary">Volver al Inicio</button></a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+    </br>
+      <p>  </p>
   </div>
-  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <button type="button" class="btn btn-primary">Volver al Inicio</button></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-  </br>
-    <p>  </p>
 </div>
-
-
 @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Codigo;
 use App\Genero;
 use App\ALanzamiento;
 use App\Http\Controllers\Auth;
@@ -51,6 +52,33 @@ class PerfilController extends Controller
       return redirect('/inicio/perfil');
 
 
+   }
+
+   public function updateCode(Request $request){
+
+      $code = $request->input('code');
+      $codigoValido = Codigo::where('codigo', $code)->first();
+        if($codigoValido){
+          if($codigoValido->usado == "0"){
+            $user = User::find($request->input('idC'));
+            
+            $codigo= Codigo::where('codigo', $code)->first();
+            $codigo->usado = "1";
+            $codigo->user = $user->email;
+            $codigo->save();
+
+            $dateIni = $user->subFinal;
+            $date = strtotime("+30 day", strtotime($dateIni));
+            $dataMas = date("Y-m-d", $date);
+            $user->subFinal = $dataMas;
+            $user->save();
+          }else{
+            \Session::flash('flash_message', 'código ya usado');
+          }
+        }else{
+          \Session::flash('flash_message', 'Código incorrecto!');
+        }
+    return redirect('/inicio/perfil');
    }
 
 }

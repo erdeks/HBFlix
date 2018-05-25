@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Genero;
 use App\ALanzamiento;
 use App\Multimedia;
+use App\User;
+use App\Codigo;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -32,15 +35,115 @@ class HomeController extends Controller
       $aLanzamiento = ALanzamiento::all();
       $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
       $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
+<<<<<<< HEAD
       $estrenosSer = Multimedia::where('tipo', '1')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
       $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
       $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
       $ultimasAddSer = Multimedia::where('tipo', '1')->orderBy('created_at', 'DESC')->get();
       return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenosPeli'=>$estrenosPeli,'ultimasAddPeli'=>$ultimasAddPeli, 'estrenosSer'=>$estrenosSer,'ultimasAddSer'=>$ultimasAddSer));
+=======
+      $estrenos = Multimedia::orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      $ultimasAdd = Multimedia::orderBy('created_at', 'DESC')->get();
+
+      $user1 = User::find(Auth::user()->id);
+      $dataActual = explode("-",date("Y-m-d"));
+      //Dia
+      $dataActual[2];
+      //Mes
+      $dataActual[1];
+      //Año
+      $dataActual[0];
+
+      $dataFinal = explode("-",$user1->subFinal);
+      //Dia
+      $dataFinal[2];
+      //Mes
+      $dataFinal[1];
+      //Año
+      $dataFinal[0];
+
+      if($dataActual[0] < $dataFinal[0]){
+	      if($dataFinal[1] >= $dataActual[1]){
+	        if($dataFinal[1] > $dataActual[1] && $dataFinal[2] < $dataActual[2]){
+	          $dataSumada = $dataFinal[2] + 30;
+	        }else{
+	          $dataSumada = $dataFinal[2];
+	        }
+	        if(intval($dataFinal[2]) > intval($dataActual[2])){
+	          $fechaFinal = intval($dataSumada) - intval($dataActual[2]);
+	          if($fechaFinal <= 5 && $dataFinal[1] == $dataActual[1]){
+	            //te quedan menos de 5 dias exactamente
+	            $msg = "0";
+	            return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd,'anyo'=>$msg,'xyz'=>$fechaFinal));
+	          }else{
+	            //todo correcto
+	            $msg = "1";
+	            return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd,'anyo'=>$msg));
+	          }
+	        }
+	        if($dataFinal[1] == $dataActual[1] && $dataFinal[2] < $dataActual[2]){//1 para un mes mas y dia menos //otro para un mes igual y dia menos
+	          $msg = "2";
+	          $user1->subs = "0";
+	          $user1->save();
+	            return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd,'anyo'=>$msg));
+	          }else{
+	            $msg = "1";
+	            $user1->subs = "1";
+	            $user1->save();
+	            return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd,'anyo'=>$msg));
+
+	          }
+	        
+	      }elseif($dataFinal[1] < $dataActual[1]){
+	        $msg = "2";
+	        $user1->subs = "0";
+	        $user1->save();
+	        return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd,'anyo'=>$msg));
+	      }else{//te falta esto
+	        $user1 = User::find(Auth::user()->id);
+	        $user1->subs = "0";
+	        $user1->save();
+	      }
+	  }else{
+	  	$msg = "2";
+        $user1->subs = "0";
+        $user1->save();
+        return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenos'=>$estrenos,'ultimasAdd'=>$ultimasAdd,'anyo'=>$msg));
+
+	  }
+>>>>>>> 8d6630f24097e6d27cf40c388294651a615029cc
     }
     public function generos()
     {
         $generos = Genero::all();
         return response($generos);
+    }
+
+    public function upDateCode(Request $request)
+    {
+      $code = $request->input('validad_code');
+      $codigoValido = Codigo::where('codigo', $code)->first();
+
+      if($codigoValido){
+        $codigo = Codigo::where('codigo', $code)->first();
+        $codigo->usado = "1";
+        $codigo->user = Auth::user()->email;
+        $codigo->save();
+
+        $user = User::find(Auth::user()->id);
+        $user->subs = "1";
+        $date = strtotime("+30 day", strtotime(date("Y-m-d")));
+        $dataMas = date("Y-m-d", $date);
+        $user->subFinal = $dataMas;
+        $user->save();
+
+
+
+        return redirect('/inicio');
+      }else{
+
+        \Session::flash('flash_message', 'Código incorrecto');
+        return redirect('/inicio');
+      }
     }
 }
