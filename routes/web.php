@@ -75,4 +75,6 @@ Route::get('/inicio/perfil/editarPerfil','PerfilController@editarPerfil');
 Route::post('/inicio/perfil/editarPerfil','PerfilController@update');
 Route::post('/inicio/perfil/editarFav','PerfilController@updateFavs');
 //Mostrar Generos
-Route::get('/inicio/{nombre}', 'GeneroController@main');
+Route::get('/inicio/nombre/{nombre}', 'GeneroController@main');
+//Mostrar Años
+Route::get('/inicio/anyo/{anyo}', 'AnyoController@anyos');

@@ -294,7 +294,7 @@
                   <a href="investigaciones/favoritas" style="color: #EC67A2; text-align: center;"><i class="glyphicon glyphicon-film"></i> GÉNEROS</a>
                     <ul style="height:245px; width:100%; overflow:hidden; overflow-y:scroll;">
                     @foreach($arrayGenero as $key => $genero )
-                      <li style=""><a href="{{url('inicio/'.$genero->id)}}" style="color: #EC67A2;"><i class="glyphicon glyphicon-chevron-right"></i> {{$genero->nombre}}</a></li>
+                      <li style=""><a href="{{url('inicio/nombre/'.$genero->nombre)}}" style="color: #EC67A2;"><i class="glyphicon glyphicon-chevron-right"></i> {{$genero->nombre}}</a></li>
                     @endforeach
                     </ul>
                 </li>
@@ -302,7 +302,7 @@
                     <a href="sugerencias" style="color: #EC67A2; text-align: center;"><i class="glyphicon glyphicon-time"></i> AÑO DE LANZAMIENTO</a>
                     <ul style="height:190px; width:100%;overflow:hidden; overflow-y:scroll;">
                     @foreach($arrayLanz as $key => $aLanza )
-                      <li><a style="color: #EC67A2;"><i class="glyphicon glyphicon-chevron-right"></i> {{$aLanza->aLanzamiento}}</a></li>
+                      <li><a href="{{url('inicio/anyo/'.$aLanza->aLanzamiento)}}" style="color: #EC67A2;"><i class="glyphicon glyphicon-chevron-right"></i> {{$aLanza->aLanzamiento}}</a></li>
                     @endforeach
                     </ul>
                 </li>

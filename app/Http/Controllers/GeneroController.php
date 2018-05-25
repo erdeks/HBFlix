@@ -10,8 +10,8 @@ class GeneroController extends Controller
 {
   public function main(Request $request, $nombre)
   {
-    $arrayPelis = Multimedia::where('genero', $nombre)->orWhere('tipo', '0')->get();
-    $arraySeries = Multimedia::where('genero', $nombre)->orWhere('tipo', '1')->get();
+    $arrayPelis = Multimedia::where('genero', $nombre)->Where('tipo', '0')->get();
+    $arraySeries = Multimedia::where('genero', $nombre)->Where('tipo', '1')->get();
     $genero=Genero::all();
     $aLanzamiento = ALanzamiento::all();
     return view('web.genero', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento, 'arrayPelis'=>$arrayPelis, 'arraySeries'=>$arraySeries));

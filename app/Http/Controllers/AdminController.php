@@ -150,7 +150,7 @@ class AdminController extends Controller
         $serie->aLanzamiento = $request->input('anyo');
         $serie->resumen = $request->input('resumen');
         $serie->rutaImg = '/series/imgSeries/'.$request->input('titulo');
-        $serie->rutaVid = '/series/VideoSeries/'.$request->input('titulo'); //cambiar a vacio y colocar en guardarEpisodio
+        $serie->rutaVid = 'vacio'; //cambiar a vacio y colocar en guardarEpisodio
         $serie->tipo=$request->input('tipo');
         $serie->save();
 
@@ -178,13 +178,27 @@ class AdminController extends Controller
       $temporada->temporada = $request->input('temporada');
       $temporada->save();
       $te = Temporada::orderBy('id', 'DESC')->first();
-
+      $countEp
       $orden = 1;
-      foreach( $request->input('ep') as $v ) {
+      /*foreach( $request->input('ep') as $v ) {
         $ep = new Episodio();
         $ep->idTemporada = $te->id;
         $ep->orden = strval($orden);
         $ep->titulo = $v;
+        $ep->save();
+        $orden++;
+      }
+
+      foreach( $request->input('vidSerie') as $video){
+        $ep =
+      }*/
+      $length = $count($request->input('ep'));
+      for($x=0;$x<$length;$x++){
+        $ep = new Episodio();
+        $ep->idTemporada = $te->id;
+        $ep->orden = strval($orden);
+        $ep->titulo = $request->input('ep')[$];
+        $ep->rutaVid = '/series/imgSeries/'.$request->input('ep')[$x];
         $ep->save();
         $orden++;
       }

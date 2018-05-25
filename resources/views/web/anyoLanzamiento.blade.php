@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="row">
     <div id="peliculas" style="margin-left: 5%; margin-top:5%;">
@@ -12,7 +13,7 @@
               <a href="#">
                 <p style="color:  #EC67A2;"><strong>{{$peli->titulo}}</strong></p>
               </a>
-              <span style="color:  #EC67A2; text-align: center;">{{$peli->aLanzamiento}}</span>
+              <span style="color:  #EC67A2; text-align: center;">{{$peli->genero}}</span>
             </div>
         </div>
       @endforeach
@@ -29,7 +30,7 @@
                 <a href="#">
                   <p style="color:  #EC67A2;"><strong>{{$serie->titulo}}</strong></p>
                 </a>
-                <span style="color:  #EC67A2; text-align: center;">{{$serie->aLanzamiento}}</span>
+                <span style="color:  #EC67A2; text-align: center;">{{$serie->genero}}</span>
               </div>
           </div>
         @endforeach
