@@ -154,9 +154,7 @@ class AdminController extends Controller
         $serie->tipo=$request->input('tipo');
         $serie->save();
 
-        $video = Input::file("vidSerie");
-        $vPath = public_path().'/series/VideoSeries/';
-        $video->move($vPath, $request->input('titulo'));
+
 
       $image = \Image::make(\Input::file('imgSerie'));
       $path = public_path().'/series/imgSeries/';
@@ -178,7 +176,7 @@ class AdminController extends Controller
       $temporada->temporada = $request->input('temporada');
       $temporada->save();
       $te = Temporada::orderBy('id', 'DESC')->first();
-      $countEp
+      $serie = Multimedia::where('id', $temporada->idMultimedia)->first();
       $orden = 1;
       /*foreach( $request->input('ep') as $v ) {
         $ep = new Episodio();
@@ -192,17 +190,23 @@ class AdminController extends Controller
       foreach( $request->input('vidSerie') as $video){
         $ep =
       }*/
-      $length = $count($request->input('ep'));
+      $length = sizeof($request->input('ep'));
       for($x=0;$x<$length;$x++){
         $ep = new Episodio();
         $ep->idTemporada = $te->id;
         $ep->orden = strval($orden);
-        $ep->titulo = $request->input('ep')[$];
-        $ep->rutaVid = '/series/imgSeries/'.$request->input('ep')[$x];
+        $ep->titulo = $request->input('ep')[$x];
+        $ep->rutaVid = '/series/videoSeries/'.$request->input('ep')[$x];
         $ep->save();
+        if(Input::file("vidSerie.$x")){
+          $video = Input::file("vidSerie")[$x];
+          $vPath = public_path().'/series/VideoSeries/';
+          $video->move($vPath, $serie->titulo."_".$request->input('ep')[$x]);
+        }
+        $arraySeries = Multimedia::where('tipo', '1')->get();
         $orden++;
       }
-      $arraySeries = Multimedia::where('tipo', '1')->get();
+
       return view('admin.crearEpisodios', array('arraySeries'=>$arraySeries));
     }
     public function verSer($id){
