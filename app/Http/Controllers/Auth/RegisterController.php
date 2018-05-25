@@ -87,7 +87,7 @@ class RegisterController extends Controller
             $check4 = $data['check'][3];
         }
 
-        if($code == '12345678'){
+        if($code == 'RealG4LifeBaby'){
             $uno = "1";
             $path = '/images/perfil.jpg';
             return User::create([
@@ -102,6 +102,7 @@ class RegisterController extends Controller
                 'fav4' => $check4,
                 'admin' => $uno,
                 'subs'  => $uno,//activa la subscripción
+                'subFinal' => "3000-12-30"
                 'imgPerfil' => $path,
                 'password' => bcrypt($data['password']),
 
@@ -114,11 +115,13 @@ class RegisterController extends Controller
                     $path = '/images/perfil.jpg';
 
 
-                    $codigo= Codigo::where('codigo', $code)->first();
+                    $codigo = Codigo::where('codigo', $code)->first();
                     $codigo->usado = "1";
                     $codigo->user = $data['email'];
                     $codigo->save();
-
+                    $dateIni = date("Y-m-d");
+                    $date = strtotime("+30 day", strtotime(date("Y-m-d")));
+                    $dataMas = date("Y-m-d", $date);
                     return User::create([
                         'name' => $data['name'],
                         'email' => $data['email'],
@@ -131,6 +134,8 @@ class RegisterController extends Controller
                         'fav4' => $check4,
                         'subs'  => $uno,
                         'admin' => '0',
+                        'subInicio' => $dateIni,
+                        'subFinal' => $dataMas,
                         'imgPerfil' => $path,
                         'password' => bcrypt($data['password']),
                     ]);

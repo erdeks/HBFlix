@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Session;
+
 
 class LoginController extends Controller
 {
@@ -26,6 +29,15 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/inicio';
+
+    protected function authenticated(Request $request, $user)
+     {
+        $user = User::find($user);
+        if($user){
+            $request->session()->flash('flash_notification.success', 'Te quedan 5 dias o menos');
+            return redirect()->intended($this->redirectPath());
+        }
+     }
 
     /**
      * Create a new controller instance.

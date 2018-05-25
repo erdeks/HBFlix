@@ -2,10 +2,27 @@
 
 @section('content')
     <!--De aqui hacia abajo va en la view-->
-<div class="container ">
-  <div class="row" >
-   
+@if($anyo == "1")
+
+
+@elseif($anyo == "2")
+  <div class="container">
+  <div class="row">
+     @if (session()->has('flash_notification.success')) 
+        <script>location.reload();
+                alert("tu subscripción ha caducado");
+
+        </script>
+     @endif
   </div>
+@else
+  <div class="container">
+  <div class="row">
+     @if (session()->has('flash_notification.success')) 
+        <script>alert("¡Cuidado! Tu subscripción acaba {{Auth::user()->subFinal}}, te quedan {{$xyz}} dias una vez acabada la subscripción no tendrás acceso a HBFLIX");</script>
+     @endif
+  </div>
+@endif
   <div class="row">
     <h1 style="color: #EC67A2;margin-top: 8%;text-align: center;font-family: LOGO;"> Estrenos</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
         <div id="estrenos" style="margin-left: 3%">

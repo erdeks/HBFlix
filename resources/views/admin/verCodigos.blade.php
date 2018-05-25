@@ -44,7 +44,7 @@
                   <tr>
                     <th>Codigo</th>
                     <th>Disponible</th>
-                    <th></th>
+                    <th>Utilizado por:</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -56,6 +56,7 @@
                     @else
                       <td><i class="glyphicon glyphicon-remove" style="color:red;"></i></td>
                     @endif
+                    <td>{{$codigo->user}}</td>
                   </tr>
                 @endforeach
                 </tbody>

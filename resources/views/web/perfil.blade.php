@@ -66,7 +66,46 @@
 
                    </tbody>
                  </table>
-                 <a href="{{ url('/inicio/perfil/editarPerfil') }}" class="btn btn-primary" style="margin-left:80%;">Editar perfil</a>
+                 <a href="{{ url('/inicio/perfil/editarPerfil') }}" class="btn btn-primary">Editar perfil</a>
+               </div>
+             </div>
+           </div>
+        </div>
+        <div class="panel panel-info" style="background-color:#1d2424;">
+           <div class="panel-heading" style="background-color:#272727;">
+             <h3 class="panel-title" style="color:#EC67A2;">SUBSCRIPCIÓN</h3>
+           </div>
+           <form action="{{ url('/inicio/perfil/code') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+           <div class="panel-body">
+             <div class="row">
+               <div class=" col-md-9 col-lg-9 ">
+                 <table class="table table-user-information">
+                   <tbody>
+                      @if(Auth::user()->admin == 1)
+                       <div class="alert alert-info alert-dismissable" style="margin-top: 5%;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>¡ATENCIÓN!</strong> Los admin tienen subscripción infinita.
+                      </div>
+                      @else
+                      <label style="color:#EC67A2;">Amplia tu subscripción con un código nuevo</label></br></br>
+                      @if(Session::has('flash_message'))
+                         <div class="alert alert-danger alert-dismissable col-md-offset-4 col-md-6">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                           <strong> ¡Atención!</strong> {{Session::get('flash_message')}}
+                        </div>
+                      @endif
+                       <input type="text" name="code" id="code"></br></br>
+                       <input type="hidden" name="idC" value="{{Auth::user()->id}}">
+                      <div class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>¡ATENCIÓN!</strong> Tu subscripción caba en {{Auth::user()->subFinal}}.
+                      </div>
+                      <button type="submit" class="btn btn-primary" >Enviar code!</button>
+                      @endif
+                   </tbody>
+                   </form>
+                 </table>
                </div>
              </div>
            </div>
@@ -98,7 +137,7 @@
                </tr>
             </tbody>
          </table>
-         <button value="Editar" class="btn btn-primary" onclick="mostrar()" style="margin-left:80%;">Editar</button>
+         <button value="Editar" class="btn btn-primary" onclick="mostrar()" >Editar</button>
        </div>
        <!--Hasta aquí-->
        <!--Hasta aquí-->
@@ -112,8 +151,11 @@
                  <td>Favorito 1:</td>
                  <td>
                  <select id="fav1" name="fav1" >
+                 	<option selected>{{Auth::user()->fav1}}</option>
                     @foreach( $arrayGenero as $key => $genero )
-                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    	@if(Auth::user()->fav1 != $genero->nombre)
+                        	<option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                     	@endif
                     @endforeach
                 </select>
                 </td>
@@ -123,8 +165,11 @@
                  <td>Favorito 2:</td>
                  <td>
                  <select id="fav2" name="fav2" >
+                 <option selected>{{Auth::user()->fav2}}</option>
                     @foreach( $arrayGenero as $key => $genero )
-                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    	@if(Auth::user()->fav2 != $genero->nombre)
+                        	<option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                        @endif
                     @endforeach
                 </select>
                 </td>
@@ -134,8 +179,11 @@
                  <td>Favorito 3:</td>
                  <td>
                  <select id="fav3" name="fav3" >
+                 <option selected>{{Auth::user()->fav3}}</option>
                     @foreach( $arrayGenero as $key => $genero )
+                    	@if(Auth::user()->fav3 != $genero->nombre)
                         <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                        @endif
                     @endforeach
                 </select>
                 </td>
@@ -145,8 +193,11 @@
                  <td>Favorito 4:</td>
                  <td>
                  <select id="fav4" name="fav4" >
+                 <option selected>{{Auth::user()->fav4}}</option>
                     @foreach( $arrayGenero as $key => $genero )
-                        <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                    	@if(Auth::user()->fav4 != $genero->nombre)
+                        	<option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
+                        @endif
                     @endforeach
                 </select>
                 </td>
@@ -154,7 +205,7 @@
                </tr>
             </tbody>
          </table>
-         <button type="submit" value="Confirmar" class="btn btn-primary" onclick="noMostrar()" style="margin-left:80%;">Guardar cambios</button>
+         <button type="submit" value="Confirmar" class="btn btn-primary" onclick="noMostrar()" ">Guardar cambios</button>
        </div>
        <!--Hasta aquí-->
      </form>
