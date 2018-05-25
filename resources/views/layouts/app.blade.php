@@ -246,11 +246,7 @@
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
-<<<<<<< HEAD
            <li style="color: #EC67A2;"><strong>Tu subscripción termina: {{Auth::user()->subFinal}}</strong></li>
-=======
-
->>>>>>> a4365a0d71e8fc856cd1e51ff3eebc45abe3ffe6
         </ul>
          <div class="nav top-nav" style="text-align: center; margin-top: 1%;">
             <strong style="color: #EC67A2" class="logotipo" id="peFue">peliculas</strong>

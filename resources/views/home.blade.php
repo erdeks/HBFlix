@@ -2,11 +2,6 @@
 
 @section('content')
     <!--De aqui hacia abajo va en la view-->
-<<<<<<< HEAD
-<div class="container ">
-  <div class="row" >
-
-=======
 @if($anyo == "1")
 
 
@@ -26,7 +21,6 @@
      @if (session()->has('flash_notification.success')) 
         <script>alert("¡Cuidado! Tu subscripción acaba {{Auth::user()->subFinal}}, te quedan {{$xyz}} dias una vez acabada la subscripción no tendrás acceso a HBFLIX");</script>
      @endif
->>>>>>> 8d6630f24097e6d27cf40c388294651a615029cc
   </div>
 @endif
   <div class="row">
