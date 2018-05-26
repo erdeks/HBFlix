@@ -88,7 +88,7 @@ class HomeController extends Controller
 	            return view('home', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula,'arraySerie'=>$arraySerie,'estrenosPeli'=>$estrenosPeli,'ultimasAddPeli'=>$ultimasAddPeli, 'estrenosSer'=>$estrenosSer,'ultimasAddSer'=>$ultimasAddSer,'anyo'=>$msg));
 
 	          }
-	        
+
 	      }elseif($dataFinal[1] < $dataActual[1]){
 	        $msg = "2";
 	        $user1->subs = "0";
@@ -140,5 +140,25 @@ class HomeController extends Controller
         \Session::flash('flash_message', 'Código incorrecto');
         return redirect('/inicio');
       }
+    }
+    public function estrenoPelis(){
+      $genero=Genero::all();
+      $aLanzamiento = ALanzamiento::all();
+      $estrenosSer = Multimedia::where('tipo', '1')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      return view('web.estrenosPeli', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'estrenosPeli'=>$estrenosPeli, 'estrenosSer'=>$estrenosSer));
+    }
+    public function favoritosPelis(){
+      $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
+      $genero=Genero::all();
+      $aLanzamiento = ALanzamiento::all();
+      $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
+      return view('web.pelisFavoritas', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula, 'arraySerie'=>$arraySerie));
+    }
+    public function ultimasPelis(){
+      $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
+      $genero=Genero::all();
+      $aLanzamiento = ALanzamiento::all();
+      return view('web.ultimasPelis', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'ultimasAddPeli'=>$ultimasAddPeli));
     }
 }

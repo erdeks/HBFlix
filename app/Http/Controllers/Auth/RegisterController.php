@@ -102,7 +102,7 @@ class RegisterController extends Controller
                 'fav4' => $check4,
                 'admin' => $uno,
                 'subs'  => $uno,//activa la subscripción
-                'subFinal' => "3000-12-30"
+                'subFinal' => "3000-12-30",
                 'imgPerfil' => $path,
                 'password' => bcrypt($data['password']),
 
@@ -110,7 +110,7 @@ class RegisterController extends Controller
         }else{
             $codigoValido = Codigo::where('codigo', $code)->first();
             if($codigoValido){
-                if($codigoValido->usado == "0"){  
+                if($codigoValido->usado == "0"){
                     $uno = "1";
                     $path = '/images/perfil.jpg';
 

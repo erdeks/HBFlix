@@ -85,3 +85,7 @@ Route::get('/inicio/anyo/{anyo}', 'AnyoController@anyos');
 //Detalles Multimedia
 Route::get('/inicio/verPelicula/{id}','MultimediaController@verPelicula');
 Route::get('/inicio/verSerie/{id}','MultimediaController@verSerie');
+//Ver mas
+Route::get('/inicio/estrenosPeli', 'HomeController@estrenoPelis');
+Route::get('/inicio/favoritosPelis', 'HomeController@favoritosPelis');
+Route::get('/inicio/ultimasPelis', 'HomeController@ultimasPelis');

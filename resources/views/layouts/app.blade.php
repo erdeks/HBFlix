@@ -252,7 +252,7 @@
             <strong style="color: #EC67A2" class="logotipo" id="peFue">peliculas</strong>
               <label class="custom-control custom-checkbox">
                 <strong style="color: #EC67A2" class="logotipo" id="peDen"></strong>
-                <input type="checkbox" class="custom-control-input" id="checkid" style="display: none;" onchange="prueba()">
+                <input type="checkbox" class="custom-control-input" id="checkid" style="display: none;" onchange="prueba()" >
                 <span class="custom-control-indicator"></span>
                 <strong style="color: #EC67A2" class="logotipo" id="seDen">series</strong>
               </label>
@@ -313,7 +313,7 @@
     <script type="text/javascript">
       function prueba(){
         var x = document.getElementById("checkid").checked;
-
+        
         if(x){
           document.getElementById('peDen').innerHTML = "peliculas";
           document.getElementById('peFue').innerHTML = "";
@@ -350,7 +350,7 @@ html,body{
     <div class="panel-body" style="text-align: left;">
       <h2>Usuario:<strong> {{Auth::user()->name}}</strong></h2>
       @if(Session::has('flash_message'))
-         <div class="alert alert-danger alert-dismissable col-md-offset-3 col-md-6">               
+         <div class="alert alert-danger alert-dismissable col-md-offset-3 col-md-6">
          <strong> ¡Mal mal muuy mal!</strong> {{Session::get('flash_message')}}
         </div></br></br></br></br>
 
