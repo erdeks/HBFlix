@@ -8,6 +8,7 @@ use App\ALanzamiento;
 use App\Multimedia;
 class GeneroController extends Controller
 {
+  //Funcion que devuelve los generos para las paginas de generos
   public function main(Request $request, $nombre)
   {
     $arrayPelis = Multimedia::where('genero', $nombre)->Where('tipo', '0')->get();

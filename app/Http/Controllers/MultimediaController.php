@@ -14,6 +14,7 @@ use App\Episodio;
 
 class MultimediaController extends Controller
 {
+  //funcion que devuelve todos los datos necesarios para ver los detalles de las peliculas
   public function verPelicula($id){
 
     $peli= Multimedia::find($id);
@@ -24,6 +25,7 @@ class MultimediaController extends Controller
     return view('web.verPelicula', array('peli'=>$peli,'arrayPelicula'=>$peliculas,'arrayGenero'=>$contGenero,'arrayAn'=>$contAn, 'arrayLanz'=>$aLanzamiento));
 
   }
+  //funcion que devuelve todos los datos necesarios para ver los detalles de las series
   public function verSerie($id){
     $series= Multimedia::find($id);
     $idSerie = $series->id;

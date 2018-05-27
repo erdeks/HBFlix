@@ -10,6 +10,7 @@ use App\ALanzamiento;
 use App\Http\Controllers\Auth;
 class PerfilController extends Controller
 {
+  //devuelve los datos de usuario para mostrar en el perfil
   public function perfil()
  {
    $arrayUser = User::all();
@@ -17,6 +18,7 @@ class PerfilController extends Controller
    $aLanzamiento = ALanzamiento::all();
    return view('web.perfil', array('arrayUser'=>$arrayUser, 'arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
  }
+ //funcion para editar perfil
  public function editarPerfil()
 {
   $arrayUser = User::all();
@@ -24,6 +26,7 @@ class PerfilController extends Controller
   $aLanzamiento = ALanzamiento::all();
   return view('web.editarPerfil', array('arrayUser'=>$arrayUser, 'arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
 }
+  //funcion para actualizar los cambios del perfil en la bbdd
   public function update(Request $request){
        $user= User::find($request->input('id'));
        $user->id = $request->input('id');
@@ -39,8 +42,9 @@ class PerfilController extends Controller
        $aLanzamiento = ALanzamiento::all();
        return view('web.perfil', array('arrayUser'=>$arrayUser, 'arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento));
    }
+   //funcion para actualizar tus preferencias
    public function updateFavs(Request $request){
-      
+
       $user = User::find($request->input('id'));
 
       $user->fav1 = $request->input('fav1');
@@ -50,10 +54,8 @@ class PerfilController extends Controller
       $user->save();
 
       return redirect('/inicio/perfil');
-
-
    }
-
+   //funcion para introducir codigo de subscripcion desde el perfil
    public function updateCode(Request $request){
 
       $code = $request->input('code');
@@ -61,7 +63,7 @@ class PerfilController extends Controller
         if($codigoValido){
           if($codigoValido->usado == "0"){
             $user = User::find($request->input('idC'));
-            
+
             $codigo= Codigo::where('codigo', $code)->first();
             $codigo->usado = "1";
             $codigo->user = $user->email;

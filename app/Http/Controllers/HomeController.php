@@ -11,25 +11,18 @@ use App\Codigo;
 use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('home');
     }
+    //funcion que carga el menu
     public function menu(){
       $genero=Genero::all();
       $aLanzamiento = ALanzamiento::all();
@@ -56,7 +49,7 @@ class HomeController extends Controller
       $dataFinal[1];
       //Año
       $dataFinal[0];
-
+      //control de subscripcion
       if($dataActual[0] <= $dataFinal[0]){
 	      if($dataFinal[1] >= $dataActual[1]){
 	        if($dataFinal[1] > $dataActual[1] && $dataFinal[2] < $dataActual[2]){
@@ -108,12 +101,13 @@ class HomeController extends Controller
 	  }
 
     }
+    //funcion que muestra los generos
     public function generos()
     {
         $generos = Genero::all();
         return response($generos);
     }
-
+    //funcion para controlar subscripcion
     public function upDateCode(Request $request)
     {
       $code = $request->input('validad_code');
@@ -141,6 +135,7 @@ class HomeController extends Controller
         return redirect('/inicio');
       }
     }
+    //funcion que devuelve los ultimos estrenos de peliculas
     public function estrenoPelis(){
       $genero=Genero::all();
       $aLanzamiento = ALanzamiento::all();
@@ -148,6 +143,7 @@ class HomeController extends Controller
       $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
       return view('web.estrenosPeli', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'estrenosPeli'=>$estrenosPeli, 'estrenosSer'=>$estrenosSer));
     }
+    //funcion que devuelve los ultimos estrenos de Series
     public function estrenoSeries(){
       $genero=Genero::all();
       $aLanzamiento = ALanzamiento::all();
@@ -155,6 +151,7 @@ class HomeController extends Controller
       $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
       return view('web.estrenosSerie', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'estrenosPeli'=>$estrenosPeli, 'estrenosSer'=>$estrenosSer));
     }
+    //funcion que devuelve los favoritos de peliculas
     public function favoritosPelis(){
       $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
       $genero=Genero::all();
@@ -162,6 +159,7 @@ class HomeController extends Controller
       $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
       return view('web.pelisFavoritas', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula, 'arraySerie'=>$arraySerie));
     }
+    //funcion que devuelve los favoritos de series
     public function favoritosSeries(){
       $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
       $genero=Genero::all();
@@ -169,6 +167,7 @@ class HomeController extends Controller
       $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
       return view('web.seriesFavoritas', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula, 'arraySerie'=>$arraySerie));
     }
+    //funcion que devuelve los ultimos añadidos de peliculas
     public function ultimasPelis(){
       $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
       $genero=Genero::all();
@@ -176,6 +175,7 @@ class HomeController extends Controller
       $ultimasAddSer = Multimedia::where('tipo', '1')->orderBy('created_at', 'DESC')->get();
       return view('web.ultimasPelis', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'ultimasAddPeli'=>$ultimasAddPeli, 'ultimasAddSer'=>$ultimasAddSer));
     }
+    //funcion que devuelve los ultimos añadidos de series
     public function ultimasSeries(){
       $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
       $genero=Genero::all();
