@@ -252,10 +252,10 @@
   	            	@if ($cont <= 8)
   		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
   		    	          <div class="portada-p">
-  		    	            <a href="#">
+  		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
   		    	              <img src="{{url('series/imgSeries/'.$serie->titulo)}}" alt="{{$serie->titulo}}" style="height: 270px; border-radius: 8px;">
   		    	            </a></br></br>
-  		    	            <a href="#">
+  		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
   		    	              <p style="color:  #EC67A2;"><strong>{{$serie->titulo}}</strong></p>
   		    	            </a>
   		    	            <span style="color:  #EC67A2; text-align: center;">{{$serie->aLanzamiento}}</span>
@@ -267,10 +267,10 @@
                 		@if ($cont <= 8)
   		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
   		    	          <div class="portada-p">
-  		    	            <a href="#">
+  		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
   		    	              <img src="{{url('series/imgSeries/'.$serie->titulo)}}" alt="{{$serie->titulo}}" style="height: 270px; border-radius: 8px;">
   		    	            </a></br></br>
-  		    	            <a href="#">
+  		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
   		    	              <p style="color:  #EC67A2;"><strong>{{$serie->titulo}}</strong></p>
   		    	            </a>
   		    	            <span style="color:  #EC67A2; text-align: center;">{{$serie->aLanzamiento}}</span>
@@ -282,10 +282,10 @@
                 		@if ($cont <= 8)
   		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
   		    	          <div class="portada-p">
-  		    	            <a href="#">
+  		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
   		    	              <img src="{{url('series/imgSeries/'.$serie->titulo)}}" alt="{{$serie->titulo}}" style="height: 270px; border-radius: 8px;">
   		    	            </a></br></br>
-  		    	            <a href="#">
+  		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
   		    	              <p style="color:  #EC67A2;"><strong>{{$serie->titulo}}</strong></p>
   		    	            </a>
   		    	            <span style="color:  #EC67A2; text-align: center;">{{$serie->aLanzamiento}}</span>
@@ -297,7 +297,7 @@
                 		@if ($cont <= 8)
     		    	        <div class="hijo" style=" float: left; padding: 3.1%;">
     		    	          <div class="portada-p">
-    		    	            <a href="#">
+    		    	            <a href="{{url('/inicio/verSerie/'.$serie->id)}}">
     		    	              <img src="{{url('series/imgSeries/'.$serie->titulo)}}" alt="{{$serie->titulo}}" style="height: 270px; border-radius: 8px;">
     		    	            </a></br></br>
     		    	            <a href="#">
@@ -340,10 +340,10 @@
                @if ($cont <= 4)
                   <div class="hijo" style=" float: left; padding: 3.1%;">
                     <div class="portada-p">
-                      <a href="#">
+                      <a href="{{url('/inicio/verSerie/'.$add->id)}}">
                         <img src="{{url('series/imgSeries/'.$add->titulo)}}" alt="{{$add->titulo}}" style="height: 270px; border-radius: 8px;">
                       </a></br></br>
-                      <a href="#">
+                      <a href="{{url('/inicio/verSerie/'.$add->id)}}">
                         <p style="color:  #EC67A2;"><strong>{{$add->titulo}}</strong></p>
                       </a>
                       <span style="color:  #EC67A2; text-align: center;">{{$add->aLanzamiento}}</span>

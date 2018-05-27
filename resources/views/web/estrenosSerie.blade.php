@@ -42,16 +42,15 @@
           @foreach( $estrenosSer as $key => $estreno )
               <div class="hijo" style=" float: left; padding: 3.1%;">
                 <div class="portada-p">
-                  <a href="#">
+                  <a href="{{url('/inicio/verSerie/'.$estreno->id)}}">
                     <img src="{{url('series/imgSeries/'.$estreno->titulo)}}" alt="{{$estreno->titulo}}" style="height: 270px; border-radius: 8px;">
                   </a></br></br>
-                  <a href="#">
+                  <a href="{{url('/inicio/verSerie/'.$estreno->id)}}">
                     <p style="color:  #EC67A2;"><strong>{{$estreno->titulo}}</strong></p>
                   </a>
                   <span style="color:  #EC67A2; text-align: center;">{{$estreno->aLanzamiento}}</span>
                 </div>
               </div>
-            <?php $cont++ ?>
           @endforeach
         @else
           @if(Auth::user()->admin == "1")
