@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.app')
 
 @section('content')
 <style type="text/css">
@@ -31,6 +31,8 @@
 </div>
   </div>
   <!--DIV DEL MEDIO-->
+  <div class="container" >
+    <div class="row" style="margin-left:15%; margin-top:8%; ">
     <div class="col-sm-9 col-md-9" id='divInfo' style="display: block;">
       <div class="panel">
         <div class="panel-heading" style="background-color: #181E1F;">
@@ -45,11 +47,8 @@
        <img src="{{url('series/imgSeries/'.$series->titulo)}}" alt="{{$series->titulo}}" style="height: 350px; border-radius: 8px; float: left;">
        <h1 style="color:  #EC67A2;text-align: center;"><strong>Titulo:</strong> {{$series->titulo}}</h1>
        </br>
-       <ul>
-         <li style="color:  #EC67A2;text-align: center; list-style:none;"><H1>Género: {{$series->genero}}</H1></li>
-         <li style="color:  #EC67A2;text-align: center; list-style:none;"><H1>Año: {{$series->aLanzamiento}}</H1></li>
-       </ul>
-       <h1 style="color:  #EC67A2;text-align: center;">Resumen</h1>
+       <p style="color:  #EC67A2; text-align:center;">{{$series->genero}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$series->aLanzamiento}}</p>
+       <h1 style="color:  #EC67A2;text-align: center;">Sinopsis</h1>
        <p style="color:  #EC67A2;text-align: center;">{{$series->resumen}}</p>
       </div>
     </div>
@@ -65,16 +64,21 @@
               @if($series->id == $temp->idMultimedia)
             <div class="panel-heading"style="background-color: #282F30;">
     					<h4 class="panel-title" style="background-color: #282F30;">
-    						<h4><a data-toggle="collapse" href="#collapse{{$key}}" style="color: #EC67A2">Temporada{{$temp->temporada}}</a></h4>
+    						<h4><a data-toggle="collapse" href="#collapse{{$key}}" style="color: #EC67A2">Temporada {{$temp->temporada}}</a></h4>
     					</h4>
     				</div>
     				<div id="collapse{{$key}}" class="panel-collapse collapse" style="background-color: #282F30;">
     					<div class="panel-body" style="background-color: #282F30;">
-                @foreach ( $arrayEpisodios as $key => $ep )
+                @foreach ( $arrayEpisodios as $epi => $ep )
                   @if($temp->id == $ep->idTemporada)
                   <ul>
-                    <li style="color: #EC67A2"> Episodio{{$ep->orden}}: {{$ep->titulo}}</li>
+                    <li style="color: #EC67A2"><a href="#coll{{$epi}}" data-toggle="collapse" style="color: #EC67A2"> Episodio{{$ep->orden}}: {{$ep->titulo}}
+                      <video width="400" controls id="coll{{$epi}}" class="collapse">
+                        <source src="{{url('series/VideoSeries/'.$series->titulo.'_'.$ep->titulo)}}" type="video/mp4">
+                      </video>
+                    </li>
                   </ul>
+
                   @endif
                 @endforeach
               </div>

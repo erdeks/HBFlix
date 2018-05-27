@@ -38,4 +38,24 @@
     </div>
  </div>
 </div><!--container-->
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+    var checkbox = document.querySelector('input[type="checkbox"]');
+
+      checkbox.addEventListener('change', function () {
+
+          if (checkbox.checked) {
+            document.getElementById('peliculas').style.display = 'none';
+            document.getElementById('series').style.display = 'block';
+          } else {
+            document.getElementById('peliculas').style.display = 'block';
+            document.getElementById('series').style.display = 'none';
+          }
+
+
+      });
+    });
+
+</script>
 @endsection

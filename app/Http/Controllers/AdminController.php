@@ -184,7 +184,7 @@ class AdminController extends Controller
         $ep->idTemporada = $te->id;
         $ep->orden = strval($orden);
         $ep->titulo = $request->input('ep')[$x];
-        $ep->rutaVid = '/series/videoSeries/'.$request->input('ep')[$x];
+        $ep->rutaVid = '/series/videoSeries/'.$serie->titulo.'_'.$request->input('ep')[$x];
         $ep->save();
         if(Input::file("vidSerie.$x")){
           $video = Input::file("vidSerie")[$x];

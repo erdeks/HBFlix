@@ -148,6 +148,13 @@ class HomeController extends Controller
       $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
       return view('web.estrenosPeli', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'estrenosPeli'=>$estrenosPeli, 'estrenosSer'=>$estrenosSer));
     }
+    public function estrenoSeries(){
+      $genero=Genero::all();
+      $aLanzamiento = ALanzamiento::all();
+      $estrenosSer = Multimedia::where('tipo', '1')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      $estrenosPeli = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+      return view('web.estrenosSerie', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'estrenosPeli'=>$estrenosPeli, 'estrenosSer'=>$estrenosSer));
+    }
     public function favoritosPelis(){
       $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
       $genero=Genero::all();
@@ -155,10 +162,25 @@ class HomeController extends Controller
       $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
       return view('web.pelisFavoritas', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula, 'arraySerie'=>$arraySerie));
     }
+    public function favoritosSeries(){
+      $arrayPelicula = Multimedia::inRandomOrder()->where('tipo', '0')->get();
+      $genero=Genero::all();
+      $aLanzamiento = ALanzamiento::all();
+      $arraySerie = Multimedia::inRandomOrder()->where('tipo', '1')->get();
+      return view('web.seriesFavoritas', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'arrayPelicula'=>$arrayPelicula, 'arraySerie'=>$arraySerie));
+    }
     public function ultimasPelis(){
       $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
       $genero=Genero::all();
       $aLanzamiento = ALanzamiento::all();
-      return view('web.ultimasPelis', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'ultimasAddPeli'=>$ultimasAddPeli));
+      $ultimasAddSer = Multimedia::where('tipo', '1')->orderBy('created_at', 'DESC')->get();
+      return view('web.ultimasPelis', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'ultimasAddPeli'=>$ultimasAddPeli, 'ultimasAddSer'=>$ultimasAddSer));
+    }
+    public function ultimasSeries(){
+      $ultimasAddPeli = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
+      $genero=Genero::all();
+      $aLanzamiento = ALanzamiento::all();
+      $ultimasAddSer = Multimedia::where('tipo', '1')->orderBy('created_at', 'DESC')->get();
+      return view('web.ultimasSeries', array('arrayGenero'=>$genero, 'arrayLanz'=>$aLanzamiento,'ultimasAddPeli'=>$ultimasAddPeli, 'ultimasAddSer'=>$ultimasAddSer));
     }
 }

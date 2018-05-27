@@ -2,7 +2,7 @@
 
 @section('content')
     <!--De aqui hacia abajo va en la view-->
-  <div class"container" id="peliculas">
+  <div class"container" id="peliculas" style="display:none;">
   <div class="container">
   <div class="row">
     <!--Mostramos las peliculas que han sido agregadas ultimamente-->
@@ -36,7 +36,7 @@
     </div>
   </div>
 </div>
-<div id="series" style="display:none;">
+<div id="series" style="display:block;">
   <div class="row">
     <!--Ultimas series agregadas-->
     <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Ultimas agregadas</h1>

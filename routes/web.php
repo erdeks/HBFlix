@@ -87,5 +87,8 @@ Route::get('/inicio/verPelicula/{id}','MultimediaController@verPelicula');
 Route::get('/inicio/verSerie/{id}','MultimediaController@verSerie');
 //Ver mas
 Route::get('/inicio/estrenosPeli', 'HomeController@estrenoPelis');
+Route::get('/inicio/estrenosSerie', 'HomeController@estrenoSeries');
 Route::get('/inicio/favoritosPelis', 'HomeController@favoritosPelis');
+Route::get('/inicio/favoritosSeries', 'HomeController@favoritosSeries');
 Route::get('/inicio/ultimasPelis', 'HomeController@ultimasPelis');
+Route::get('/inicio/ultimasSeries', 'HomeController@ultimasSeries');

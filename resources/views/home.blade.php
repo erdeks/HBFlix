@@ -25,6 +25,7 @@
   </div>
 @endif
 <script>
+
     document.addEventListener('DOMContentLoaded', function () {
     var checkbox = document.querySelector('input[type="checkbox"]');
 
@@ -170,7 +171,7 @@
   <div class="container">
   <div class="row">
     <!--Mostramos las peliculas que han sido agregadas ultimamente-->
-    <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Ultimas agregadas</h1><a style="text-decoration:none;color:  #EC67A2;" href="{{url('/incio/ultimasPelis')}}">&nbsp;&nbsp;&nbsp;Ver más</a>
+    <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Ultimas agregadas</h1><a style="text-decoration:none;color:  #EC67A2;" href="{{url('/inicio/ultimasPelis')}}">&nbsp;&nbsp;&nbsp;Ver más</a>
         <div id="favoritos" style="margin-left: 3%">
             <?php $cont=1 ?>
           @if($ultimasAddPeli->isNotEmpty())
@@ -208,7 +209,7 @@
     <div id="series" style="display:none;">
     <div class="row">
       <!--Mostramos los ultimos estrenos de series-->
-      <h1 style="color: #EC67A2;margin-top: 8%; text-align: center;font-family: LOGO;"> Estrenos</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
+      <h1 style="color: #EC67A2;margin-top: 8%; text-align: center;font-family: LOGO;"> Estrenos</h1><a style="text-decoration:none;color:  #EC67A2;" href="{{url('/inicio/estrenosSerie')}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
           <div id="estrenos" style="margin-left: 3%">
           <?php $cont=1 ?>
             @if($estrenosSer->isNotEmpty())
@@ -216,7 +217,7 @@
                @if ($cont <= 4)
                   <div class="hijo" style=" float: left; padding: 3.1%;">
                     <div class="portada-p">
-                      <a href="#">
+                      <a href="{{url('/inicio/verSerie/'.$estreno->id)}}">
                         <img src="{{url('series/imgSeries/'.$estreno->titulo)}}" alt="{{$estreno->titulo}}" style="height: 270px; border-radius: 8px;">
                       </a></br></br>
                       <a href="#">
@@ -242,7 +243,7 @@
       </div>
     <div class="row">
       <!--Mostramos las series segun tus generos favoritos-->
-      <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Favoritos</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
+      <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Favoritos</h1><a style="text-decoration:none;color:  #EC67A2;" href="{{url('/inicio/favoritosSeries')}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
           <div id="favoritos" style="margin-left: 3%">
           <?php $cont=1 ?>
             @if($arraySerie->isNotEmpty())
@@ -330,7 +331,8 @@
           </div>
       </div>
     <div class="row">
-      <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Ultimas agregadas</h1><a style="text-decoration:none;color:  #EC67A2;" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
+      <!--Ultimas series agregadas-->
+      <h1 style="color: #EC67A2;margin-top: 5%;text-align: center;font-family: LOGO;">Ultimas agregadas</h1><a style="text-decoration:none;color:  #EC67A2;" href="{{url('/inicio/ultimasSeries')}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver más</a>
           <div id="favoritos" style="margin-left: 3%">
               <?php $cont=1 ?>
             @if($ultimasAddSer->isNotEmpty())
