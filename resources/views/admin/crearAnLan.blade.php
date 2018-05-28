@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <!--Nombre usuario-->
                         <label>Año lanzamiento:</label>
-                        <input type="text" name="aLan" value="" id="aLan" class="form-control">
+                        <input type="text" name="aLan" value="" id="aLan" class="form-control" required>
 
                     </div>
                     <div class="form-group text-center">
