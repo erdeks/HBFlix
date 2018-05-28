@@ -94,6 +94,7 @@
     </div>
   </div>
   <script type="text/javascript">
+        //funcion para volver a la pagina de inicio
         function volverAtras(){
           window.location = "http://127.0.0.1:8000/admin/verSeries";
 

@@ -45,7 +45,7 @@
           <h3 class="panel-title" style="color: #EC67A2">Peliculas</h3>
             </div>
             <div class="panel-body" style="background-color: #282F30;">
-            
+
           <div class="row" style="margin-top:20px">
           @if(Session::has('flash_message'))
              <div class="alert alert-success alert-dismissable col-md-offset-3 col-md-6">
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <!--Nombre usuario-->
                         <label>Genero:</label>
-                        <input type="text" name="genero" value="" id="genero" class="form-control">
+                        <input type="text" name="genero" value="" id="genero" class="form-control" required>
 
                     </div>
                     <div class="form-group text-center">

@@ -67,6 +67,7 @@
       </div>
   </div>
   <script>
+      //funcion que alterna el selector entre series y peliculas
       document.addEventListener('DOMContentLoaded', function () {
       var checkbox = document.querySelector('input[type="checkbox"]');
 

@@ -70,41 +70,30 @@
                     <div class="form-group">
                         <!--Nombre usuario-->
                         <label>Titulo de la Serie:</label>
-                        <input type="text" name="titulo" value="" id="titulo" class="form-control">
+                        <input type="text" name="titulo" value="" id="titulo" class="form-control" required>
 
                         <label for="titulo">Imágen de la Serie: </label>
                         <!-- -->
-                        <input type="file" name="imgSerie" id="imgPeli" class="form-control">
+                        <input type="file" name="imgSerie" id="imgPeli" class="form-control" required>
 
                         <label for="texto">Resúmen de la Serie: </label>
                         <!-- -->
                         <textarea id="resumen" name="resumen" cols="44" class="form-control" required></textarea></br>
 
                         <label for="texto">Género: </label>
-                        <select id="genero" name="genero" >
+                        <select id="genero" name="genero" required>
                             @foreach( $arrayGenero as $key => $genero )
                                 <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
                             @endforeach
                         </select></br></br>
 
                         <label for="texto">Año de lanzamiento: </label>
-                        <select id="anyo" name="anyo" >
+                        <select id="anyo" name="anyo" required>
                           @foreach( $arrayAn as $key => $anyo )
                                 <option value="{{$anyo->aLanzamiento}}">{{$anyo->aLanzamiento}}</option>
                             @endforeach
                         </select>
-                        <!--Aqui le decimos que es del tipo 1 que seria serie-->
                         <input type="hidden" name="tipo" id="tipo" class="form-control" value="1">
-                        <!--<div class="temporadas">
-                          <label>Temporada: </label>
-                          <input type="text" name="t[]">
-                          <button type="button" class="btn btn-success" id="addTemp">
-                              Añadir Temporada
-                          </button>
-                            <button type="button" class="btn btn-success addEp" style="margin-left: 27%;">
-                                Añadir Episodio
-                            </button><br>
-                        </div>-->
                     <br><div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">
                             Añadir Serie
@@ -120,28 +109,4 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  var temp=0;
-  var ep=0;
-  $(document).ready(function(){
-    var wrapper = $(".temporadas");
-    $("#addTemp").click(function(e){
-      temp++;
-      e.preventDefault();
-      $(wrapper).append("<div><label>Temporada: </label><input type='text' name='t[]'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button><button type='button' class='btn btn-success addEp' style='margin-left: 27%;'>Añadir Episodio</button></div>");
-    });
-    $(wrapper).on('click', '.addEp', function(){
-      var t=$(this).prev().prev().attr("name");
-      ep++;
-      $(this).after("<div><label>Episodio: </label><input type='text' name='ep[]'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
-    });
-
-    $(wrapper).on("click", "#rmTemp", function(e){
-      e.preventDefault();
-      $(this).parent('div').remove();
-    });
-
-  });
-
-</script>
 @endsection
