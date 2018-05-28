@@ -233,6 +233,7 @@
 					        </form>
 					    </div>    
 		        <script type="text/javascript">
+			//Estas funciones se encargan de poner los diferentes bloques en oculto asi cada vez que pulsas sobre siguiente modifica de block a none haciendo que se muestre otro bloque.
 		        	function alanteTres(){
 			          document.getElementById('info').style.display = 'block';
 		              document.getElementById('pass').style.display = 'none';
@@ -268,10 +269,8 @@
 			        }
 
 			        
-    			
+    				//JQuery con este proceso lo que hacemos es que en el apartado de generos cuando seleccionas cambie a checked pero siempre que cuando los seleccionados sean "<=" a 4 en caso de ser 4 los seleccionados no permitirá seleccionar más generos
     				localStorage.contador = 0;
-    				
-    				
 			   		$('.pro-chx').on('change', function() {
 			   			//localStorage.contador = parseInt(localStorage.contador) + 1;
 					    //solu = localStorage.contador;
