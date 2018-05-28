@@ -103,6 +103,9 @@ class AdminController extends Controller
 	    $peli->aLanzamiento = $request->input('anyo');
 	    $peli->resumen = $request->input('resumen');
 
+      $video = Input::file("peli");
+      $vPath = public_path().'/peliculas/VideoPeliculas/';
+      $video->move($vPath, $request->input('titulo'));
 
 	    $file = Input::file('imgPeli');
   		$image = \Image::make(\Input::file('imgPeli'));
