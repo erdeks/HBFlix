@@ -95,7 +95,7 @@
                            <strong> ¡Atención!</strong> {{Session::get('flash_message')}}
                         </div>
                       @endif
-                       <input type="text" name="code" id="code"></br></br>
+                       <input type="text" name="code" id="code" required></br></br>
                        <input type="hidden" name="idC" value="{{Auth::user()->id}}">
                       <div class="alert alert-warning alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -150,7 +150,7 @@
                <tr>
                  <td>Favorito 1:</td>
                  <td>
-                 <select id="fav1" name="fav1" >
+                 <select id="fav1" name="fav1" required>
                  	<option selected>{{Auth::user()->fav1}}</option>
                     @foreach( $arrayGenero as $key => $genero )
                     	@if(Auth::user()->fav1 != $genero->nombre)
@@ -164,7 +164,7 @@
                <tr>
                  <td>Favorito 2:</td>
                  <td>
-                 <select id="fav2" name="fav2" >
+                 <select id="fav2" name="fav2" required>
                  <option selected>{{Auth::user()->fav2}}</option>
                     @foreach( $arrayGenero as $key => $genero )
                     	@if(Auth::user()->fav2 != $genero->nombre)
@@ -178,7 +178,7 @@
                <tr>
                  <td>Favorito 3:</td>
                  <td>
-                 <select id="fav3" name="fav3" >
+                 <select id="fav3" name="fav3" required>
                  <option selected>{{Auth::user()->fav3}}</option>
                     @foreach( $arrayGenero as $key => $genero )
                     	@if(Auth::user()->fav3 != $genero->nombre)
@@ -192,7 +192,7 @@
                <tr>
                  <td>Favorito 4:</td>
                  <td>
-                 <select id="fav4" name="fav4" >
+                 <select id="fav4" name="fav4" required>
                  <option selected>{{Auth::user()->fav4}}</option>
                     @foreach( $arrayGenero as $key => $genero )
                     	@if(Auth::user()->fav4 != $genero->nombre)
@@ -205,7 +205,7 @@
                </tr>
             </tbody>
          </table>
-         <button type="submit" value="Confirmar" class="btn btn-primary" onclick="noMostrar()" ">Guardar cambios</button>
+         <button type="submit" value="Confirmar" class="btn btn-primary" onclick="noMostrar()" >Guardar cambios</button>
        </div>
        <!--Hasta aquí-->
      </form>

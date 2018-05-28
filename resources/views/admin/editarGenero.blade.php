@@ -47,7 +47,7 @@
                  <!--Nombre usuario-->
                  <input type="hidden" name="idGenero" value="{{$genero->id}}">
                  <label style="color: #EC67A2">Genero:</label>
-                 <input type="text" name="genero" id="genero" class="form-control" value="{{$genero->nombre}}">
+                 <input type="text" name="genero" id="genero" class="form-control" value="{{$genero->nombre}}" required>
 
 
              <div class="form-group text-center">

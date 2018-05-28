@@ -69,15 +69,16 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                       <label for="texto">Serie: </label>
-                      <select id="serie" name="serie" >
+                      <select id="serie" name="serie" required>
                           @foreach( $arraySeries as $key => $serie )
                               <option value="{{$serie->titulo}}">{{$serie->titulo}}</option>
-                              <input type="hidden" name="id" id="id" class="form-control" value="{{$serie->id}}">
+                              <input type="hidden" name="id" id="id" class="form-control" value="{{$serie->id}}" required>
                           @endforeach
                       </select></br></br>
                       <div class="temporadas">
                         <label>Temporada: </label>
-                        <input type="text" name="temporada">
+                        <input type="text" name="temporada" required>
+                          <!--Boton para generar inputs de episodios-->
                           <button type="button" class="btn btn-success addEp" style="margin-left: 27%;">
                               Añadir Episodio
                           </button><br>
@@ -102,10 +103,11 @@
 <script type="text/javascript">
   $(document).ready(function(){
     var wrapper = $(".temporadas");
+    //con esta funcion creo los inputs para poner el nombre del episodio, el video y el boton de quitar episodio
     $(wrapper).on('click', '.addEp', function(){
-      $(this).before("<div><label>Episodio: </label><input type='text' name='ep[]'><br><label for='vidSerie'>Video serie: </label><input type='file' name='vidSerie[]' id='serie' class='form-control'><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
+      $(this).before("<div><label>Episodio: </label><input type='text' name='ep[]' required><br><label for='vidSerie'>Video serie: </label><input type='file' name='vidSerie[]' id='serie' class='form-control' required><button type='button' class='btn btn-danger' id='rmTemp'><i class='glyphicon glyphicon-minus'></i></button></div>");
     });
-
+    //con esta funcion creo el boton de eliminar
     $(wrapper).on("click", "#rmTemp", function(e){
       e.preventDefault();
       $(this).parent('div').remove();

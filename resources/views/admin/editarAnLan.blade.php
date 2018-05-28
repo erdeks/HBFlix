@@ -47,7 +47,7 @@
                  <!--Nombre usuario-->
                  <input type="hidden" name="idAnLan" value="{{$anyo->id}}">
                  <label style="color: #EC67A2">Año lanzamiento:</label>
-                 <input type="text" name="anLan" id="anLan" class="form-control" value="{{$anyo->aLanzamiento}}">
+                 <input type="text" name="anLan" id="anLan" class="form-control" value="{{$anyo->aLanzamiento}}" required>
              <div class="form-group text-center">
                  <button type="submit" class="btn btn-primary">
                      Editar Año

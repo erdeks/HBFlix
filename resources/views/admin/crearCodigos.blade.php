@@ -70,10 +70,11 @@
                     <div class="form-group">
                         <!--Nombre usuario-->
                         <label>Codigo:</label>
-                        <input type="text" name="codigo" id="codigo" class="form-control" readonly="readonly">
+                        <input type="text" name="codigo" id="codigo" class="form-control" readonly="readonly" required>
                         <input type="hidden" name="usado" value="0" id="usado">
                     </div>
                     <div class="form-group text-center">
+                        <!--boton que llama a la funcion para generar el codigo-->
                         <button name="generator" id="generator" type="button" class="btn btn-primary" onclick="keyGen();">
                             Generar Codigo
                         </button>
@@ -92,12 +93,17 @@
   </div>
 </div>
 <script type="text/javascript">
+  //funcion que genera codigos
   function keyGen(){
     var codig = "";
+    //creo una variable con todos los caracteres posibles
     var posibilidad = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    //bucle que se repite 8 veces porque el codigo es de 8 digitos
     for (var i = 0; i < 8; i++){
+      //guardo un caracte al azar de la variable anterior en la variable codig
       codig += posibilidad.charAt(Math.floor(Math.random()*posibilidad.length));
     }
+    //introduzco la variable codig en el input
     document.getElementById("codigo").value = codig;
     //poner innerhtml
   }

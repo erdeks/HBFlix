@@ -44,32 +44,32 @@
                    <tbody>
                      <tr>
                        <td></td>
-                       <td><input type="hidden" name="id" value="{{ Auth::user()->id }}" class="form-control"></td>
+                       <td><input type="hidden" name="id" value="{{ Auth::user()->id }}" class="form-control" required></td>
                      </tr>
                      <tr>
                        <td>Nombre:</td>
-                       <td><input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control"></td>
+                       <td><input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" required></td>
                      </tr>
                      <tr>
                        <td>Apellido:</td>
-                       <td><input type="text" name="apellido" value="{{ Auth::user()->apellido }}" class="form-control"></td>
+                       <td><input type="text" name="apellido" value="{{ Auth::user()->apellido }}" class="form-control" required></td>
                      </tr>
                      <tr>
                        <td>Email:</td>
-                       <td><input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control"></td>
+                       <td><input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control" required></td>
                      </tr>
                      <tr>
                        <td>Telefono:</td>
-                       <td><input type="text" name="telefono" value="{{ Auth::user()->telefono }}" class="form-control"></td>
+                       <td><input type="text" name="telefono" value="{{ Auth::user()->telefono }}" class="form-control" required></td>
                      </tr>
 
                      <tr>
                        <td>Fecha de nacimiento:</td>
-                       <td><input type="text" name="fechaNac" value="{{ Auth::user()->date }}" class="form-control"></td>
+                       <td><input type="text" name="fechaNac" value="{{ Auth::user()->date }}" class="form-control" required></td>
                      </tr>
                      <tr>
                       <td></td>
-                      <td><input type="hidden" name="password" value="{{ Auth::user()->password }}" class="form-control"></td>
+                      <td><input type="hidden" name="password" value="{{ Auth::user()->password }}" class="form-control" required></td>
                     </tr>
 
                    </tbody>

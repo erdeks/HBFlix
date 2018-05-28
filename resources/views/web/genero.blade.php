@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="peliculas">
 <div class="row">
     <div id="peliculas" style="margin-left: 5%; margin-top:5%;">
       @foreach($arrayPelis as $key=>$peli)
@@ -18,6 +19,8 @@
       @endforeach
     </div>
   </div>
+</div>
+<div id="series" style="display:none;">
   <div class="row">
       <div id="series" style="margin-left: 5%; margin-top:5%;">
         @foreach($arraySeries as $key=>$serie)
@@ -36,9 +39,10 @@
       </div>
     </div>
  </div>
+ </div>
 </div><!--container-->
 <script>
-
+    //funcion que alterna el selector entre series y peliculas
     document.addEventListener('DOMContentLoaded', function () {
     var checkbox = document.querySelector('input[type="checkbox"]');
 

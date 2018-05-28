@@ -67,18 +67,18 @@
         </p>
        <!--Empieza-->
       <form action="{{ url('admin/editarPeli') }}" method="POST" enctype="multipart/form-data">
-                
+
         {{ csrf_field() }}
 
         <div class="form-group">
             <!--Nombre usuario-->
             <input type="hidden" name="idPeli" value="{{$peli->id}}">
             <label style="color: #EC67A2">Titulo de la Película:</label>
-            <input type="text" name="titulo" id="titulo" class="form-control" >
-            
+            <input type="text" name="titulo" id="titulo" class="form-control" required>
+
             <label for="titulo" style="color: #EC67A2">Imágen de la Película: </label>
             <!-- -->
-            <input type="file" name="imgPeli" id="imgPeli" class="form-control">
+            <input type="file" name="imgPeli" id="imgPeli" class="form-control" required>
 
             <label for="titulo" style="color: #EC67A2">Película: </label>
             <!-- -->
@@ -87,33 +87,33 @@
             <label for="texto" style="color: #EC67A2">Resúmen de la película: </label>
             <!-- -->
             <textarea id="resumen" name="resumen" cols="44" class="form-control" required style="height: 150px"></textarea></br>
-        
+
             <label for="texto" style="color: #EC67A2">Género actual: </label>
 
-            <select id="genero" name="genero" class="form-control" style="width:83px">
+            <select id="genero" name="genero" class="form-control" style="width:83px" required>
               <option value="{{$peli->genero}}">{{$peli->genero}}</option>
                 @foreach( $arrayGenero as $key => $genero )
                   @if($genero->nombre == $peli->genero)
-                
+
                   @else
                      <option value="{{$genero->nombre}}">{{$genero->nombre}}</option>
                   @endif
                 @endforeach
             </select>
             </div>
-          
+
             <label for="texto" style="color: #EC67A2; ">Año de lanzamiento: </label>
-            <select id="anyo" name="anyo" class="form-control" style="width:83px">
+            <select id="anyo" name="anyo" class="form-control" style="width:83px" required>
              <option value="{{$peli->aLanzamiento}}">{{$peli->aLanzamiento}}</option>
               @foreach( $arrayAn as $key => $anyo )
                 @if($anyo->aLanzamiento == $peli->aLanzamiento)
-                
+
                 @else
                     <option value="{{$anyo->aLanzamiento}}">{{$anyo->aLanzamiento}}</option>
                 @endif
                 @endforeach
             </select>
-       
+
         <div class="form-group text-center">
             <button type="submit" class="btn btn-primary">
                 Editar Película
