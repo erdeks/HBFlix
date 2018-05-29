@@ -85,7 +85,7 @@
     <body>
       <nav class="navbar navbar-inverse navbar-default" style="opacity: .7;" role="navigation">
         <div class="navbar-header">
-          <a class="navbar-brand" id="logotipo" href="{{url('/inicio')}}">hbflix</a>
+          <a class="navbar-brand" id="logotipo" href="{{url('/')}}">hbflix</a>
         </div>
       </nav>
 		<div class="container">
