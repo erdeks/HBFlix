@@ -38,17 +38,33 @@ Route::get('/login/{user}/{password}',function(request $request,$email,$password
         $newToken = User::select()->where('email',$email)->first();
         $email = Auth::user()->email;
         $user = Auth::user()->name;
-        return response()->json(['email'=>$email,'Usuario'=>$user]);
+        $apellido = Auth::user()->apellido;
+        $telefono = Auth::user()->telefono;
+        $date = Auth::user()->date;
+        return response()->json(['email'=>$email,'Usuario'=>$user,'apellido'=>$apellido,'telefono'=>$telefono,'date'=>$date]);
     };
 
 });
 
+Route::get('/perfil/{nombre}',function(request $request,$nombre){
+
+	$peli = Multimedia::where('titulo', $nombre)->get();
+
+
+});
+
 Route::get('/verPelis',function(request $request){
-	$peliculas = Multimedia::where('tipo', '0')->get();
-    return response()->json(['peliculas'=>$peliculas]);		
+	$estrenos = Multimedia::where('tipo', '0')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+	$ultimas = Multimedia::where('tipo', '0')->orderBy('created_at', 'DESC')->get();
+	$favoritos = Multimedia::inRandomOrder()->where('tipo', '0')->get();
+
+    return response()->json(['estrenos'=>$estrenos,'favoritos'=>$favoritos,'ultimas'=>$ultimas]);		
 });
 
 Route::get('/verSeries',function(request $request){
-	$series = Multimedia::where('tipo', '1')->get();
-    return response()->json(['series'=>$series]);		
+	$estrenos = Multimedia::where('tipo', '1')->orderBy('aLanzamiento', 'DESC')->orderBy('created_at', 'DESC')->get();
+	$ultimas = Multimedia::where('tipo', '1')->orderBy('created_at', 'DESC')->get();
+	$favoritos = Multimedia::inRandomOrder()->where('tipo', '1')->get();
+
+    return response()->json(['estrenos'=>$estrenos,'favoritos'=>$favoritos,'ultimas'=>$ultimas]);		
 });
